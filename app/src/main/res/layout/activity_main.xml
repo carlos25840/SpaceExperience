@@ -5,8 +5,8 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/logo"
+        android:layout_height="@dimen/logo"
         android:src="@drawable/logo_sin_fondo"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"/>
@@ -15,9 +15,41 @@
         android:layout_height="wrap_content"
         android:text="@string/jugar"
         android:layout_gravity="center"
-        android:background="@color/azul"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/blanco"
-        android:textSize="20sp"/>
+        android:textSize="@dimen/textbotones"
+        android:padding="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right">
+
+        <com.example.spaceexperience.ImageButtonRounded
+            android:layout_width="@dimen/flag"
+            android:layout_height="@dimen/flag"
+            android:src="@drawable/cat"
+            android:background="@null"
+            android:id="@+id/BtnCat"
+            android:layout_margin="1dp"/>
+
+        <com.example.spaceexperience.ImageButtonRounded
+            android:layout_width="@dimen/flag"
+            android:layout_height="@dimen/flag"
+            android:src="@drawable/es"
+            android:background="@null"
+            android:id="@+id/BtnES"
+            android:layout_margin="1dp"/>
+
+        <com.example.spaceexperience.ImageButtonRounded
+            android:layout_width="@dimen/flag"
+            android:layout_height="@dimen/flag"
+            android:src="@drawable/en"
+            android:background="@null"
+            android:id="@+id/BtnEN"
+            android:layout_margin="1dp"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
