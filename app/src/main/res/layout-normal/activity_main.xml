@@ -28,7 +28,7 @@
         <com.example.spaceexperience.ImageButtonRounded
             android:layout_width="@dimen/flag"
             android:layout_height="@dimen/flag"
-            android:src="@drawable/cat"
+            android:src="@drawable/ca"
             android:background="@null"
             android:id="@+id/BtnCat"
             android:layout_margin="@dimen/marginflag"/>
