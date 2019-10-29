@@ -3,6 +3,7 @@ package com.example.spaceexperience;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        mediaPlayer.start();
 
         buttonEn.setOnClickListener(new View.OnClickListener() {
             @Override

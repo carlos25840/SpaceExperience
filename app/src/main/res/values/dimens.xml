@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="flag">100dp</dimen>
-    <dimen name="logo">1000dp</dimen>
+    <dimen name="logo">900dp</dimen>
     <dimen name="textbotones">100sp</dimen>
     <dimen name="marginflag">1dp</dimen>
     <dimen name="buttonpadding">20dp</dimen>
+    <dimen name="buttonheight">30dp</dimen>
 </resources>
