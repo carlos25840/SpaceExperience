@@ -1,13 +1,13 @@
 package com.example.spaceexperience;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.Locale;
 
@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
@@ -52,10 +55,6 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-       Intent refresh = new Intent(this, MainActivity.class);
-        finish();
-        overridePendingTransition(0, 0);
-        startActivity(refresh);
-        overridePendingTransition(0, 0);
+        recreate();
     }
 }
