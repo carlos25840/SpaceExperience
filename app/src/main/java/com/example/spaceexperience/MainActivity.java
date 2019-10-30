@@ -39,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 {
                     mediaPlayer.pause();
                     buttonPlay.setImageResource(R.drawable.stopped);
-                    buttonPlay.setBackgroundResource(R.drawable.stopped);
                 }
                 else
                 {
                     mediaPlayer.start();
                     buttonPlay.setImageResource(R.drawable.playing);
-                    buttonPlay.setBackgroundResource(R.drawable.playing);
                 }
             }
         });
