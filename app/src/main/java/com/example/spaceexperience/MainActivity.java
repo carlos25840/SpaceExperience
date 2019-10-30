@@ -15,7 +15,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,26 +26,6 @@ public class MainActivity extends AppCompatActivity {
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
-        final ImageButton buttonPlay = findViewById(R.id.playbutton);
-
-        mediaPlayer = MediaPlayer.create(this, R.raw.song);
-        mediaPlayer.start();
-
-        buttonPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaPlayer.isPlaying())
-                {
-                    mediaPlayer.pause();
-                    buttonPlay.setImageResource(R.drawable.stopped);
-                }
-                else
-                {
-                    mediaPlayer.start();
-                    buttonPlay.setImageResource(R.drawable.playing);
-                }
-            }
-        });
 
         buttonEn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setLocale(String lang) {
-        mediaPlayer.stop();
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();

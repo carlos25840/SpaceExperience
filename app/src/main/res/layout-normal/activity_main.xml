@@ -4,17 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageButton
-        android:layout_width="@dimen/flag"
-        android:layout_height="@dimen/flag"
-        android:scaleType="fitCenter"
-        android:id="@+id/playbutton"
-        android:layout_gravity="right"
-        android:src="@drawable/playing"
-        android:background="@null"
-        android:layout_marginTop="@dimen/marginflag"
-        android:layout_marginRight="@dimen/marginflag"/>
-
     <ImageView
         android:layout_width="@dimen/logo"
         android:layout_height="@dimen/logo"
