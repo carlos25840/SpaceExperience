@@ -80,6 +80,5 @@ public class MainActivity extends AppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         recreate();
-        //hola
     }
 }
