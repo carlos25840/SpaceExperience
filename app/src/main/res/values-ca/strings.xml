@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Space Experience</string>
     <string name="jugar">Jugar</string>
+    <string name="ranking">rànquing</string>
 </resources>

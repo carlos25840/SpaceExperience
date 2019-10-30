@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="flag">30dp</dimen>
-    <dimen name="logo">250dp</dimen>
+    <dimen name="logo">200dp</dimen>
     <dimen name="textbotones">15sp</dimen>
     <dimen name="marginflag">2dp</dimen>
-    <dimen name="buttonpadding">1dp</dimen>
+    <dimen name="buttonpadding">6dp</dimen>
     <dimen name="buttonheight">30dp</dimen>
 </resources>
