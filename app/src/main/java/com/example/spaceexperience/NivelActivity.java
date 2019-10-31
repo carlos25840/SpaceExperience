@@ -19,6 +19,15 @@ public class NivelActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.BtnBack);
         Button btnAdult = findViewById(R.id.btnAdulto);
+        Button btnInfantil = findViewById(R.id.btnInfantil);
+
+        btnInfantil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NivelActivity.this, PreguntaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnAdult.setOnClickListener(new View.OnClickListener() {
             @Override

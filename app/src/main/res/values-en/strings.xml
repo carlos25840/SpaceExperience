@@ -8,4 +8,6 @@
     <string name="facil">easy</string>
     <string name="normal">medium</string>
     <string name="dificil">hard</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="puntuacion">Puntuación</string>
 </resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/tiempo"
+                android:textSize="@dimen/textPregunta"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                android:layout_weight="3"
+                android:gravity="center|top"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/logoNivel"
+                android:src="@drawable/logo_sin_fondo"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:layout_weight="3"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/puntuacion"
+                android:textSize="@dimen/textPregunta"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                android:layout_weight="3"
+                android:gravity="center|top"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtPregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textPregunta"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            android:text="¿Qué es la tierra?"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnRespuesta1"
+                android:layout_width="@dimen/buttonPregunta"
+                android:layout_height="wrap_content"
+                android:text="Un satelite"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/textbotones"
+                android:paddingRight="@dimen/buttonpadding"
+                android:paddingLeft="@dimen/buttonpadding"
+                android:layout_margin="@dimen/marginPregunta"/>
+            <Button
+                android:id="@+id/btnRespuesta2"
+                android:layout_width="@dimen/buttonPregunta"
+                android:layout_height="wrap_content"
+                android:text="Un planeta"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/textbotones"
+                android:paddingRight="@dimen/buttonpadding"
+                android:paddingLeft="@dimen/buttonpadding"
+                android:layout_margin="@dimen/marginPregunta"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnRespuesta3"
+                android:layout_width="@dimen/buttonPregunta"
+                android:layout_height="wrap_content"
+                android:text="Una comida"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/textbotones"
+                android:paddingRight="@dimen/buttonpadding"
+                android:paddingLeft="@dimen/buttonpadding"
+                android:layout_margin="@dimen/marginPregunta"/>
+            <Button
+                android:id="@+id/btnRespuesta4"
+                android:layout_width="@dimen/buttonPregunta"
+                android:layout_height="wrap_content"
+                android:text="Un elemento químico"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/textbotones"
+                android:paddingRight="@dimen/buttonpadding"
+                android:paddingLeft="@dimen/buttonpadding"
+                android:layout_margin="@dimen/marginPregunta"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
