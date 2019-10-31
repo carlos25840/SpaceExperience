@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/fondo">
 
     <ImageView
         android:layout_width="@dimen/logo"
@@ -11,6 +12,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"/>
     <Button
+        android:id="@+id/BtnJugar"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/buttonheight"
         android:text="@string/jugar"
@@ -21,6 +23,7 @@
         android:paddingRight="@dimen/buttonpadding"
         android:paddingLeft="@dimen/buttonpadding"/>
     <Button
+        android:id="@+id/BtnRanking"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/buttonheight"
         android:text="@string/ranking"

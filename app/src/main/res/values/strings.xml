@@ -2,4 +2,6 @@
     <string name="app_name">Space Experience</string>
     <string name="jugar">Jugar</string>
     <string name="ranking">clasificación</string>
+    <string name="adulto">adulto</string>
+    <string name="infantil">infantil</string>
 </resources>
