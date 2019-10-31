@@ -8,6 +8,7 @@
     <string name="facil">fàcil</string>
     <string name="normal">normal</string>
     <string name="dificil">difícil</string>
-    <string name="tiempo">Tiempo</string>
-    <string name="puntuacion">Puntuación</string>
+    <string name="tiempo">Temps</string>
+    <string name="puntuacion">Puntuació</string>
+    <string name="timeOut">Es va acabar el temps!</string>
 </resources>

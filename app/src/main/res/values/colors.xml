@@ -7,5 +7,6 @@
     <color name="blanco">#FFFFFF</color>
     <color name="azulOscuro">#025C9E</color>
     <color name="fondo">#6A6392</color>
+    <color name="rojo">#FF0000</color>
 
 </resources>
