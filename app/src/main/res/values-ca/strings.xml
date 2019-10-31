@@ -5,4 +5,7 @@
     <string name="ranking">rànquing</string>
     <string name="adulto">adulto</string>
     <string name="infantil">infantil</string>
+    <string name="facil">fàcil</string>
+    <string name="normal">normal</string>
+    <string name="dificil">difícil</string>
 </resources>

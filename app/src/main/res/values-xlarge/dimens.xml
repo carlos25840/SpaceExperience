@@ -8,5 +8,5 @@
     <dimen name="buttonheight">110dp</dimen>
     <dimen name="back">70dp</dimen>
     <dimen name="paddingback">10dp</dimen>
-    <dimen name="logoNivel">700dp</dimen>
+    <dimen name="logoNivel">650dp</dimen>
 </resources>
