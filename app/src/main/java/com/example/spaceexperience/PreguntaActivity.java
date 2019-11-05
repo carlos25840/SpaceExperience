@@ -12,13 +12,15 @@ import android.widget.TextView;
 
 public class PreguntaActivity extends AppCompatActivity {
 
-    int score2;
+    private int score2;
+    private boolean time = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_pregunta);
+
         final TextView textViewCounter = findViewById(R.id.counter);
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
@@ -27,7 +29,6 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
 
         Intent intent = getIntent();
-
         int score = intent.getIntExtra("score", 0);
         score2 = score;
         textViewPuntos.setText(Integer.toString(score));
@@ -36,7 +37,7 @@ public class PreguntaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
-                if (Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+                if (time)
                 {
                     score2 +=(2*Integer.parseInt(textViewCounter.getText().toString()));
                 }
@@ -58,6 +59,7 @@ public class PreguntaActivity extends AppCompatActivity {
             public void onFinish() {
                 textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
                 textViewCounter.setText(R.string.timeOut);
+                time = false;
             }
         }.start();
 
