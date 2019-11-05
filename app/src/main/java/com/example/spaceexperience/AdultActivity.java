@@ -20,11 +20,13 @@ public class AdultActivity extends AppCompatActivity {
         Button btnFacil = findViewById(R.id.btnFacil);
         Button btnNormal = findViewById(R.id.btnNormal);
         Button btnDificil = findViewById(R.id.btnDificil);
+        final int score = 0;
 
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         });
@@ -33,6 +35,7 @@ public class AdultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         });
@@ -41,6 +44,7 @@ public class AdultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         });

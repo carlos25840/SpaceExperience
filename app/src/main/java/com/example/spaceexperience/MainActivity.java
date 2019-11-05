@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Button btnPlay = findViewById(R.id.BtnJugar);
 
+
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
