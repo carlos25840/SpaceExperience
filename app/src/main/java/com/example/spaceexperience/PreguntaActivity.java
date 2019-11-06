@@ -61,6 +61,48 @@ public class PreguntaActivity extends AppCompatActivity {
             }
         });
 
+        buttonRespuesta2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
+                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+                {
+                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                    textViewPuntos.setText(Integer.toString(score));
+                    timer.cancel();
+                    timer.start();
+                }
+            }
+        });
+
+        buttonRespuesta3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
+                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+                {
+                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                    textViewPuntos.setText(Integer.toString(score));
+                    timer.cancel();
+                    timer.start();
+                }
+            }
+        });
+
+        buttonRespuesta4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
+                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+                {
+                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                    textViewPuntos.setText(Integer.toString(score));
+                    timer.cancel();
+                    timer.start();
+                }
+            }
+        });
+
     }
 
     @Override
