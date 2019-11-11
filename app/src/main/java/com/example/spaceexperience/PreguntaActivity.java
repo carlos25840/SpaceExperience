@@ -2,7 +2,9 @@ package com.example.spaceexperience;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -20,8 +22,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Locale;
 
 import JSONs.Idioma;
+import JSONs.Pregunta;
 
 
 public class PreguntaActivity extends AppCompatActivity {
@@ -33,6 +38,11 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
+    private String nivel;
+    Idioma catalan = new Idioma();
+    Idioma castellano = new Idioma();
+    Idioma ingles = new Idioma();
+    ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +55,7 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         final TextView textViewPregunta = findViewById(R.id.txtPregunta);
-        Idioma catalan = new Idioma();
-        Idioma castellano = new Idioma();
-        Idioma ingles = new Idioma();
+
         try {
             catalan = getCatalan();
             castellano = getCastellano();
@@ -74,21 +82,31 @@ public class PreguntaActivity extends AppCompatActivity {
         timer.start();
 
         final Intent intent = getIntent();
-        score = intent.getIntExtra("score", 0);
+        nivel = intent.getStringExtra("nivel");
         textViewPuntos.setText(Integer.toString(score));
+        cargarPreguntas();
         // ----------------------Prueba---------------------//
-        textViewPregunta.setText(catalan.getInfantil().get(0).getPregunta());
+        textViewPregunta.setText(preguntas.get(0).getPregunta());
+        buttonRespuesta1.setText(preguntas.get(0).getRespuestas().get(0).getRespuesta());
+        buttonRespuesta2.setText(preguntas.get(0).getRespuestas().get(1).getRespuesta());
+        buttonRespuesta3.setText(preguntas.get(0).getRespuestas().get(2).getRespuesta());
+        buttonRespuesta4.setText(preguntas.get(0).getRespuestas().get(3).getRespuesta());
         // -------------------------------------------------------//
+        final Idioma finalCatalan = catalan;
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
                 if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
                 {
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    timer.start();
+                    if(preguntas.get(0).getRespuestas().get(0).isCorrecta()){
+                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                        textViewPuntos.setText(Integer.toString(score));
+                        timer.cancel();
+                        timer.start();
+                    }else{
+                        score -= 5;
+                        textViewPuntos.setText(Integer.toString(score));
+                    }
                 }
             }
         });
@@ -96,13 +114,17 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
                 if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
                 {
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    timer.start();
+                    if(preguntas.get(0).getRespuestas().get(1).isCorrecta()){
+                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                        textViewPuntos.setText(Integer.toString(score));
+                        timer.cancel();
+                        timer.start();
+                    }else{
+                        score -= 5;
+                        textViewPuntos.setText(Integer.toString(score));
+                    }
                 }
             }
         });
@@ -110,13 +132,17 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
                 if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
                 {
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    timer.start();
+                    if(preguntas.get(0).getRespuestas().get(2).isCorrecta()){
+                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                        textViewPuntos.setText(Integer.toString(score));
+                        timer.cancel();
+                        timer.start();
+                    }else{
+                        score -= 5;
+                        textViewPuntos.setText(Integer.toString(score));
+                    }
                 }
             }
         });
@@ -127,10 +153,16 @@ public class PreguntaActivity extends AppCompatActivity {
                 Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
                 if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
                 {
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    timer.start();
+                    if(preguntas.get(0).getRespuestas().get(3).isCorrecta()){
+                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                        textViewPuntos.setText(Integer.toString(score));
+                        timer.cancel();
+                        timer.start();
+                    }
+                    else{
+                        score -= 5;
+                        textViewPuntos.setText(Integer.toString(score));
+                    }
                 }
             }
         });
@@ -168,5 +200,45 @@ public class PreguntaActivity extends AppCompatActivity {
         Type typeIng = new TypeToken<Idioma>() {}.getType();
         Idioma ingles =  gson.fromJson(br,typeIng);
         return ingles;
+    }
+
+
+    public void cargarPreguntas()
+    {
+        String idioma = this.getResources().getConfiguration().locale.getISO3Language();
+        if (idioma.equals("cat"))
+        {
+            preguntas=cargarNivel(catalan);
+        }
+        else if(idioma.equals("spa"))
+        {
+            preguntas=cargarNivel(castellano);
+        }else if(idioma.equals("eng"))
+        {
+            preguntas=cargarNivel(ingles);
+        }
+        else{
+            preguntas=cargarNivel(ingles);
+        }
+    }
+    public ArrayList<Pregunta> cargarNivel(Idioma idioma)
+    {
+        ArrayList<Pregunta> arrayListPreguntas = new ArrayList<Pregunta>();
+        switch (nivel)
+        {
+            case "infantil":
+                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getInfantil();
+                break;
+            case "facil":
+                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getFacil();
+                break;
+            case "normal":
+                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getMedio();
+                break;
+            case "dificil":
+                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getDificil();
+                break;
+        }
+        return arrayListPreguntas;
     }
 }

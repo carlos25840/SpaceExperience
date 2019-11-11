@@ -20,13 +20,12 @@ public class NivelActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.BtnBack);
         Button btnAdult = findViewById(R.id.btnAdulto);
         Button btnInfantil = findViewById(R.id.btnInfantil);
-        final int score = 0;
 
         btnInfantil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NivelActivity.this, PreguntaActivity.class);
-                intent.putExtra("score", score);
+                intent.putExtra("nivel", "infantil");
                 startActivity(intent);
             }
         });

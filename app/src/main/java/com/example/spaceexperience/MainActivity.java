@@ -2,29 +2,16 @@ package com.example.spaceexperience;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.Type;
 import java.util.Locale;
-
-import JSONs.Idioma;
 
 public class MainActivity extends AppCompatActivity {
     public static int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1;
@@ -68,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         buttonEs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale("");
+                setLocale("es");
             }
         });
 
