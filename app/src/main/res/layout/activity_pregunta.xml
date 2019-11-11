@@ -88,7 +88,7 @@
             android:textSize="@dimen/textPregunta"
             android:textColor="@color/blanco"
             android:textStyle="bold"
-            android:text="¿Qué es la tierra?"
+            android:text=""
             android:textAlignment="center"/>
     </LinearLayout>
 
