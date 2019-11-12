@@ -1,14 +1,19 @@
 package com.example.spaceexperience;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,6 +25,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import JSONs.Idioma;
 import JSONs.Pregunta;
+import JSONs.Resultado;
 
 
 public class PreguntaActivity extends AppCompatActivity {
@@ -40,6 +46,8 @@ public class PreguntaActivity extends AppCompatActivity {
     private Pregunta pregunta;
     private int score = 0;
     private int contador = 0;
+    private ArrayList<Resultado> resultados = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,95 +128,90 @@ public class PreguntaActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
     }
 
-    public void getCatalan () throws FileNotFoundException {
+    public void getCatalan() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(CATALAN);
         BufferedReader br = new BufferedReader(fr);
-        Type typeCat = new TypeToken<Idioma>() {}.getType();
-        catalan =  gson.fromJson(br,typeCat);
+        Type typeCat = new TypeToken<Idioma>() {
+        }.getType();
+        catalan = gson.fromJson(br, typeCat);
     }
 
-    public void getCastellano () throws FileNotFoundException {
+    public void getCastellano() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(CASTELLANO);
         BufferedReader br = new BufferedReader(fr);
-        Type typeCas = new TypeToken<Idioma>() {}.getType();
-        castellano =  gson.fromJson(br,typeCas);
+        Type typeCas = new TypeToken<Idioma>() {
+        }.getType();
+        castellano = gson.fromJson(br, typeCas);
     }
 
-    public void getIngles () throws FileNotFoundException {
+    public void getIngles() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(INGLES);
         BufferedReader br = new BufferedReader(fr);
-        Type typeIng = new TypeToken<Idioma>() {}.getType();
-        ingles =  gson.fromJson(br,typeIng);
+        Type typeIng = new TypeToken<Idioma>() {
+        }.getType();
+        ingles = gson.fromJson(br, typeIng);
     }
 
 
-    public void cargarPreguntas()
-    {
+    public void cargarPreguntas() {
         String idioma = this.getResources().getConfiguration().locale.getISO3Language();
-        if (idioma.equals("cat"))
-        {
-            preguntas=cargarNivel(catalan);
-        }
-        else if(idioma.equals("spa"))
-        {
-            preguntas=cargarNivel(castellano);
-        }else if(idioma.equals("eng"))
-        {
-            preguntas=cargarNivel(ingles);
-        }
-        else{
-            preguntas=cargarNivel(ingles);
+        if (idioma.equals("cat")) {
+            preguntas = cargarNivel(catalan);
+        } else if (idioma.equals("spa")) {
+            preguntas = cargarNivel(castellano);
+        } else if (idioma.equals("eng")) {
+            preguntas = cargarNivel(ingles);
+        } else {
+            preguntas = cargarNivel(ingles);
         }
     }
-    public ArrayList<Pregunta> cargarNivel(Idioma idioma)
-    {
+
+    public ArrayList<Pregunta> cargarNivel(Idioma idioma) {
         ArrayList<Pregunta> arrayListPreguntas = new ArrayList<>();
-        switch (nivel)
-        {
+        switch (nivel) {
             case "infantil":
-                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getInfantil();
+                arrayListPreguntas = (ArrayList<Pregunta>) idioma.getInfantil();
                 break;
             case "facil":
-                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getFacil();
+                arrayListPreguntas = (ArrayList<Pregunta>) idioma.getFacil();
                 break;
             case "normal":
-                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getMedio();
+                arrayListPreguntas = (ArrayList<Pregunta>) idioma.getMedio();
                 break;
             case "dificil":
-                arrayListPreguntas= (ArrayList<Pregunta>) idioma.getDificil();
+                arrayListPreguntas = (ArrayList<Pregunta>) idioma.getDificil();
                 break;
         }
         return arrayListPreguntas;
     }
-    public Pregunta preguntaAleatoria(ArrayList<Pregunta> preguntasRestantes){
+
+    public Pregunta preguntaAleatoria(ArrayList<Pregunta> preguntasRestantes) {
         int size = preguntasRestantes.size();
-        int random = (int) Math.floor(Math.random()*size);
+        int random = (int) Math.floor(Math.random() * size);
         Pregunta p = preguntasRestantes.get(random);
         return p;
     }
-    public void accionBoton(int respuesta)
-    {
+
+    public void accionBoton(int respuesta) {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
-        if (contador < 10){
-            if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-            {
-                if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+        if (contador < 2) {
+            if (Integer.parseInt(textViewCounter.getText().toString()) >= 1) {
+                if (pregunta.getRespuestas().get(respuesta).isCorrecta()) {
+                    score += 2 * (Integer.parseInt(textViewCounter.getText().toString()));
                     textViewPuntos.setText(Integer.toString(score));
                     timer.cancel();
                     timer.start();
                     contador++;
                     pregunta = preguntaAleatoria(preguntas);
                     refrescarCampos(pregunta);
-                }
-                else{
+                } else {
                     score -= 5;
                     textViewPuntos.setText(Integer.toString(score));
                     timer.cancel();
@@ -218,9 +221,13 @@ public class PreguntaActivity extends AppCompatActivity {
                     refrescarCampos(pregunta);
                 }
             }
+        } else {
+            timer.cancel();
+            showTextDialog();
         }
     }
-    public void refrescarCampos(Pregunta pre){
+
+    public void refrescarCampos(Pregunta pre) {
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
@@ -231,6 +238,53 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
         buttonRespuesta3.setText(pre.getRespuestas().get(2).getRespuesta());
         buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
+    }
+
+    private void showTextDialog() {
+        // get prompts.xml view
+        Context context = this;
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.prompts, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit text
+                                TextView textViewPuntos = findViewById(R.id.txtPuntos);
+                                String resultado = userInput.getText().toString();
+                                int puntos = Integer.parseInt(textViewPuntos.getText().toString());
+                                Resultado result = new Resultado(resultado, puntos);
+                                resultados.add(result);
+                                Gson gson = new Gson();
+
+                                Intent intent = new Intent(PreguntaActivity.this, RankingActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 }
 

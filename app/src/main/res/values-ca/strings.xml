@@ -11,4 +11,5 @@
     <string name="tiempo">Temps</string>
     <string name="puntuacion">Puntuació</string>
     <string name="timeOut">Es va acabar el temps!</string>
+    <string name="type_your_name">Introdueix el nom:</string>
 </resources>
