@@ -2,47 +2,45 @@ package com.example.spaceexperience;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Locale;
-
 import JSONs.Idioma;
 import JSONs.Pregunta;
 
 
 public class PreguntaActivity extends AppCompatActivity {
-
-    private int score = 0;
+    /*----------------Constantes--------------------*/
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "JSONs";
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
+    /*--------------------Atributos-----------------------------*/
     private String nivel;
-    Idioma catalan = new Idioma();
-    Idioma castellano = new Idioma();
-    Idioma ingles = new Idioma();
-    ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+    private Idioma catalan = new Idioma();
+    private Idioma castellano = new Idioma();
+    private Idioma ingles = new Idioma();
+    private ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+    private CountDownTimer timer;
+    private Pregunta pregunta;
+    private int score = 0;
+    private int contador = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +48,11 @@ public class PreguntaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregunta);
         final TextView textViewCounter = findViewById(R.id.counter);
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
-        final Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
+        TextView textViewPregunta = findViewById(R.id.txtPregunta);
+        Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        final TextView textViewPregunta = findViewById(R.id.txtPregunta);
-
         try {
             catalan = getCatalan();
             castellano = getCastellano();
@@ -64,7 +61,7 @@ public class PreguntaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        final CountDownTimer timer = new CountDownTimer(15000, 1000) {
+        timer = new CountDownTimer(15000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 textViewCounter.setText("" + millisUntilFinished / 1000);
@@ -86,89 +83,40 @@ public class PreguntaActivity extends AppCompatActivity {
         textViewPuntos.setText(Integer.toString(score));
         cargarPreguntas();
         // ----------------------Prueba---------------------//
-        textViewPregunta.setText(preguntas.get(0).getPregunta());
-        buttonRespuesta1.setText(preguntas.get(0).getRespuestas().get(0).getRespuesta());
-        buttonRespuesta2.setText(preguntas.get(0).getRespuestas().get(1).getRespuesta());
-        buttonRespuesta3.setText(preguntas.get(0).getRespuestas().get(2).getRespuesta());
-        buttonRespuesta4.setText(preguntas.get(0).getRespuestas().get(3).getRespuesta());
+        pregunta = preguntaAleatoria(preguntas);
+        textViewPregunta.setText(pregunta.getPregunta());
+        buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
+        buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
+        buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
+        buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
         // -------------------------------------------------------//
-        final Idioma finalCatalan = catalan;
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-                {
-                    if(preguntas.get(0).getRespuestas().get(0).isCorrecta()){
-                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                        textViewPuntos.setText(Integer.toString(score));
-                        timer.cancel();
-                        timer.start();
-                    }else{
-                        score -= 5;
-                        textViewPuntos.setText(Integer.toString(score));
-                    }
-                }
+                accionBoton(0);
             }
         });
 
         buttonRespuesta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-                {
-                    if(preguntas.get(0).getRespuestas().get(1).isCorrecta()){
-                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                        textViewPuntos.setText(Integer.toString(score));
-                        timer.cancel();
-                        timer.start();
-                    }else{
-                        score -= 5;
-                        textViewPuntos.setText(Integer.toString(score));
-                    }
-                }
+                accionBoton(1);
             }
         });
 
         buttonRespuesta3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-                {
-                    if(preguntas.get(0).getRespuestas().get(2).isCorrecta()){
-                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                        textViewPuntos.setText(Integer.toString(score));
-                        timer.cancel();
-                        timer.start();
-                    }else{
-                        score -= 5;
-                        textViewPuntos.setText(Integer.toString(score));
-                    }
-                }
+                accionBoton(2);
             }
         });
 
         buttonRespuesta4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreguntaActivity.this, PreguntaActivity.class);
-                if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-                {
-                    if(preguntas.get(0).getRespuestas().get(3).isCorrecta()){
-                        score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                        textViewPuntos.setText(Integer.toString(score));
-                        timer.cancel();
-                        timer.start();
-                    }
-                    else{
-                        score -= 5;
-                        textViewPuntos.setText(Integer.toString(score));
-                    }
-                }
+                accionBoton(3);
             }
         });
-
-
-
     }
 
     @Override
@@ -241,4 +189,50 @@ public class PreguntaActivity extends AppCompatActivity {
         }
         return arrayListPreguntas;
     }
+    public Pregunta preguntaAleatoria(ArrayList<Pregunta> preguntasRestantes){
+        int size = preguntasRestantes.size();
+        int random = (int) Math.floor(Math.random()*size);
+        Pregunta pregunta = preguntasRestantes.get(random);
+        return pregunta;
+    }
+    public void accionBoton(int respuesta)
+    {
+        TextView textViewPuntos = findViewById(R.id.txtPuntos);
+        TextView textViewCounter = findViewById(R.id.counter);
+        Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
+        Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
+        Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
+        Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        TextView textViewPregunta = findViewById(R.id.txtPregunta);
+        if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+        {
+            if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
+                score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                textViewPuntos.setText(Integer.toString(score));
+                timer.cancel();
+                timer.start();
+                contador++;
+                pregunta = preguntaAleatoria(preguntas);
+                textViewPregunta.setText(pregunta.getPregunta());
+                buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
+                buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
+                buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
+                buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
+            }
+            else{
+                score -= 5;
+                textViewPuntos.setText(Integer.toString(score));
+                timer.cancel();
+                timer.start();
+                contador++;
+                pregunta = preguntaAleatoria(preguntas);
+                textViewPregunta.setText(pregunta.getPregunta());
+                buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
+                buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
+                buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
+                buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
+            }
+        }
+    }
 }
+
