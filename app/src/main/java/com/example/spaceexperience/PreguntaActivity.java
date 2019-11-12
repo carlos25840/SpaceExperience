@@ -3,12 +3,15 @@ package com.example.spaceexperience;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,6 +30,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "JSONs";
+    public static final String DIRECTORY_IMAGES = Environment.getExternalStorageDirectory() +
+            DIR_SEPAR + "Imagenes Android" + DIR_SEPAR;
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
@@ -49,10 +54,15 @@ public class PreguntaActivity extends AppCompatActivity {
         final TextView textViewCounter = findViewById(R.id.counter);
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewPregunta = findViewById(R.id.txtPregunta);
+        ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        File directory = new File(DIRECTORY_IMAGES);
+        File[] files = directory.listFiles();
+
+
         try {
             getCatalan();
             getCastellano();
@@ -89,6 +99,9 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
         buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
         buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
+        int random = (int) Math.floor(Math.random()*files.length);
+        Bitmap bmImg = BitmapFactory.decodeFile(files[random].getAbsolutePath());
+        imageViewPregunta.setImageBitmap(bmImg);
         // -------------------------------------------------------//
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,11 +239,21 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         TextView textViewPregunta = findViewById(R.id.txtPregunta);
+        ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
+
+        File directory = new File(DIRECTORY_IMAGES);
+        File[] files = directory.listFiles();
+        int random = (int) Math.floor(Math.random()*files.length);
+
+        //--------------------PRUEBA
+
         textViewPregunta.setText(pre.getPregunta());
         buttonRespuesta1.setText(pre.getRespuestas().get(0).getRespuesta());
         buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
         buttonRespuesta3.setText(pre.getRespuestas().get(2).getRespuesta());
         buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
+        Bitmap bmImg = BitmapFactory.decodeFile(files[random].getAbsolutePath());
+        imageViewPregunta.setImageBitmap(bmImg);
     }
 }
 

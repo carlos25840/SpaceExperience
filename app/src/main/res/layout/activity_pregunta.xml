@@ -46,8 +46,9 @@
 
             <ImageView
                 android:layout_width="0dp"
+                android:id="@+id/imagenAleatoria"
                 android:layout_height="@dimen/imagenPregunta"
-                android:src="@drawable/logo_sin_fondo"
+                android:src="@drawable/astronauta_sin_fondo"
                 android:layout_gravity="center"
                 android:contentDescription="@string/app_name"
                 android:layout_weight="3"/>
