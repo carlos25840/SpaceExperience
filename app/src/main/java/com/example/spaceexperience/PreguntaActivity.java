@@ -35,7 +35,7 @@ public class PreguntaActivity extends AppCompatActivity {
     private Idioma catalan = new Idioma();
     private Idioma castellano = new Idioma();
     private Idioma ingles = new Idioma();
-    private ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+    private ArrayList<Pregunta> preguntas = new ArrayList<>();
     private CountDownTimer timer;
     private Pregunta pregunta;
     private int score = 0;
@@ -54,9 +54,9 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         try {
-            catalan = getCatalan();
-            castellano = getCastellano();
-            ingles = getIngles();
+            getCatalan();
+            getCastellano();
+            getIngles();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -121,33 +121,30 @@ public class PreguntaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        return;
     }
-    public Idioma getCatalan () throws FileNotFoundException {
+
+    public void getCatalan () throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(CATALAN);
         BufferedReader br = new BufferedReader(fr);
         Type typeCat = new TypeToken<Idioma>() {}.getType();
-        Idioma catalan =  gson.fromJson(br,typeCat);
-        return catalan;
+        catalan =  gson.fromJson(br,typeCat);
     }
 
-    public Idioma getCastellano () throws FileNotFoundException {
+    public void getCastellano () throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(CASTELLANO);
         BufferedReader br = new BufferedReader(fr);
         Type typeCas = new TypeToken<Idioma>() {}.getType();
-        Idioma castellano =  gson.fromJson(br,typeCas);
-        return castellano;
+        castellano =  gson.fromJson(br,typeCas);
     }
 
-    public Idioma getIngles () throws FileNotFoundException {
+    public void getIngles () throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(INGLES);
         BufferedReader br = new BufferedReader(fr);
         Type typeIng = new TypeToken<Idioma>() {}.getType();
-        Idioma ingles =  gson.fromJson(br,typeIng);
-        return ingles;
+        ingles =  gson.fromJson(br,typeIng);
     }
 
 
@@ -171,7 +168,7 @@ public class PreguntaActivity extends AppCompatActivity {
     }
     public ArrayList<Pregunta> cargarNivel(Idioma idioma)
     {
-        ArrayList<Pregunta> arrayListPreguntas = new ArrayList<Pregunta>();
+        ArrayList<Pregunta> arrayListPreguntas = new ArrayList<>();
         switch (nivel)
         {
             case "infantil":
@@ -192,47 +189,48 @@ public class PreguntaActivity extends AppCompatActivity {
     public Pregunta preguntaAleatoria(ArrayList<Pregunta> preguntasRestantes){
         int size = preguntasRestantes.size();
         int random = (int) Math.floor(Math.random()*size);
-        Pregunta pregunta = preguntasRestantes.get(random);
-        return pregunta;
+        Pregunta p = preguntasRestantes.get(random);
+        return p;
     }
     public void accionBoton(int respuesta)
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
+        if (contador < 10){
+            if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
+            {
+                if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
+                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                    textViewPuntos.setText(Integer.toString(score));
+                    timer.cancel();
+                    timer.start();
+                    contador++;
+                    pregunta = preguntaAleatoria(preguntas);
+                    refrescarCampos(pregunta);
+                }
+                else{
+                    score -= 5;
+                    textViewPuntos.setText(Integer.toString(score));
+                    timer.cancel();
+                    timer.start();
+                    contador++;
+                    pregunta = preguntaAleatoria(preguntas);
+                    refrescarCampos(pregunta);
+                }
+            }
+        }
+    }
+    public void refrescarCampos(Pregunta pre){
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         TextView textViewPregunta = findViewById(R.id.txtPregunta);
-        if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-        {
-            if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
-                score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                textViewPuntos.setText(Integer.toString(score));
-                timer.cancel();
-                timer.start();
-                contador++;
-                pregunta = preguntaAleatoria(preguntas);
-                textViewPregunta.setText(pregunta.getPregunta());
-                buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
-                buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
-                buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
-                buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
-            }
-            else{
-                score -= 5;
-                textViewPuntos.setText(Integer.toString(score));
-                timer.cancel();
-                timer.start();
-                contador++;
-                pregunta = preguntaAleatoria(preguntas);
-                textViewPregunta.setText(pregunta.getPregunta());
-                buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
-                buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
-                buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
-                buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
-            }
-        }
+        textViewPregunta.setText(pre.getPregunta());
+        buttonRespuesta1.setText(pre.getRespuestas().get(0).getRespuesta());
+        buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
+        buttonRespuesta3.setText(pre.getRespuestas().get(2).getRespuesta());
+        buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
     }
 }
 
