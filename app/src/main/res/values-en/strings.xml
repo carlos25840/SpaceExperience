@@ -11,4 +11,5 @@
     <string name="tiempo">Time</string>
     <string name="puntuacion">Score</string>
     <string name="timeOut">Time out!</string>
+    <string name="type_your_name">Type Your Name:</string>
 </resources>

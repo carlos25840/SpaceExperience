@@ -1,17 +1,22 @@
 package com.example.spaceexperience;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,6 +28,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import JSONs.Idioma;
 import JSONs.Pregunta;
+import JSONs.Resultado;
 
 
 public class PreguntaActivity extends AppCompatActivity {
@@ -45,6 +51,8 @@ public class PreguntaActivity extends AppCompatActivity {
     private Pregunta pregunta;
     private int score = 0;
     private int contador = 0;
+    private ArrayList<Resultado> resultados = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,6 +239,9 @@ public class PreguntaActivity extends AppCompatActivity {
                     refrescarCampos(pregunta);
                 }
             }
+        } else {
+            timer.cancel();
+            showTextDialog();
         }
     }
     public void refrescarCampos(Pregunta pre){
@@ -254,6 +265,53 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
         Bitmap bmImg = BitmapFactory.decodeFile(files[random].getAbsolutePath());
         imageViewPregunta.setImageBitmap(bmImg);
+    }
+
+    private void showTextDialog() {
+        // get prompts.xml view
+        Context context = this;
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.prompts, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit text
+                                TextView textViewPuntos = findViewById(R.id.txtPuntos);
+                                String resultado = userInput.getText().toString();
+                                int puntos = Integer.parseInt(textViewPuntos.getText().toString());
+                                Resultado result = new Resultado(resultado, puntos);
+                                resultados.add(result);
+                                Gson gson = new Gson();
+
+                                Intent intent = new Intent(PreguntaActivity.this, RankingActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 }
 
