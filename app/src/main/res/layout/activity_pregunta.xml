@@ -46,7 +46,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="@dimen/logoNivel"
+                android:layout_height="@dimen/imagenPregunta"
                 android:src="@drawable/logo_sin_fondo"
                 android:layout_gravity="center"
                 android:contentDescription="@string/app_name"

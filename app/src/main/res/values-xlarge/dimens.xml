@@ -12,4 +12,5 @@
     <dimen name="textPregunta">100sp</dimen>
     <dimen name="marginPregunta">20dp</dimen>
     <dimen name="buttonPregunta">900dp</dimen>
+    <dimen name="imagenPregunta">650dp</dimen>
 </resources>
