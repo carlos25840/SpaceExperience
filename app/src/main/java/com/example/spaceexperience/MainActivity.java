@@ -15,14 +15,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     public static int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1;
+    public static int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                REQUEST_CODE_READ_EXTERNAL_STORAGE);
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
