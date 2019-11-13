@@ -26,6 +26,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import JSONs.Idioma;
 import JSONs.Pregunta;
 import JSONs.Resultado;
@@ -53,6 +55,8 @@ public class PreguntaActivity extends AppCompatActivity {
     private int contador = 0;
     private ArrayList<Resultado> resultados = new ArrayList<>();
 
+    private File directory = new File(DIRECTORY_IMAGES);
+    private ArrayList<File> files = new ArrayList<>(Arrays.asList(directory.listFiles()));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +71,6 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        File directory = new File(DIRECTORY_IMAGES);
-        File[] files = directory.listFiles();
 
 
         try {
@@ -107,9 +109,11 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
         buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
         buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
-        int random = (int) Math.floor(Math.random()*files.length);
-        Bitmap bmImg = BitmapFactory.decodeFile(files[random].getAbsolutePath());
+        int random = (int) Math.floor(Math.random()*files.size());
+        Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
         imageViewPregunta.setImageBitmap(bmImg);
+        files.remove(random);
+
         // -------------------------------------------------------//
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,9 +256,7 @@ public class PreguntaActivity extends AppCompatActivity {
         TextView textViewPregunta = findViewById(R.id.txtPregunta);
         ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
 
-        File directory = new File(DIRECTORY_IMAGES);
-        File[] files = directory.listFiles();
-        int random = (int) Math.floor(Math.random()*files.length);
+        int random = (int) Math.floor(Math.random()*files.size());
 
         //--------------------PRUEBA
 
@@ -263,8 +265,9 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
         buttonRespuesta3.setText(pre.getRespuestas().get(2).getRespuesta());
         buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
-        Bitmap bmImg = BitmapFactory.decodeFile(files[random].getAbsolutePath());
+        Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
         imageViewPregunta.setImageBitmap(bmImg);
+        files.remove(random);
     }
 
     private void showTextDialog() {
