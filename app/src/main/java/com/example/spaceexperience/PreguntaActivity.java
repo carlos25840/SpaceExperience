@@ -20,9 +20,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
+
 import JSONs.Idioma;
 import JSONs.Pregunta;
 import JSONs.Resultado;
@@ -36,6 +42,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
+    public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     /*--------------------Atributos-----------------------------*/
     private String nivel;
     private Idioma catalan = new Idioma();
@@ -46,6 +53,7 @@ public class PreguntaActivity extends AppCompatActivity {
     private Pregunta pregunta;
     private int score = 0;
     private int contador = 0;
+    private int insignias = 0;
     private ArrayList<Resultado> resultados = new ArrayList<>();
 
 
@@ -65,6 +73,7 @@ public class PreguntaActivity extends AppCompatActivity {
             getCatalan();
             getCastellano();
             getIngles();
+            getResults();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -158,6 +167,13 @@ public class PreguntaActivity extends AppCompatActivity {
         ingles = gson.fromJson(br, typeIng);
     }
 
+    public void getResults() throws FileNotFoundException {
+        Gson gson = new Gson();
+        FileReader fr = new FileReader(RESULTADOS);
+        BufferedReader br = new BufferedReader(fr);
+        Type typeRes = new TypeToken<ArrayList<Resultado>>() {}.getType();
+        resultados = gson.fromJson(br, typeRes);
+    }
 
     public void cargarPreguntas() {
         String idioma = this.getResources().getConfiguration().locale.getISO3Language();
@@ -209,6 +225,7 @@ public class PreguntaActivity extends AppCompatActivity {
                     timer.cancel();
                     timer.start();
                     contador++;
+                    insignias++;
                     pregunta = preguntaAleatoria(preguntas);
                     refrescarCampos(pregunta);
                 } else {
@@ -265,10 +282,10 @@ public class PreguntaActivity extends AppCompatActivity {
                                 TextView textViewPuntos = findViewById(R.id.txtPuntos);
                                 String resultado = userInput.getText().toString();
                                 int puntos = Integer.parseInt(textViewPuntos.getText().toString());
-                                Resultado result = new Resultado(resultado, puntos);
+                                Resultado result = new Resultado(resultado, puntos, insignias);
                                 resultados.add(result);
-                                Gson gson = new Gson();
-
+                                File file = new File(RESULTADOS);
+                                save(file, resultados);
                                 Intent intent = new Intent(PreguntaActivity.this, RankingActivity.class);
                                 startActivity(intent);
                             }
@@ -285,6 +302,13 @@ public class PreguntaActivity extends AppCompatActivity {
 
         // show it
         alertDialog.show();
+    }
+    public void save(File file, ArrayList<Resultado> results) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), Charset.forName("UTF-8"))) {
+            writer.write(new Gson().toJson(results));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
