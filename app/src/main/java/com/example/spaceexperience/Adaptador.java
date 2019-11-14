@@ -14,9 +14,9 @@ import JSONs.Resultado;
 
 public class Adaptador extends ArrayAdapter<Resultado> {
 
-    Resultado resultados[];
+    private Resultado resultados[];
 
-    Context context;
+    private Context context;
 
     public Adaptador(@NonNull Context context, Resultado resultados[]) {
         super(context, R.layout.ranking_player, resultados);
