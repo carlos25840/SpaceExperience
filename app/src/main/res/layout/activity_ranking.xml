@@ -35,7 +35,7 @@
             android:numColumns="1"
             android:stretchMode="columnWidth"/>
 
-
+//hola
         </LinearLayout>
 
 </LinearLayout>
