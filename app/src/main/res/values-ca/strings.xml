@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Space Experience</string>
     <string name="jugar">Jugar</string>
-    <string name="ranking">rànquing</string>
+    <string name="ranking">Rànquing</string>
     <string name="adulto">adult</string>
     <string name="infantil">infantil</string>
     <string name="facil">fàcil</string>

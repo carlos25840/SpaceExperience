@@ -5,6 +5,9 @@ public class Resultado {
     private int puntación;
     private int insignias;
 
+    public Resultado() {
+    }
+
     public Resultado(String nombre, int puntación, int insignias) {
         this.nombre = nombre;
         this.puntación = puntación;
