@@ -3,83 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@color/fondo">
+    android:background="@drawable/gradient_background">
 
     <LinearLayout
-        android:layout_width="0"
-        android:layout_weight="4"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="0"
-            android:layout_weight="4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/imagenPregunta"
             android:src="@drawable/logo_sin_fondo"
             android:layout_gravity="center"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0"
-            android:layout_weight="6"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edad"
-                android:textSize="35sp"
-                android:layout_gravity="center"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
-                android:layout_gravity="center"
-                android:id="@+id/BtnEdad"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:text="@string/infantil"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dificultad"
-                android:textSize="35sp"
-                android:layout_gravity="center"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
-                android:layout_gravity="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:id="@+id/BtnDificultad"
-                android:text="@string/facil"
-                android:visibility="invisible"/>
-        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:layout_margin="40dp"
-        android:background="@color/azul"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ranking"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="30sp"/>
+        <GridView
+            android:layout_width="match_parent"
+            android:id="@+id/gridRanking"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 

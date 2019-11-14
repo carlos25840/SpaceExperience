@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Space Experience</string>
+    <string name="jugar">Jugar</string>
+    <string name="ranking">clasificación</string>
+    <string name="adulto">adulto</string>
+    <string name="infantil">infantil</string>
+    <string name="facil">fácil</string>
+    <string name="normal">normal</string>
+    <string name="dificil">difícil</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="puntuacion">Puntuación</string>
+    <string name="timeOut">Se acabó el tiempo!</string>
+    <string name="type_your_name">Introduce tu nombre:</string>
+</resources>

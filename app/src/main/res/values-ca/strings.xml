@@ -2,15 +2,14 @@
 <resources>
     <string name="app_name">Space Experience</string>
     <string name="jugar">Jugar</string>
-    <string name="ranking">Rànquing</string>
-    <string name="adulto">Adulto</string>
-    <string name="infantil">Infantil</string>
-    <string name="facil">Fàcil</string>
-    <string name="normal">Normal</string>
-    <string name="dificil">Difícil</string>
+    <string name="ranking">rànquing</string>
+    <string name="adulto">adult</string>
+    <string name="infantil">infantil</string>
+    <string name="facil">fàcil</string>
+    <string name="normal">normal</string>
+    <string name="dificil">difícil</string>
     <string name="tiempo">Temps</string>
     <string name="puntuacion">Puntuació</string>
     <string name="timeOut">Es va acabar el temps!</string>
-    <string name="edad">Edat</string>
-    <string name="dificultad">Dificultat</string>
+    <string name="type_your_name">Introdueix el nom:</string>
 </resources>

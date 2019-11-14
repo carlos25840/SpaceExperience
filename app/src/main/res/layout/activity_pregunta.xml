@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/fondo">
+    android:background="@drawable/gradient_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,8 +46,9 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="@dimen/logoNivel"
-                android:src="@drawable/logo_sin_fondo"
+                android:id="@+id/imagenAleatoria"
+                android:layout_height="@dimen/imagenPregunta"
+                android:src="@drawable/astronauta_sin_fondo"
                 android:layout_gravity="center"
                 android:contentDescription="@string/app_name"
                 android:layout_weight="3"/>
@@ -88,7 +89,7 @@
             android:textSize="@dimen/textPregunta"
             android:textColor="@color/blanco"
             android:textStyle="bold"
-            android:text="¿Qué es la tierra?"
+            android:text=""
             android:textAlignment="center"/>
     </LinearLayout>
 

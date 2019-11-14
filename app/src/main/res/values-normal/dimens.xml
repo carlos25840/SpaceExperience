@@ -9,7 +9,8 @@
     <dimen name="back">40dp</dimen>
     <dimen name="paddingback">5dp</dimen>
     <dimen name="logoNivel">200dp</dimen>
-    <dimen name="textPregunta">50sp</dimen>
+    <dimen name="textPregunta">20sp</dimen>
     <dimen name="marginPregunta">5dp</dimen>
-    <dimen name="buttonPregunta">200dp</dimen>
+    <dimen name="buttonPregunta">300dp</dimen>
+    <dimen name="imagenPregunta">180dp</dimen>
 </resources>
