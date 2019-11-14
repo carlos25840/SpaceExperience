@@ -236,7 +236,7 @@ public class PreguntaActivity extends AppCompatActivity {
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
-        if (contador < 10){
+        if (contador < 9){
             if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
             {
                 if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
