@@ -10,15 +10,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 import JSONs.Resultado;
 
 public class Adaptador extends ArrayAdapter<Resultado> {
 
-    private Resultado resultados[];
+    private ArrayList<Resultado> resultados;
 
     private Context context;
 
-    public Adaptador(@NonNull Context context, Resultado resultados[]) {
+    public Adaptador(@NonNull Context context, ArrayList<Resultado> resultados) {
         super(context, R.layout.ranking_player, resultados);
         this.context = context;
         this.resultados = resultados;
@@ -32,13 +34,13 @@ public class Adaptador extends ArrayAdapter<Resultado> {
         TxtPos.setText(position);
 
         TextView TxtName = item.findViewById(R.id.TxtName);
-        TxtName.setText(resultados[position].getNombre());
+        TxtName.setText(resultados.get(position).getNombre());
 
         TextView TxtInsignias = item.findViewById(R.id.TxtInsignias);
-        TxtInsignias.setText(resultados[position].getInsignias());
+        TxtInsignias.setText(resultados.get(position).getInsignias());
 
         TextView TxtPoints = item.findViewById(R.id.TxtPoints);
-        TxtPoints.setText(resultados[position].getPuntación());
+        TxtPoints.setText(resultados.get(position).getPuntación());
 
         return(item);
     }
