@@ -12,8 +12,6 @@ public class RankingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
-        /*TextView prueba = findViewById(R.id.Prueba);
-        Intent intent = getIntent();
-        prueba.setText(intent.getStringExtra("puntuacion"));*/
+
     }
 }

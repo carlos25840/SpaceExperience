@@ -79,7 +79,6 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
 
 
-
         try {
             getCatalan();
             getCastellano();
@@ -92,7 +91,13 @@ public class PreguntaActivity extends AppCompatActivity {
         timer = new CountDownTimer(15000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
                 textViewCounter.setText("" + millisUntilFinished / 1000);
+                if((millisUntilFinished / 1000) <= 5)
+                {
+                    textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
+                }
+
             }
 
             @Override
