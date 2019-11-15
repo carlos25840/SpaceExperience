@@ -84,7 +84,7 @@ public class PreguntaActivity extends AppCompatActivity {
             getCatalan();
             getCastellano();
             getIngles();
-            getResults();
+            //getResults();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -180,13 +180,13 @@ public class PreguntaActivity extends AppCompatActivity {
         ingles =  gson.fromJson(br,typeIng);
     }
 
-    public void getResults() throws FileNotFoundException {
+    /*public void getResults() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(RESULTADOS);
         BufferedReader br = new BufferedReader(fr);
         Type typeRes = new TypeToken<ArrayList<Resultado>>() {}.getType();
         resultados = gson.fromJson(br, typeRes);
-    }
+    }*/
 
     public void cargarPreguntas()
     {
