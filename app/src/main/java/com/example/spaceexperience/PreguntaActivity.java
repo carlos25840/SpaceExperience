@@ -43,7 +43,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "JSONs";
     public static final String DIRECTORY_IMAGES = Environment.getExternalStorageDirectory() +
-            DIR_SEPAR + "Imagenes Android" + DIR_SEPAR;
+            DIR_SEPAR + "imagenes" + DIR_SEPAR;
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
@@ -97,7 +97,6 @@ public class PreguntaActivity extends AppCompatActivity {
                 {
                     textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
                 }
-
             }
 
             @Override
