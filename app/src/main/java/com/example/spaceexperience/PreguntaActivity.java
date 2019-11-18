@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,6 +32,7 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import JSONs.Idioma;
 import JSONs.Pregunta;
@@ -60,7 +62,6 @@ public class PreguntaActivity extends AppCompatActivity {
     private int contador = 0;
     private int insignias = 0;
     private ArrayList<Resultado> resultados = new ArrayList<>();
-
     private File directory = new File(DIRECTORY_IMAGES);
     private ArrayList<File> files = new ArrayList<>(Arrays.asList(directory.listFiles()));
 
@@ -73,10 +74,10 @@ public class PreguntaActivity extends AppCompatActivity {
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewPregunta = findViewById(R.id.txtPregunta);
         ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
-        Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
-        Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
-        Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
-        Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        final Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
+        final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
+        final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
+        final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
 
 
         try {
@@ -97,6 +98,7 @@ public class PreguntaActivity extends AppCompatActivity {
                 {
                     textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
                 }
+
             }
 
             @Override
@@ -114,7 +116,7 @@ public class PreguntaActivity extends AppCompatActivity {
         nivel = intent.getStringExtra("nivel");
         textViewPuntos.setText(Integer.toString(score));
         cargarPreguntas();
-        // ----------------------Prueba---------------------//
+
         pregunta = preguntaAleatoria(preguntas);
         textViewPregunta.setText(pregunta.getPregunta());
         buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
@@ -126,7 +128,7 @@ public class PreguntaActivity extends AppCompatActivity {
         imageViewPregunta.setImageBitmap(bmImg);
         files.remove(random);
 
-        // -------------------------------------------------------//
+
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,6 +242,8 @@ public class PreguntaActivity extends AppCompatActivity {
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
+        Handler handler = new Handler();
+        pintarBotones();
         if (contador < 9){
             if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
             {
@@ -247,20 +251,28 @@ public class PreguntaActivity extends AppCompatActivity {
                     score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
                     textViewPuntos.setText(Integer.toString(score));
                     timer.cancel();
-                    timer.start();
                     contador++;
                     insignias++;
                     pregunta = preguntaAleatoria(preguntas);
-                    refrescarCampos(pregunta);
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            timer.start();
+                            refrescarCampos(pregunta);
+                        }
+                    }, 5000);
                 }
                 else{
                     score -= 5;
                     textViewPuntos.setText(Integer.toString(score));
                     timer.cancel();
-                    timer.start();
                     contador++;
                     pregunta = preguntaAleatoria(preguntas);
-                    refrescarCampos(pregunta);
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            timer.start();
+                            refrescarCampos(pregunta);
+                        }
+                    }, 5000);
                 }
             }
         } else {
@@ -268,6 +280,30 @@ public class PreguntaActivity extends AppCompatActivity {
             showTextDialog();
         }
     }
+    public void pintarBotones()
+    {
+        Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
+        Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
+        Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
+        Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        ArrayList<Button> botones = new ArrayList<Button>();
+        botones.add(buttonRespuesta1);
+        botones.add(buttonRespuesta2);
+        botones.add(buttonRespuesta3);
+        botones.add(buttonRespuesta4);
+
+        for (int i = 0; i < botones.size(); i++){
+            if(pregunta.getRespuestas().get(i).isCorrecta())
+            {
+                botones.get(i).setBackgroundResource(R.drawable.rounded_button_verde);
+            }
+            else
+            {
+                botones.get(i).setBackgroundResource(R.drawable.rounded_button_rojo);
+            }
+        }
+    }
+
     public void refrescarCampos(Pregunta pre){
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
@@ -278,8 +314,6 @@ public class PreguntaActivity extends AppCompatActivity {
 
         int random = (int) Math.floor(Math.random()*files.size());
 
-        //--------------------PRUEBA
-
         textViewPregunta.setText(pre.getPregunta());
         buttonRespuesta1.setText(pre.getRespuestas().get(0).getRespuesta());
         buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
@@ -288,6 +322,10 @@ public class PreguntaActivity extends AppCompatActivity {
         Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
         imageViewPregunta.setImageBitmap(bmImg);
         files.remove(random);
+        buttonRespuesta1.setBackgroundResource(R.drawable.rounded_button);
+        buttonRespuesta2.setBackgroundResource(R.drawable.rounded_button);
+        buttonRespuesta3.setBackgroundResource(R.drawable.rounded_button);
+        buttonRespuesta4.setBackgroundResource(R.drawable.rounded_button);
     }
 
     private void showTextDialog() {

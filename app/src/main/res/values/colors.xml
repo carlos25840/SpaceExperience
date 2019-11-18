@@ -9,5 +9,8 @@
     <color name="fondo">#000000</color>
     <color name="fondo2">#425DAD</color>
     <color name="rojo">#FF0000</color>
+    <color name="verde">#038E0E</color>
+    <color name="verdeOscuro">#004B06</color>
+    <color name="rojoOscuro">#AF0000</color>
 
 </resources>
