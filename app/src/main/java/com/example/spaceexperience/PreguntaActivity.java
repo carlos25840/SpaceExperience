@@ -50,6 +50,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
+    public static final int PREGUNTAS = 9;
+    public static final int TIEMPO = 3000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
     private Idioma catalan = new Idioma();
@@ -89,7 +91,7 @@ public class PreguntaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        timer = new CountDownTimer(15000, 1000) {
+        timer = new CountDownTimer(TIEMPO, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
@@ -98,7 +100,6 @@ public class PreguntaActivity extends AppCompatActivity {
                 {
                     textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
                 }
-
             }
 
             @Override
@@ -106,7 +107,15 @@ public class PreguntaActivity extends AppCompatActivity {
                 score -= 5;
                 textViewPuntos.setText(Integer.toString(score));
                 this.cancel();
-                this.start();
+                contador++;
+                pintarBotones();
+                if (contador < PREGUNTAS) {
+                    pregunta = preguntaAleatoria(preguntas);
+                    refrescarCampos(pregunta);
+                }
+                else{
+                    showTextDialog();
+                }
             }
         };
 
@@ -242,38 +251,24 @@ public class PreguntaActivity extends AppCompatActivity {
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
-        Handler handler = new Handler();
         pintarBotones();
-        if (contador < 9){
-            if(Integer.parseInt(textViewCounter.getText().toString()) >= 1)
-            {
-                if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
-                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    contador++;
-                    insignias++;
-                    pregunta = preguntaAleatoria(preguntas);
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            timer.start();
-                            refrescarCampos(pregunta);
-                        }
-                    }, 5000);
-                }
-                else{
-                    score -= 5;
-                    textViewPuntos.setText(Integer.toString(score));
-                    timer.cancel();
-                    contador++;
-                    pregunta = preguntaAleatoria(preguntas);
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            timer.start();
-                            refrescarCampos(pregunta);
-                        }
-                    }, 5000);
-                }
+        if (contador < PREGUNTAS){
+            if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
+                score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                textViewPuntos.setText(Integer.toString(score));
+                timer.cancel();
+                contador++;
+                insignias++;
+                pregunta = preguntaAleatoria(preguntas);
+                refrescarCampos(pregunta);
+            }
+            else{
+                score -= 5;
+                textViewPuntos.setText(Integer.toString(score));
+                timer.cancel();
+                contador++;
+                pregunta = preguntaAleatoria(preguntas);
+                refrescarCampos(pregunta);
             }
         } else {
             timer.cancel();
@@ -293,6 +288,7 @@ public class PreguntaActivity extends AppCompatActivity {
         botones.add(buttonRespuesta4);
 
         for (int i = 0; i < botones.size(); i++){
+            botones.get(i).setEnabled(false);
             if(pregunta.getRespuestas().get(i).isCorrecta())
             {
                 botones.get(i).setBackgroundResource(R.drawable.rounded_button_verde);
@@ -304,28 +300,37 @@ public class PreguntaActivity extends AppCompatActivity {
         }
     }
 
-    public void refrescarCampos(Pregunta pre){
+    public void refrescarCampos(final Pregunta pre){
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        TextView textViewPregunta = findViewById(R.id.txtPregunta);
-        ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
+        final ArrayList<Button> botones = new ArrayList<Button>();
+        botones.add(buttonRespuesta1);
+        botones.add(buttonRespuesta2);
+        botones.add(buttonRespuesta3);
+        botones.add(buttonRespuesta4);
+        final TextView textViewPregunta = findViewById(R.id.txtPregunta);
+        final ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
+        Handler handler = new Handler();
 
-        int random = (int) Math.floor(Math.random()*files.size());
+        final int random = (int) Math.floor(Math.random()*files.size());
+        final Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
 
-        textViewPregunta.setText(pre.getPregunta());
-        buttonRespuesta1.setText(pre.getRespuestas().get(0).getRespuesta());
-        buttonRespuesta2.setText(pre.getRespuestas().get(1).getRespuesta());
-        buttonRespuesta3.setText(pre.getRespuestas().get(2).getRespuesta());
-        buttonRespuesta4.setText(pre.getRespuestas().get(3).getRespuesta());
-        Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
-        imageViewPregunta.setImageBitmap(bmImg);
-        files.remove(random);
-        buttonRespuesta1.setBackgroundResource(R.drawable.rounded_button);
-        buttonRespuesta2.setBackgroundResource(R.drawable.rounded_button);
-        buttonRespuesta3.setBackgroundResource(R.drawable.rounded_button);
-        buttonRespuesta4.setBackgroundResource(R.drawable.rounded_button);
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                timer.start();
+                imageViewPregunta.setImageBitmap(bmImg);
+                files.remove(random);
+                textViewPregunta.setText(pre.getPregunta());
+                for (int i = 0; i < botones.size(); i++){
+                    botones.get(i).setEnabled(true);
+                    botones.get(i).setBackgroundResource(R.drawable.rounded_button);
+                    botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
+                }
+            }
+        }, 5000);
+
     }
 
     private void showTextDialog() {
@@ -361,12 +366,12 @@ public class PreguntaActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         })
-                .setNegativeButton("Cancel",
+                /*.setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
                                 dialog.cancel();
                             }
-                        });
+                        })*/;
 
         // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();
