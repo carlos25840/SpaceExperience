@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtPos"
-        android:textColor="@color/blanco"
+        android:textColor="@color/negro"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
         android:textAlignment="center"/>
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtName"
-        android:textColor="@color/blanco"
+        android:textColor="@color/negro"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
         android:textAlignment="center"/>
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtInsignias"
-        android:textColor="@color/blanco"
+        android:textColor="@color/negro"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
         android:textAlignment="center"/>
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtPoints"
-        android:textColor="@color/blanco"
+        android:textColor="@color/negro"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
         android:textAlignment="center"/>

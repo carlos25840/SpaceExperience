@@ -12,5 +12,6 @@
     <color name="verde">#038E0E</color>
     <color name="verdeOscuro">#004B06</color>
     <color name="rojoOscuro">#AF0000</color>
+    <color name="negro">#000000</color>
 
 </resources>
