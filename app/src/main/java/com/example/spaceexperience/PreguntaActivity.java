@@ -51,7 +51,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 9;
-    public static final int TIEMPO = 3000;
+    public static final int TIEMPO = 15000;
+    public static final int TIEMPO_ESPERA = 5000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
     private Idioma catalan = new Idioma();
@@ -74,13 +75,10 @@ public class PreguntaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregunta);
         final TextView textViewCounter = findViewById(R.id.counter);
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
-        TextView textViewPregunta = findViewById(R.id.txtPregunta);
-        ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
         final Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-
 
         try {
             getCatalan();
@@ -114,29 +112,23 @@ public class PreguntaActivity extends AppCompatActivity {
                     refrescarCampos(pregunta);
                 }
                 else{
-                    showTextDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            showTextDialog();
+                        }
+                    }, TIEMPO_ESPERA);
                 }
             }
         };
-
         timer.start();
-
         final Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
+
         textViewPuntos.setText(Integer.toString(score));
         cargarPreguntas();
-
         pregunta = preguntaAleatoria(preguntas);
-        textViewPregunta.setText(pregunta.getPregunta());
-        buttonRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
-        buttonRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
-        buttonRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
-        buttonRespuesta4.setText(pregunta.getRespuestas().get(3).getRespuesta());
-        int random = (int) Math.floor(Math.random()*files.size());
-        Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
-        imageViewPregunta.setImageBitmap(bmImg);
-        files.remove(random);
-
+        refrescarCampos(pregunta);
 
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,7 +264,12 @@ public class PreguntaActivity extends AppCompatActivity {
             }
         } else {
             timer.cancel();
-            showTextDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    showTextDialog();
+                }
+            }, TIEMPO_ESPERA);
         }
     }
     public void pintarBotones()
@@ -316,21 +313,31 @@ public class PreguntaActivity extends AppCompatActivity {
 
         final int random = (int) Math.floor(Math.random()*files.size());
         final Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
-
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                timer.start();
-                imageViewPregunta.setImageBitmap(bmImg);
-                files.remove(random);
-                textViewPregunta.setText(pre.getPregunta());
-                for (int i = 0; i < botones.size(); i++){
-                    botones.get(i).setEnabled(true);
-                    botones.get(i).setBackgroundResource(R.drawable.rounded_button);
-                    botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
+        if(contador!=0){
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    timer.start();
+                    imageViewPregunta.setImageBitmap(bmImg);
+                    files.remove(random);
+                    textViewPregunta.setText(pre.getPregunta());
+                    for (int i = 0; i < botones.size(); i++){
+                        botones.get(i).setEnabled(true);
+                        botones.get(i).setBackgroundResource(R.drawable.rounded_button);
+                        botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
+                    }
                 }
+            }, TIEMPO_ESPERA);
+        }
+        else{
+            timer.start();
+            imageViewPregunta.setImageBitmap(bmImg);
+            files.remove(random);
+            textViewPregunta.setText(pre.getPregunta());
+            for (int i = 0; i < botones.size(); i++){
+                botones.get(i).setBackgroundResource(R.drawable.rounded_button);
+                botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
             }
-        }, 5000);
-
+        }
     }
 
     private void showTextDialog() {
@@ -365,13 +372,7 @@ public class PreguntaActivity extends AppCompatActivity {
                                 Intent intent = new Intent(PreguntaActivity.this, RankingActivity.class);
                                 startActivity(intent);
                             }
-                        })
-                /*.setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                dialog.cancel();
-                            }
-                        })*/;
+                        });
 
         // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();
