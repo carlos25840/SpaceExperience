@@ -2,7 +2,6 @@ package com.example.spaceexperience;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,8 +31,6 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import JSONs.Idioma;
 import JSONs.Pregunta;
 import JSONs.Resultado;
@@ -93,7 +90,7 @@ public class PreguntaActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
-                textViewCounter.setText("" + millisUntilFinished / 1000);
+                textViewCounter.setText(Long.toString(millisUntilFinished / 1000));
                 if((millisUntilFinished / 1000) <= 5)
                 {
                     textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
@@ -278,7 +275,7 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        ArrayList<Button> botones = new ArrayList<Button>();
+        ArrayList<Button> botones = new ArrayList<>();
         botones.add(buttonRespuesta1);
         botones.add(buttonRespuesta2);
         botones.add(buttonRespuesta3);
@@ -302,7 +299,7 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        final ArrayList<Button> botones = new ArrayList<Button>();
+        final ArrayList<Button> botones = new ArrayList<>();
         botones.add(buttonRespuesta1);
         botones.add(buttonRespuesta2);
         botones.add(buttonRespuesta3);
