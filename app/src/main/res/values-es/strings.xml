@@ -12,4 +12,8 @@
     <string name="puntuacion">Puntuación</string>
     <string name="timeOut">Se acabó el tiempo!</string>
     <string name="type_your_name">Introduce tu nombre:</string>
+    <string name="position">Posición</string>
+    <string name="name">Nombre</string>
+    <string name="medals">Insignias</string>
+    <string name="points">Puntuación</string>
 </resources>

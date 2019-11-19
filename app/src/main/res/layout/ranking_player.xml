@@ -5,21 +5,48 @@
     android:orientation="horizontal">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/TxtPos"/>
+        android:layout_weight="1"
+        android:id="@+id/TxtPos"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/textRanking"
+        android:paddingRight="15dp"
+        android:textAlignment="center"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/TxtName"/>
+        android:layout_weight="1"
+        android:id="@+id/TxtName"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/textRanking"
+        android:paddingRight="15dp"
+        android:textAlignment="center"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/TxtInsignias"/>
+        android:layout_weight="1"
+        android:id="@+id/TxtInsignias"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/textRanking"
+        android:paddingRight="15dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/TxtPoints"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/textRanking"
+        android:paddingRight="15dp"
+        android:textAlignment="center"/>
+
 
     <!--
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,11 +97,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/ImgInsignia10"/>
         -->
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TxtPoints"/>
 
 </LinearLayout>

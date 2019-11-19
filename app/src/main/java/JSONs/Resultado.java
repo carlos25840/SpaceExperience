@@ -2,15 +2,15 @@ package JSONs;
 
 public class Resultado {
     private String nombre;
-    private int puntación;
+    private int puntacion;
     private int insignias;
 
     public Resultado() {
     }
 
-    public Resultado(String nombre, int puntación, int insignias) {
+    public Resultado(String nombre, int puntacion, int insignias) {
         this.nombre = nombre;
-        this.puntación = puntación;
+        this.puntacion = puntacion;
         this.insignias = insignias;
     }
 
@@ -30,11 +30,11 @@ public class Resultado {
         this.nombre = nombre;
     }
 
-    public int getPuntación() {
-        return puntación;
+    public int getPuntacion() {
+        return puntacion;
     }
 
-    public void setPuntación(int puntación) {
-        this.puntación = puntación;
+    public void setPuntacion(int puntacion) {
+        this.puntacion = puntacion;
     }
 }

@@ -12,4 +12,8 @@
     <string name="puntuacion">Score</string>
     <string name="timeOut">Time out!</string>
     <string name="type_your_name">Type Your Name:</string>
+    <string name="position">Position</string>
+    <string name="name">Name</string>
+    <string name="medals">Medals</string>
+    <string name="points">Score</string>
 </resources>

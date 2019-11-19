@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
 
         final Button btnPlay = findViewById(R.id.BtnJugar);
+        final Button btnRanking = findViewById(R.id.BtnRanking);
 
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void setLocale(String lang) {
