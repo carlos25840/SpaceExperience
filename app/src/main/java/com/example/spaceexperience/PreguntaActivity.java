@@ -47,7 +47,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String CASTELLANO = DIRECTORY_JSONS + DIR_SEPAR + "castellano.json";
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
-    public static final int PREGUNTAS = 9;
+    public static final int PREGUNTAS = 10;
     public static final int TIEMPO = 15000;
     public static final int TIEMPO_ESPERA = 1000;
     /*--------------------Atributos-----------------------------*/
@@ -241,24 +241,22 @@ public class PreguntaActivity extends AppCompatActivity {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
         pintarBotones();
+        if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
+            score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+            textViewPuntos.setText(Integer.toString(score));
+            timer.cancel();
+            contador++;
+            insignias++;
+        }
+        else{
+            score -= 5;
+            textViewPuntos.setText(Integer.toString(score));
+            timer.cancel();
+            contador++;
+        }
         if (contador < PREGUNTAS){
-            if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
-                score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
-                textViewPuntos.setText(Integer.toString(score));
-                timer.cancel();
-                contador++;
-                insignias++;
-                pregunta = preguntaAleatoria(preguntas);
-                refrescarCampos(pregunta);
-            }
-            else{
-                score -= 5;
-                textViewPuntos.setText(Integer.toString(score));
-                timer.cancel();
-                contador++;
-                pregunta = preguntaAleatoria(preguntas);
-                refrescarCampos(pregunta);
-            }
+            pregunta = preguntaAleatoria(preguntas);
+            refrescarCampos(pregunta);
         } else {
             timer.cancel();
             Handler handler = new Handler();
