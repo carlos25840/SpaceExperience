@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -30,9 +31,11 @@ public class RankingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ArrayList<Resultado> resultados = new ArrayList<>();
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ranking);
+
+        ArrayList<Resultado> resultados = new ArrayList<>();
         GridView gridViewRanking = (GridView)findViewById(R.id.GridRanking);
         try {
             resultados = getResults();
