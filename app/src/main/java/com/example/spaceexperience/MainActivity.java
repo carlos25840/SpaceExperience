@@ -95,7 +95,4 @@ public class MainActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
         recreate();
     }
-
-
-
 }

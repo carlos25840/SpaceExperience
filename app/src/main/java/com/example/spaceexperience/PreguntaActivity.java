@@ -49,7 +49,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 9;
     public static final int TIEMPO = 15000;
-    public static final int TIEMPO_ESPERA = 5000;
+    public static final int TIEMPO_ESPERA = 1000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
     private Idioma catalan = new Idioma();

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -34,9 +36,10 @@ public class RankingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ranking);
+        GridView gridViewRanking = findViewById(R.id.GridRanking);
+        ImageButton imgBackButton = findViewById(R.id.BtnBackRanking);
 
         ArrayList<Resultado> resultados = new ArrayList<>();
-        GridView gridViewRanking = (GridView)findViewById(R.id.GridRanking);
         try {
             resultados = getResults();
         } catch (FileNotFoundException e) {
@@ -46,6 +49,13 @@ public class RankingActivity extends AppCompatActivity {
         Collections.sort(resultados);
         RankingAdapter rankingAdapter = new RankingAdapter(getApplicationContext(),resultados);
         gridViewRanking.setAdapter(rankingAdapter);
+        imgBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RankingActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public ArrayList<Resultado> getResults() throws FileNotFoundException {
         ArrayList<Resultado> resultados;

@@ -5,6 +5,16 @@
     android:orientation="horizontal"
     android:background="@drawable/gradient_background">
 
+    <ImageButton
+        android:id="@+id/BtnBackRanking"
+        android:layout_width="@dimen/back"
+        android:layout_height="@dimen/back"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/back"
+        android:padding="@dimen/paddingback"
+        android:layout_margin="@dimen/marginflag"/>
+
     <ImageView
         android:layout_width="0dp"
         android:layout_height="@dimen/logoNivel"
