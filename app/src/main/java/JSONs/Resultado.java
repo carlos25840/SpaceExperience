@@ -1,6 +1,6 @@
 package JSONs;
 
-public class Resultado {
+public class Resultado implements Comparable {
     private String nombre;
     private int puntacion;
     private int insignias;
@@ -13,6 +13,8 @@ public class Resultado {
         this.puntacion = puntacion;
         this.insignias = insignias;
     }
+
+
 
     public int getInsignias() {
         return insignias;
@@ -36,5 +38,11 @@ public class Resultado {
 
     public void setPuntacion(int puntacion) {
         this.puntacion = puntacion;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        int comparePunt=((Resultado)o).getPuntacion();
+        return comparePunt-this.puntacion;
     }
 }

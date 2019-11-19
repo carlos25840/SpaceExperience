@@ -17,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import JSONs.Resultado;
 
@@ -37,6 +39,8 @@ public class RankingActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        //Ordena el array de mayor a menor
+        Collections.sort(resultados);
         RankingAdapter rankingAdapter = new RankingAdapter(getApplicationContext(),resultados);
         gridViewRanking.setAdapter(rankingAdapter);
     }
