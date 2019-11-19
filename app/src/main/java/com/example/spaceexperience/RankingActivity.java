@@ -49,4 +49,7 @@ public class RankingActivity extends AppCompatActivity {
         resultados = gson.fromJson(br, typeRes);
         return resultados;
     }
+    @Override
+    public void onBackPressed(){
+    }
 }

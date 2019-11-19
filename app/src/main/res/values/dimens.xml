@@ -14,4 +14,8 @@
     <dimen name="buttonPregunta">200dp</dimen>
     <dimen name="imagenPregunta">500dp</dimen>
     <dimen name="textRanking">50sp</dimen>
+    <dimen name="marginRanking">40dp</dimen>
+    <dimen name="textRankingTitul">60sp</dimen>
+    <dimen name="columna">90dp</dimen>
+    <dimen name="paddingColumna">10dp</dimen>
 </resources>

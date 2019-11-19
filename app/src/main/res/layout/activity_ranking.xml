@@ -3,21 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/gradient_background"
-    android:padding="3dp">
+    android:background="@drawable/gradient_background">
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/logoNivel"
         android:layout_weight="4"
         android:src="@drawable/logo_sin_fondo"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        android:layout_margin="40dp"
+        android:layout_margin="@dimen/marginRanking"
         android:background="@color/azul"
         android:orientation="vertical">
 
@@ -27,7 +27,7 @@
             android:text="@string/ranking"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:textSize="60sp"/>
+            android:textSize="@dimen/textRankingTitul"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,9 +76,9 @@
             android:layout_height="wrap_content"
             android:footerDividersEnabled="false"
             android:numColumns="1"
-            android:columnWidth="90dp"
-            android:verticalSpacing="10dp"
-            android:horizontalSpacing="10dp"
+            android:columnWidth="@dimen/columna"
+            android:verticalSpacing="@dimen/paddingColumna"
+            android:horizontalSpacing="@dimen/paddingColumna"
             android:stretchMode="columnWidth"/>
     </LinearLayout>
 
