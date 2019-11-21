@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.GridView;
@@ -31,6 +34,7 @@ public class RankingActivity extends AppCompatActivity {
             DIR_SEPAR + "JSONs";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,7 @@ public class RankingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
         GridView gridViewRanking = findViewById(R.id.GridRanking);
         ImageButton imgBackButton = findViewById(R.id.BtnBackRanking);
+
 
         ArrayList<Resultado> resultados = new ArrayList<>();
         try {
