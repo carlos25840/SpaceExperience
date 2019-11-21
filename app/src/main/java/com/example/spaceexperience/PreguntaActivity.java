@@ -49,7 +49,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 10;
     public static final int TIEMPO = 15000;
-    public static final int TIEMPO_ESPERA = 1000;
+    public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
     private Idioma catalan = new Idioma();
@@ -76,7 +76,6 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-
         try {
             getCatalan();
             getCastellano();
@@ -85,6 +84,13 @@ public class PreguntaActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        final Intent intent = getIntent();
+        nivel = intent.getStringExtra("nivel");
+
+        textViewPuntos.setText(Integer.toString(score));
+        cargarPreguntas();
+        final int size = preguntas.size();
 
         timer = new CountDownTimer(TIEMPO, 1000) {
             @Override
@@ -104,7 +110,8 @@ public class PreguntaActivity extends AppCompatActivity {
                 this.cancel();
                 contador++;
                 pintarBotones();
-                if (contador < PREGUNTAS) {
+                if (contador < size) {
+                    preguntas.remove(pregunta);
                     pregunta = preguntaAleatoria(preguntas);
                     refrescarCampos(pregunta);
                 }
@@ -119,39 +126,35 @@ public class PreguntaActivity extends AppCompatActivity {
             }
         };
         timer.start();
-        final Intent intent = getIntent();
-        nivel = intent.getStringExtra("nivel");
 
-        textViewPuntos.setText(Integer.toString(score));
-        cargarPreguntas();
         pregunta = preguntaAleatoria(preguntas);
         refrescarCampos(pregunta);
 
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(0);
+                accionBoton(0, size);
             }
         });
 
         buttonRespuesta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(1);
+                accionBoton(1, size);
             }
         });
 
         buttonRespuesta3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(2);
+                accionBoton(2, size);
             }
         });
 
         buttonRespuesta4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(3);
+                accionBoton(3, size);
             }
         });
     }
@@ -236,7 +239,7 @@ public class PreguntaActivity extends AppCompatActivity {
         Pregunta p = preguntasRestantes.get(random);
         return p;
     }
-    public void accionBoton(int respuesta)
+    public void accionBoton(int respuesta, int size)
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
@@ -254,11 +257,11 @@ public class PreguntaActivity extends AppCompatActivity {
             timer.cancel();
             contador++;
         }
-        if (contador < PREGUNTAS){
+        if (contador < size){
+            preguntas.remove(pregunta);
             pregunta = preguntaAleatoria(preguntas);
             refrescarCampos(pregunta);
         } else {
-            timer.cancel();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
