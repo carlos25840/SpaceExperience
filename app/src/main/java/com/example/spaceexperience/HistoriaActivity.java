@@ -22,12 +22,13 @@ public class HistoriaActivity extends AppCompatActivity {
         final Intent intent = getIntent();
 
         final TextView txtHistoria = findViewById(R.id.txtHistoria);
-        prueba = txtHistoria.getText().toString();
+        prueba = getResources().getString(R.string.historia);
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
-            int i=0;
+            int i;
             public void run() {
+                SystemClock.sleep(1000);
                 for (i = 0; i < prueba.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -39,7 +40,7 @@ public class HistoriaActivity extends AppCompatActivity {
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(70);
+                    SystemClock.sleep(40);
                 }
             }
         };
