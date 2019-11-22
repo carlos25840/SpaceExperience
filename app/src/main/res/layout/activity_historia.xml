@@ -15,8 +15,7 @@
         android:textStyle="bold"
         android:textSize="@dimen/textRankingTitul"
         android:textColor="@color/negro"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -29,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:src="@drawable/astronauta_sin_fondo"/>
+            />
+
         <Button
             android:id="@+id/BtnSiguiente"
             android:layout_width="wrap_content"
@@ -41,6 +41,8 @@
             android:text="@string/next"
             android:textSize="@dimen/textbotones"
             android:textColor="@color/blanco"
+            android:enabled="false"
+            android:visibility="invisible"
             />
     </LinearLayout>
 

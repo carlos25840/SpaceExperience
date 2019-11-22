@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,13 +17,14 @@ public class HistoriaActivity extends AppCompatActivity {
 
     private String aux = "";
     private String prueba;
+    private int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_historia);
-
-        Button btnSiguiente = findViewById(R.id.BtnSiguiente);
+        final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
         final String nivel;
         Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
@@ -34,7 +36,7 @@ public class HistoriaActivity extends AppCompatActivity {
         }
         else
         {
-            imageViewAstronauta.setImageResource(R.drawable.astronauta_sin_fondo);
+            imageViewAstronauta.setImageResource(R.drawable.astronauta);
         }
 
         final TextView txtHistoria = findViewById(R.id.txtHistoria);
@@ -42,9 +44,8 @@ public class HistoriaActivity extends AppCompatActivity {
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
-            int i;
             public void run() {
-                SystemClock.sleep(600);
+                SystemClock.sleep(800);
                 for (i = 0; i < prueba.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -52,13 +53,18 @@ public class HistoriaActivity extends AppCompatActivity {
                             // need to do tasks on the UI thread
                             aux = aux + prueba.charAt(i);
                             txtHistoria.setText(aux);
+                            if (i==prueba.length()-1)
+                            {
+                                btnSiguiente.setEnabled(true);
+                                btnSiguiente.setVisibility(View.VISIBLE);
+                            }
                             Log.d("tag", "runn test");
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(40);
+                    SystemClock.sleep(80);
                 }
-                SystemClock.sleep(5000);
+                SystemClock.sleep(2000);
             }
         };
         new Thread(runnable).start();
@@ -71,5 +77,14 @@ public class HistoriaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void comprobar()
+    {
+        Button btnSiguiente = findViewById(R.id.BtnSiguiente);
+        if (i==prueba.length()-1)
+        {
+            btnSiguiente.setEnabled(true);
+            btnSiguiente.setVisibility(View.VISIBLE);
+        }
     }
 }
