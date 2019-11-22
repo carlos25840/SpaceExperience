@@ -2,24 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@drawable/gradient_background">
 
     <TextView
+        android:layout_margin="@dimen/marginPregunta"
         android:id="@+id/txtHistoria"
         android:background="@drawable/rounded_ranking"
-        android:padding="20dp"
-        android:layout_width="match_parent"
+        android:padding="@dimen/buttonpadding"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_gravity="center"
         android:textSize="@dimen/textRankingTitul"
-        android:textColor="@color/negro"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:textColor="@color/negro"
         android:layout_weight="1"
-        android:src="@drawable/astronauta_sin_fondo"/>
+        />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imagenAstronauta"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/astronauta_sin_fondo"/>
+        <Button
+            android:id="@+id/BtnSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:paddingRight="@dimen/buttonpadding"
+            android:paddingLeft="@dimen/buttonpadding"
+            android:layout_margin="@dimen/marginflag"
+            android:text="@string/next"
+            android:textSize="@dimen/textbotones"
+            android:textColor="@color/blanco"
+            />
+    </LinearLayout>
+
 
 
 </LinearLayout>

@@ -15,5 +15,6 @@
     <string name="name">Name</string>
     <string name="medals">Medals</string>
     <string name="points">Score</string>
-    <string name="historia">\t\tHola mi nombre es Armstrong y te voy a contar un poco de historia, hace 50 años pisé por primera vez la luna y estaba muyyyy fría, blah blah blah blah blah blah</string>
+    <string name="historia">Hola mi nombre es Armstrong y te voy a contar un poco de historia, hace 50 años pisé por primera vez la luna y estaba muyyyy fría, blah blah blah blah blah blah</string>
+    <string name="next">Next</string>
 </resources>

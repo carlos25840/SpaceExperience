@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HistoriaActivity extends AppCompatActivity {
@@ -19,7 +22,20 @@ public class HistoriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia);
 
-        final Intent intent = getIntent();
+        Button btnSiguiente = findViewById(R.id.BtnSiguiente);
+        final String nivel;
+        Intent intent = getIntent();
+        nivel = intent.getStringExtra("nivel");
+        ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+
+        if(nivel.equals("infantil"))
+        {
+            imageViewAstronauta.setImageResource(R.drawable.astronauta_infantil);
+        }
+        else
+        {
+            imageViewAstronauta.setImageResource(R.drawable.astronauta_sin_fondo);
+        }
 
         final TextView txtHistoria = findViewById(R.id.txtHistoria);
         prueba = getResources().getString(R.string.historia);
@@ -28,7 +44,7 @@ public class HistoriaActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             int i;
             public void run() {
-                SystemClock.sleep(1000);
+                SystemClock.sleep(600);
                 for (i = 0; i < prueba.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -42,8 +58,18 @@ public class HistoriaActivity extends AppCompatActivity {
                     //Add some downtime
                     SystemClock.sleep(40);
                 }
+                SystemClock.sleep(5000);
             }
         };
         new Thread(runnable).start();
+
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HistoriaActivity.this, PreguntaActivity.class);
+                intent.putExtra("nivel", nivel);
+                startActivity(intent);
+            }
+        });
     }
 }

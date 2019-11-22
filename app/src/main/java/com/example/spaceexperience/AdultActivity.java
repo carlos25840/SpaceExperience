@@ -24,7 +24,7 @@ public class AdultActivity extends AppCompatActivity {
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                Intent intent = new Intent(AdultActivity.this, HistoriaActivity.class);
                 intent.putExtra("nivel", "facil");
                 startActivity(intent);
             }
@@ -33,7 +33,7 @@ public class AdultActivity extends AppCompatActivity {
         btnNormal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                Intent intent = new Intent(AdultActivity.this, HistoriaActivity.class);
                 intent.putExtra("nivel", "normal");
                 startActivity(intent);
             }
@@ -42,7 +42,7 @@ public class AdultActivity extends AppCompatActivity {
         btnDificil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdultActivity.this, PreguntaActivity.class);
+                Intent intent = new Intent(AdultActivity.this, HistoriaActivity.class);
                 intent.putExtra("nivel", "dificil");
                 startActivity(intent);
             }
