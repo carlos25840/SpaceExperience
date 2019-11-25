@@ -17,12 +17,15 @@ import android.widget.Button;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    //Constante referente a los permisos
     public static int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        //Verificación de permisos
         if (android.os.Build.VERSION.SDK_INT >= 23)
         {
             /* Si ejecutamos la versión Marshmallow (6.0) o posterior, tendremos que pedir
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
                         REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
             }
         }
+
+        //Atributos
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
@@ -47,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         final Button btnPlay = findViewById(R.id.BtnJugar);
         final Button btnRanking = findViewById(R.id.BtnRanking);
 
-
+        /*Evento del botón Play, si hacemos click en jugar nos salta a la
+        siguiente activity que es la de nivel*/
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Evento del botón Inglés, si hacemos click nos cambia el idioma del juego a Inglés*/
         buttonEn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Evento del botón Catalán, si hacemos click nos cambia el idioma del juego a Catalán*/
         buttonCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Evento del botón Español, si hacemos click nos cambia el idioma del juego a Español*/
         buttonEs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Al hacer click en el botón de Ranking se inicia la activity Ranking*/
         btnRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*Método que nos cambia el idioma del juego en función del seleccionado*/
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
@@ -96,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         recreate();
     }
 
+    /*Método que nos bloquea el botón atrás para no poder salir del juego */
     @Override
     public void onBackPressed(){
     }
