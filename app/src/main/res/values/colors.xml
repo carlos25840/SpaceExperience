@@ -13,5 +13,8 @@
     <color name="verdeOscuro">#004B06</color>
     <color name="rojoOscuro">#AF0000</color>
     <color name="negro">#000000</color>
+    <color name="oro">#DAA520</color>
+    <color name="plata">#C0C0C0</color>
+    <color name="bronce">#CD7F32</color>
 
 </resources>

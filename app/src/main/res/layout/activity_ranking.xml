@@ -15,13 +15,83 @@
         android:padding="@dimen/paddingback"
         android:layout_margin="@dimen/marginflag"/>
 
-    <ImageView
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="@dimen/logoNivel"
+        android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:src="@drawable/logo_sin_fondo"
         android:layout_gravity="center"
-        android:scaleType="fitCenter"/>
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/goldmedal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/TxtPrimero"
+                android:textAlignment="center"
+                android:textSize="@dimen/textRankingTitul"
+                android:textColor="@color/oro"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/silvermedal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/TxtSegundo"
+                android:textAlignment="center"
+                android:textSize="@dimen/textRankingTitul"
+                android:textColor="@color/plata"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/bronzemedal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/TxtTercero"
+                android:textAlignment="center"
+                android:textSize="@dimen/textRankingTitul"
+                android:textColor="@color/bronce"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -38,6 +108,7 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textSize="@dimen/textRankingTitul"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/negro"/>
         <LinearLayout
             android:layout_width="match_parent"

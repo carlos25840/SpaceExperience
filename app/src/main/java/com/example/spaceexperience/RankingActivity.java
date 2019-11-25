@@ -38,6 +38,9 @@ public class RankingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
         GridView gridViewRanking = findViewById(R.id.GridRanking);
         ImageButton imgBackButton = findViewById(R.id.BtnBackRanking);
+        TextView txtPrimero = findViewById(R.id.TxtPrimero);
+        TextView txtSegundo = findViewById(R.id.TxtSegundo);
+        TextView txtTercero = findViewById(R.id.TxtTercero);
 
         ArrayList<Resultado> resultados = new ArrayList<>();
         try {
@@ -56,6 +59,10 @@ public class RankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        txtPrimero.setText(resultados.get(0).getNombre());
+        txtSegundo.setText(resultados.get(1).getNombre());
+        txtTercero.setText(resultados.get(2).getNombre());
     }
     public ArrayList<Resultado> getResults() throws FileNotFoundException {
         ArrayList<Resultado> resultados;

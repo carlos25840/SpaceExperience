@@ -13,7 +13,7 @@
     <dimen name="marginPregunta">5dp</dimen>
     <dimen name="buttonPregunta">300dp</dimen>
     <dimen name="imagenPregunta">180dp</dimen>
-    <dimen name="textRanking">10sp</dimen>
+    <dimen name="textRanking">15sp</dimen>
     <dimen name="marginRanking">10dp</dimen>
     <dimen name="textRankingTitul">15sp</dimen>
     <dimen name="columna">20dp</dimen>

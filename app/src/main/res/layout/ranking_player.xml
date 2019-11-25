@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:id="@+id/LinearLayoutRank">
 
     <TextView
         android:layout_width="0dp"
@@ -10,9 +11,10 @@
         android:layout_weight="1"
         android:id="@+id/TxtPos"
         android:textColor="@color/negro"
-        android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
+        android:textSize="@dimen/textRanking"
         android:textAlignment="center"/>
+
 
     <TextView
         android:layout_width="0dp"
