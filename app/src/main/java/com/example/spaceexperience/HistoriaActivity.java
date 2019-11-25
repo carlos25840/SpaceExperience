@@ -32,7 +32,7 @@ public class HistoriaActivity extends AppCompatActivity {
 
         if(nivel.equals("infantil"))
         {
-            imageViewAstronauta.setImageResource(R.drawable.astronauta_infantil);
+            imageViewAstronauta.setImageResource(R.drawable.laika2);
         }
         else
         {
@@ -62,7 +62,7 @@ public class HistoriaActivity extends AppCompatActivity {
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(80);
+                    SystemClock.sleep(60);
                 }
                 SystemClock.sleep(2000);
             }
