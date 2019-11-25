@@ -84,7 +84,8 @@ public class PreguntaActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        /*Se recupera el intent y se guarda el extra que le pasamos de la otra
+        * activity en el atributo nivel*/
         final Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
 
