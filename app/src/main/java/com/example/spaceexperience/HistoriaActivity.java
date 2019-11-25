@@ -9,6 +9,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +20,7 @@ public class HistoriaActivity extends AppCompatActivity {
     private String aux = "";
     private String prueba;
     private int i;
-
+    private Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +53,15 @@ public class HistoriaActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             // need to do tasks on the UI thread
+                            ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
                             aux = aux + prueba.charAt(i);
                             txtHistoria.setText(aux);
                             if (i==prueba.length()-1)
                             {
                                 btnSiguiente.setEnabled(true);
                                 btnSiguiente.setVisibility(View.VISIBLE);
+                                Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
+                                imageViewAstronauta.startAnimation(animation);
                             }
                             Log.d("tag", "runn test");
                         }
