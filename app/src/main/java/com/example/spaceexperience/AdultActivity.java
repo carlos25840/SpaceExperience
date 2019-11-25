@@ -14,6 +14,7 @@ public class AdultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*Controla que la sctivity se ponga en modo pantalla completa*/
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_adult);
         ImageButton btnBack = findViewById(R.id.BtnBack);
@@ -21,6 +22,8 @@ public class AdultActivity extends AppCompatActivity {
         Button btnNormal = findViewById(R.id.btnNormal);
         Button btnDificil = findViewById(R.id.btnDificil);
 
+        /*Se pasa como extra el nivel seleccionado para saber que datos se tienen que cargar y se inicia la
+        * activity del juego en función de la dificultad escogida*/
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +51,7 @@ public class AdultActivity extends AppCompatActivity {
             }
         });
 
+        /*Nos retrocede a la activity anterior al presionar el botón atrás*/
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

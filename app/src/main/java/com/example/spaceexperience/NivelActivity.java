@@ -22,11 +22,13 @@ public class NivelActivity extends AppCompatActivity {
         Button btnAdult = findViewById(R.id.btnAdulto);
         Button btnInfantil = findViewById(R.id.btnInfantil);
 
-        /*Botones que nos llaman a una activity u otra al hacer click*/
+        /*Botones que nos llaman a una activity u otra al hacer click, si seleccionamos Infantil se
+        * inicia el juego, si seleccionamos adulto nos salta a la activity de seleccionar dificultad (AdultActivity)*/
         btnInfantil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NivelActivity.this, PreguntaActivity.class);
+                /*Se pasa como extra el nivel seleccionado para saber que datos se tienen que cargar*/
                 intent.putExtra("nivel", "infantil");
                 startActivity(intent);
             }

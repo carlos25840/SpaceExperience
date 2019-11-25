@@ -270,8 +270,10 @@ public class PreguntaActivity extends AppCompatActivity {
             }, TIEMPO_ESPERA);
         }
     }
-    public void pintarBotones()
-    {
+
+    /*Comprueba cual es la respuesta correcta y cambia el color del botón a verde, las otras las
+    * cambia a rojo*/
+    public void pintarBotones() {
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
@@ -295,6 +297,7 @@ public class PreguntaActivity extends AppCompatActivity {
         }
     }
 
+    /*Actualiza los campos de la pregunta y los botones cuando se tiene que cargar una nueva pregunta */
     public void refrescarCampos(final Pregunta pre){
         Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
@@ -338,6 +341,7 @@ public class PreguntaActivity extends AppCompatActivity {
         }
     }
 
+    /*Función que nos muestra un textDialog para poder guardar el nombre para el ranking*/
     private void showTextDialog() {
         // get prompts.xml view
         Context context = this;
@@ -346,7 +350,7 @@ public class PreguntaActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
-        // set prompts.xml to alertdialog builder
+        // set prompts.xml al builder de alertdialog
         alertDialogBuilder.setView(promptsView);
 
         final EditText userInput = promptsView
@@ -358,12 +362,16 @@ public class PreguntaActivity extends AppCompatActivity {
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // get user input and set it to result
-                                // edit text
+                                // Coge el input del usuario y lo guarda en un string
                                 TextView textViewPuntos = findViewById(R.id.txtPuntos);
                                 String resultado = userInput.getText().toString();
+                                //Guarda los puntos conseguidos en una varianble
                                 int puntos = Integer.parseInt(textViewPuntos.getText().toString());
+                                /*Se crea un objeto de tipo Resultado y se le asignan los valores
+                                * guardados*/
                                 Resultado result = new Resultado(resultado, puntos, insignias);
+                                /*Se añade el objeto al ArrayList de resultados y se guarda en el fichero
+                                * json correspondiente*/
                                 resultados.add(result);
                                 File file = new File(RESULTADOS);
                                 save(file, resultados);
@@ -372,12 +380,14 @@ public class PreguntaActivity extends AppCompatActivity {
                             }
                         });
 
-        // create alert dialog
+        // Crea alertDialog
         AlertDialog alertDialog = alertDialogBuilder.create();
 
-        // show it
+        // Muestra el alertDialog
         alertDialog.show();
     }
+
+    /*Función que dado un fichero y el ArrayList los guarda en el fichero json*/
     public void save(File file, ArrayList<Resultado> results) {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), Charset.forName("UTF-8"))) {
             writer.write(new Gson().toJson(results));
