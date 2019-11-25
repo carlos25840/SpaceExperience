@@ -41,7 +41,8 @@
                 android:id="@+id/TxtPrimero"
                 android:textAlignment="center"
                 android:textSize="@dimen/textRankingTitul"
-                android:textColor="@color/oro"/>
+                android:textColor="@color/oro"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -64,7 +65,8 @@
                 android:id="@+id/TxtSegundo"
                 android:textAlignment="center"
                 android:textSize="@dimen/textRankingTitul"
-                android:textColor="@color/plata"/>
+                android:textColor="@color/plata"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -87,7 +89,8 @@
                 android:id="@+id/TxtTercero"
                 android:textAlignment="center"
                 android:textSize="@dimen/textRankingTitul"
-                android:textColor="@color/bronce"/>
+                android:textColor="@color/bronce"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
