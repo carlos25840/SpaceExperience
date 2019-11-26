@@ -18,9 +18,8 @@ import android.widget.TextView;
 public class HistoriaActivity extends AppCompatActivity {
 
     private String aux = "";
-    private String prueba;
     private int i;
-    private Animation animation;
+    private int contador = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +29,7 @@ public class HistoriaActivity extends AppCompatActivity {
         final String nivel;
         Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
-        ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+        final ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
 
         if(nivel.equals("infantil"))
         {
@@ -41,27 +40,57 @@ public class HistoriaActivity extends AppCompatActivity {
             imageViewAstronauta.setImageResource(R.drawable.astronauta);
         }
 
-        final TextView txtHistoria = findViewById(R.id.txtHistoria);
-        prueba = getResources().getString(R.string.historia);
+        mostrarTexto(getResources().getString(R.string.historia));
 
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(contador == 1)
+                {
+                    btnSiguiente.setEnabled(false);
+                    mostrarTexto(getResources().getString(R.string.historia2));
+                    contador++;
+                }
+                else
+                {
+                    ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+                    Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
+                    imageViewAstronauta.startAnimation(animation);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        Intent intent = new Intent(HistoriaActivity.this, PreguntaActivity.class);
+                        public void run() {
+                            intent.putExtra("nivel", nivel);
+                            startActivity(intent);
+                        }
+                    }, 2000);
+                }
+
+            }
+        });
+    }
+
+    public void mostrarTexto(final String texto)
+    {
+        final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
+        final TextView txtHistoria = findViewById(R.id.txtHistoria);
         final Handler handler = new Handler();
+
+        aux="";
         Runnable runnable = new Runnable() {
             public void run() {
                 SystemClock.sleep(800);
-                for (i = 0; i < prueba.length(); i++) {
+                for (i = 0; i < texto.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            // need to do tasks on the UI thread
-                            ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
-                            aux = aux + prueba.charAt(i);
+                            aux = aux + texto.charAt(i);
                             txtHistoria.setText(aux);
-                            if (i==prueba.length()-1)
+                            if (i==texto.length()-1)
                             {
                                 btnSiguiente.setEnabled(true);
                                 btnSiguiente.setVisibility(View.VISIBLE);
-                                Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
-                                imageViewAstronauta.startAnimation(animation);
                             }
                             Log.d("tag", "runn test");
                         }
@@ -73,23 +102,5 @@ public class HistoriaActivity extends AppCompatActivity {
             }
         };
         new Thread(runnable).start();
-
-        btnSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HistoriaActivity.this, PreguntaActivity.class);
-                intent.putExtra("nivel", nivel);
-                startActivity(intent);
-            }
-        });
-    }
-    public void comprobar()
-    {
-        Button btnSiguiente = findViewById(R.id.BtnSiguiente);
-        if (i==prueba.length()-1)
-        {
-            btnSiguiente.setEnabled(true);
-            btnSiguiente.setVisibility(View.VISIBLE);
-        }
     }
 }
