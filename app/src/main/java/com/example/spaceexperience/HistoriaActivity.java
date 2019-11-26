@@ -31,14 +31,8 @@ public class HistoriaActivity extends AppCompatActivity {
         nivel = intent.getStringExtra("nivel");
         final ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
 
-        if(nivel.equals("infantil"))
-        {
-            imageViewAstronauta.setImageResource(R.drawable.laika2);
-        }
-        else
-        {
-            imageViewAstronauta.setImageResource(R.drawable.astronauta);
-        }
+        imageViewAstronauta.setImageResource(R.drawable.laika2);
+
 
         mostrarTexto(getResources().getString(R.string.historia));
 

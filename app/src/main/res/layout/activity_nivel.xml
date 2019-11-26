@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearNivel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/gradient_background">
-
 
     <ImageButton
         android:id="@+id/BtnBack"
@@ -18,8 +16,8 @@
         android:layout_margin="@dimen/marginflag"/>
 
     <ImageView
-        android:layout_width="@dimen/logoNivel"
-        android:layout_height="@dimen/logoNivel"
+        android:layout_width="@dimen/logo"
+        android:layout_height="@dimen/logo"
         android:src="@drawable/logo_sin_fondo"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"/>

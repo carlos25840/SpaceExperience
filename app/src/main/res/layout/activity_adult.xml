@@ -17,8 +17,8 @@
         android:layout_margin="@dimen/marginflag"/>
 
     <ImageView
-        android:layout_width="@dimen/logoNivel"
-        android:layout_height="@dimen/logoNivel"
+        android:layout_width="@dimen/logo"
+        android:layout_height="@dimen/logo"
         android:src="@drawable/logo_sin_fondo"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"/>
