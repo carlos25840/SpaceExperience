@@ -19,4 +19,5 @@
     <dimen name="columna">90dp</dimen>
     <dimen name="paddingColumna">10dp</dimen>
     <dimen name="radio">90dp</dimen>
+    <dimen name="marginSiguiente">55dp</dimen>
 </resources>

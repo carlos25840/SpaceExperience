@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical"
         android:gravity="center">
 
@@ -37,7 +37,7 @@
             android:background="@drawable/rounded_button"
             android:paddingRight="@dimen/buttonpadding"
             android:paddingLeft="@dimen/buttonpadding"
-            android:layout_margin="@dimen/marginflag"
+            android:layout_margin="@dimen/marginSiguiente"
             android:text="@string/next"
             android:textSize="@dimen/textbotones"
             android:textColor="@color/blanco"
@@ -45,7 +45,6 @@
             android:visibility="invisible"
             />
     </LinearLayout>
-
 
 
 </LinearLayout>
