@@ -18,4 +18,6 @@
     <dimen name="textRankingTitul">15sp</dimen>
     <dimen name="columna">20dp</dimen>
     <dimen name="paddingColumna">2dp</dimen>
+    <dimen name="radio">30dp</dimen>
+    <dimen name="marginSiguiente">5dp</dimen>
 </resources>

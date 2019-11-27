@@ -5,38 +5,47 @@
     android:orientation="vertical"
     android:background="@drawable/gradient_background">
 
-    <ImageView
-        android:layout_width="@dimen/logo"
-        android:layout_height="@dimen/logo"
-        android:src="@drawable/logo_sin_fondo"
-        android:layout_gravity="center"
-        android:contentDescription="@string/app_name"/>
-    <Button
-        android:id="@+id/BtnJugar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonheight"
-        android:text="@string/jugar"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/blanco"
-        android:textSize="@dimen/textbotones"
-        android:paddingRight="@dimen/buttonpadding"
-        android:paddingLeft="@dimen/buttonpadding"/>
-    <Button
-        android:id="@+id/BtnRanking"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonheight"
-        android:text="@string/ranking"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/blanco"
-        android:textSize="@dimen/textbotones"
-        android:paddingRight="@dimen/buttonpadding"
-        android:paddingLeft="@dimen/buttonpadding"
-        android:layout_marginTop="@dimen/marginflag"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="@dimen/logo"
+            android:layout_height="@dimen/logo"
+            android:src="@drawable/logo_sin_fondo"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"/>
+        <Button
+            android:id="@+id/BtnJugar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/buttonheight"
+            android:text="@string/jugar"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/textbotones"
+            android:paddingRight="@dimen/buttonpadding"
+            android:paddingLeft="@dimen/buttonpadding"/>
+        <Button
+            android:id="@+id/BtnRanking"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/buttonheight"
+            android:text="@string/ranking"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/textbotones"
+            android:paddingRight="@dimen/buttonpadding"
+            android:paddingLeft="@dimen/buttonpadding"
+            android:layout_marginTop="@dimen/marginflag"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="right|bottom">
 

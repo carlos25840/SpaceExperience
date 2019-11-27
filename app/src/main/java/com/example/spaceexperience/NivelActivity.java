@@ -27,7 +27,7 @@ public class NivelActivity extends AppCompatActivity {
         btnInfantil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NivelActivity.this, PreguntaActivity.class);
+                Intent intent = new Intent(NivelActivity.this, HistoriaActivity.class);
                 /*Se pasa como extra el nivel seleccionado para saber que datos se tienen que cargar*/
                 intent.putExtra("nivel", "infantil");
                 startActivity(intent);

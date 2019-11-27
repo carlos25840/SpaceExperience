@@ -10,9 +10,12 @@
     <string name="dificil">hard</string>
     <string name="tiempo">Time</string>
     <string name="puntuacion">Score</string>
-    <string name="type_your_name">Type Your Name:</string>
+    <string name="type_your_name">Type your name:</string>
     <string name="position">Position</string>
     <string name="name">Name</string>
     <string name="medals">Medals</string>
     <string name="points">Score</string>
+    <string name="historia">Hello my name is Laika and in 1957 I became the first living being to orbit the earth</string>
+    <string name="historia2">... I will guide you to learn a little more about space. Are you ready?</string>
+    <string name="next">Next</string>
 </resources>

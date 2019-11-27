@@ -15,4 +15,7 @@
     <string name="name">Nombre</string>
     <string name="medals">Insignias</string>
     <string name="points">Puntuación</string>
+    <string name="historia">Hola mi nombre es Laika y en 1957 me convertí en el primer ser vivo en orbitar la tierra...</string>
+    <string name="historia2">... te guiaré para aprender un poco más sobre el espacio. ¿Vamos?</string>
+    <string name="next">Siguiente</string>
 </resources>
