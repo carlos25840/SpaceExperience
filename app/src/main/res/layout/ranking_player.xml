@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtPos"
-        android:textColor="@color/negro"
+        android:textColor="@color/blanco"
         android:paddingRight="15dp"
         android:textSize="@dimen/textRanking"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:fontFamily="@font/alien"/>
 
 
     <TextView
@@ -21,30 +22,33 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtName"
-        android:textColor="@color/negro"
+        android:textColor="@color/blanco"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:fontFamily="@font/alien"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtInsignias"
-        android:textColor="@color/negro"
+        android:textColor="@color/blanco"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:fontFamily="@font/alien"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/TxtPoints"
-        android:textColor="@color/negro"
+        android:textColor="@color/blanco"
         android:textSize="@dimen/textRanking"
         android:paddingRight="15dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:fontFamily="@font/alien"/>
 
 
     <!--

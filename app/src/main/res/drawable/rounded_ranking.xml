@@ -3,9 +3,13 @@
     <item android:state_pressed="false">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/radio" />
-            <solid android:color="@color/blanco" />
+            <gradient
+                android:startColor="@color/fondo2"
+                android:endColor="@color/fondo">
+
+            </gradient>
             <stroke
-                android:width="2dp"
+                android:width="5dp"
                 android:color="@color/negro" />
             <padding
                 android:bottom="2dp"

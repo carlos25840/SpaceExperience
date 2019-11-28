@@ -40,6 +40,7 @@ public class RankingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ranking);
+
         GridView gridViewRanking = findViewById(R.id.GridRanking);
         ImageButton imgBackButton = findViewById(R.id.BtnBackRanking);
         TextView txtPrimero = findViewById(R.id.TxtPrimero);

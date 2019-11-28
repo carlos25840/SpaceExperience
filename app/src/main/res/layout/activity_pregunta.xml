@@ -27,6 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/tiempo"
+                    android:fontFamily="@font/alien"
                     android:textSize="@dimen/textPregunta"
                     android:textColor="@color/blanco"
                     android:textStyle="bold"
@@ -38,6 +39,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text=""
+
+                    android:fontFamily="@font/alien"
                     android:textColor="@color/blanco"
                     android:textSize="@dimen/textPregunta"
                     android:textStyle="bold" />
@@ -63,6 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/puntuacion"
+                    android:fontFamily="@font/alien"
                     android:textSize="@dimen/textPregunta"
                     android:textColor="@color/blanco"
                     android:textStyle="bold"
@@ -74,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text=""
+                    android:fontFamily="@font/alien"
                     android:textColor="@color/blanco"
                     android:textSize="@dimen/textPregunta"
                     android:textStyle="bold" />
@@ -87,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textPregunta"
+            android:fontFamily="@font/alien"
             android:textColor="@color/blanco"
             android:textStyle="bold"
             android:textAlignment="center"/>
@@ -104,33 +110,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/btnRespuesta1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Un satelite"
+                android:fontFamily="@font/alien"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
-                android:paddingRight="@dimen/buttonpadding"
-                android:paddingLeft="@dimen/buttonpadding"
+                android:padding="@dimen/buttonpadding"
                 android:layout_margin="@dimen/marginPregunta"/>
             <Button
                 android:id="@+id/btnRespuesta2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Un planeta"
+                android:fontFamily="@font/alien"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
-                android:paddingRight="@dimen/buttonpadding"
-                android:paddingLeft="@dimen/buttonpadding"
+                android:padding="@dimen/buttonpadding"
                 android:layout_margin="@dimen/marginPregunta"/>
         </LinearLayout>
 
@@ -138,33 +143,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/btnRespuesta3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Una comida"
+                android:fontFamily="@font/alien"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
-                android:paddingRight="@dimen/buttonpadding"
-                android:paddingLeft="@dimen/buttonpadding"
+                android:padding="@dimen/buttonpadding"
                 android:layout_margin="@dimen/marginPregunta"/>
             <Button
                 android:id="@+id/btnRespuesta4"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Un elemento químico"
+                android:fontFamily="@font/alien"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
-                android:paddingRight="@dimen/buttonpadding"
-                android:paddingLeft="@dimen/buttonpadding"
+                android:padding="@dimen/buttonpadding"
                 android:layout_margin="@dimen/marginPregunta"/>
         </LinearLayout>
 

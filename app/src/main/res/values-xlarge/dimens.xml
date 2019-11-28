@@ -17,7 +17,8 @@
     <dimen name="marginRanking">40dp</dimen>
     <dimen name="textRankingTitul">70sp</dimen>
     <dimen name="columna">90dp</dimen>
-    <dimen name="paddingColumna">10dp</dimen>
+    <dimen name="paddingColumna">30dp</dimen>
     <dimen name="radio">90dp</dimen>
     <dimen name="marginSiguiente">55dp</dimen>
+    <dimen name="paddingHistoria">40dp</dimen>
 </resources>

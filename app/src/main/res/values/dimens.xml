@@ -20,4 +20,5 @@
     <dimen name="paddingColumna">10dp</dimen>
     <dimen name="radio">90dp</dimen>
     <dimen name="marginSiguiente">5dp</dimen>
+    <dimen name="paddingHistoria">40dp</dimen>
 </resources>

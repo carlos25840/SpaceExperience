@@ -36,7 +36,7 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         int pos = position +1;
         txtPos.setText(Integer.toString(pos));
 
-        switch (pos) {
+       /* switch (pos) {
             case 1:
                 txtPos.setTextColor(context.getResources().getColor(R.color.oro));
                 txtPos.setTypeface(Typeface.DEFAULT_BOLD);
@@ -49,7 +49,7 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
                 txtPos.setTextColor(context.getResources().getColor(R.color.bronce));
                 txtPos.setTypeface(Typeface.DEFAULT_BOLD);
                 break;
-        }
+        }*/
 
         txtNombre.setText(resultados.get(position).getNombre());
         if (resultados.get(position).getInsignias() == 10) {
