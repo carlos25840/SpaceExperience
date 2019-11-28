@@ -10,10 +10,10 @@
                 android:width="5dp"
                 android:color="@color/negro" />
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="@dimen/buttonpadding"
+                android:left="@dimen/buttonpadding"
+                android:right="@dimen/buttonpadding"
+                android:top="@dimen/buttonpadding" />
         </shape>
     </item>
     <item android:state_pressed="true">
@@ -26,10 +26,10 @@
                 android:width="5dp"
                 android:color="@color/azul" />
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="@dimen/buttonpadding"
+                android:left="@dimen/buttonpadding"
+                android:right="@dimen/buttonpadding"
+                android:top="@dimen/buttonpadding" />
         </shape>
     </item>
 </selector>

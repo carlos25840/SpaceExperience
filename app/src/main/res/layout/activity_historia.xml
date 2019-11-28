@@ -28,15 +28,13 @@
             android:id="@+id/imagenAstronauta"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/BtnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_button"
-            android:padding="@dimen/buttonpadding"
             android:layout_margin="@dimen/marginSiguiente"
             android:text="@string/next"
             android:fontFamily="@font/alien"

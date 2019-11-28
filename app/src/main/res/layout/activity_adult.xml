@@ -25,39 +25,33 @@
     <Button
         android:id="@+id/btnFacil"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonheight"
+        android:layout_height="wrap_content"
         android:text="@string/facil"
         android:fontFamily="@font/alien"
         android:layout_gravity="center"
         android:background="@drawable/rounded_button"
         android:textColor="@color/blanco"
-        android:textSize="@dimen/textbotones"
-        android:paddingRight="@dimen/buttonpadding"
-        android:paddingLeft="@dimen/buttonpadding"/>
+        android:textSize="@dimen/textbotones"/>
     <Button
         android:id="@+id/btnNormal"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonheight"
+        android:layout_height="wrap_content"
         android:text="@string/normal"
         android:fontFamily="@font/alien"
         android:layout_gravity="center"
         android:background="@drawable/rounded_button"
         android:textColor="@color/blanco"
         android:textSize="@dimen/textbotones"
-        android:paddingRight="@dimen/buttonpadding"
-        android:paddingLeft="@dimen/buttonpadding"
         android:layout_marginTop="@dimen/marginflag"/>
     <Button
         android:id="@+id/btnDificil"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonheight"
+        android:layout_height="wrap_content"
         android:text="@string/dificil"
         android:fontFamily="@font/alien"
         android:layout_gravity="center"
         android:background="@drawable/rounded_button"
         android:textColor="@color/blanco"
         android:textSize="@dimen/textbotones"
-        android:paddingRight="@dimen/buttonpadding"
-        android:paddingLeft="@dimen/buttonpadding"
         android:layout_marginTop="@dimen/marginflag"/>
 </LinearLayout>

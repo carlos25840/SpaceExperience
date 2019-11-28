@@ -19,27 +19,23 @@
         <Button
             android:id="@+id/BtnJugar"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/buttonheight"
+            android:layout_height="wrap_content"
             android:text="@string/jugar"
             android:fontFamily="@font/alien"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
             android:textColor="@color/blanco"
-            android:textSize="@dimen/textbotones"
-            android:paddingRight="@dimen/buttonpadding"
-            android:paddingLeft="@dimen/buttonpadding"/>
+            android:textSize="@dimen/textbotones"/>
         <Button
             android:id="@+id/BtnRanking"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/buttonheight"
+            android:layout_height="wrap_content"
             android:text="@string/ranking"
             android:fontFamily="@font/alien"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
             android:textColor="@color/blanco"
             android:textSize="@dimen/textbotones"
-            android:paddingRight="@dimen/buttonpadding"
-            android:paddingLeft="@dimen/buttonpadding"
             android:layout_marginTop="@dimen/marginflag"/>
     </LinearLayout>
 
