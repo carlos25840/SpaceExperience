@@ -117,11 +117,15 @@ public class HistoriaActivity extends AppCompatActivity {
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(60);
+                    SystemClock.sleep(50);
                 }
                 SystemClock.sleep(2000);
             }
         };
         new Thread(runnable).start();
+    }
+
+    @Override
+    public void onBackPressed(){
     }
 }
