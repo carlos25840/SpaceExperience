@@ -376,7 +376,10 @@ public class PreguntaActivity extends AppCompatActivity {
                                 resultados.add(result);
                                 File file = new File(RESULTADOS);
                                 save(file, resultados);
-                                Intent intent = new Intent(PreguntaActivity.this, RankingActivity.class);
+                                Intent intent = new Intent(PreguntaActivity.this, HistoriaActivity.class);
+                                intent.putExtra("nivel", "final");
+                                intent.putExtra("nombre", resultado);
+                                intent.putExtra("puntos", puntos);
                                 startActivity(intent);
                             }
                         });

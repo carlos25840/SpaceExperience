@@ -27,25 +27,38 @@ public class HistoriaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historia);
         final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
         final String nivel;
+
         Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
+
         final ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
 
         imageViewAstronauta.setImageResource(R.drawable.laika2);
 
 
-        mostrarTexto(getResources().getString(R.string.historia));
+        if(!nivel.equals("final"))
+        {
+            mostrarTexto(getResources().getString(R.string.historia));
+        }
+        else
+        {
+            String nombre = intent.getStringExtra("nombre");
+            int puntos = intent.getIntExtra("puntos",0);
+            String historia = getResources().getString(R.string.historia3) + nombre +
+                    getResources().getString(R.string.historia4) + puntos + getResources().getString(R.string.historia5);
+            mostrarTexto(historia);
+        }
 
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(contador == 1)
+                if(contador == 1 && !nivel.equals("final"))
                 {
                     btnSiguiente.setEnabled(false);
                     mostrarTexto(getResources().getString(R.string.historia2));
                     contador++;
                 }
-                else
+                else if(contador==2 && !nivel.equals("final"))
                 {
                     ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
@@ -56,6 +69,20 @@ public class HistoriaActivity extends AppCompatActivity {
                         Intent intent = new Intent(HistoriaActivity.this, PreguntaActivity.class);
                         public void run() {
                             intent.putExtra("nivel", nivel);
+                            startActivity(intent);
+                        }
+                    }, 2000);
+                }
+                else if(nivel.equals("final"))
+                {
+                    ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+                    Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
+                    imageViewAstronauta.startAnimation(animation);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        Intent intent = new Intent(HistoriaActivity.this, RankingActivity.class);
+                        public void run() {
                             startActivity(intent);
                         }
                     }, 2000);
