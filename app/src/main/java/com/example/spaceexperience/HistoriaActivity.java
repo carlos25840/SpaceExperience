@@ -101,7 +101,7 @@ public class HistoriaActivity extends AppCompatActivity {
         aux="";
         Runnable runnable = new Runnable() {
             public void run() {
-                SystemClock.sleep(900);
+                SystemClock.sleep(700);
                 for (i = 0; i < texto.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -117,7 +117,7 @@ public class HistoriaActivity extends AppCompatActivity {
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(70);
+                    SystemClock.sleep(80);
                 }
                 SystemClock.sleep(2000);
             }
