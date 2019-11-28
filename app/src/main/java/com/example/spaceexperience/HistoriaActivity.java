@@ -101,7 +101,7 @@ public class HistoriaActivity extends AppCompatActivity {
         aux="";
         Runnable runnable = new Runnable() {
             public void run() {
-                SystemClock.sleep(800);
+                SystemClock.sleep(900);
                 for (i = 0; i < texto.length(); i++) {
                     handler.postDelayed(new Runnable() {
                         @Override
