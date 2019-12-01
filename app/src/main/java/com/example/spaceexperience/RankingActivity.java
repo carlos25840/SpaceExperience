@@ -66,9 +66,17 @@ public class RankingActivity extends AppCompatActivity {
             }
         });
 
-        txtPrimero.setText(resultados.get(0).getNombre());
-        txtSegundo.setText(resultados.get(1).getNombre());
-        txtTercero.setText(resultados.get(2).getNombre());
+        /*Condicional que controla el tamaño del array para que solo lo llene acorde a la cantidad
+        de resultados almacenados*/
+        if(resultados.size()>=1){
+            txtPrimero.setText(resultados.get(0).getNombre());
+            if(resultados.size()>=2){
+                txtSegundo.setText(resultados.get(1).getNombre());
+                if(resultados.size()>=3){
+                    txtTercero.setText(resultados.get(2).getNombre());
+                }
+            }
+        }
     }
     public ArrayList<Resultado> getResults() throws FileNotFoundException {
         ArrayList<Resultado> resultados;
