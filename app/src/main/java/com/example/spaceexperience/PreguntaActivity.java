@@ -376,6 +376,7 @@ public class PreguntaActivity extends AppCompatActivity {
 
         // set dialog message
         alertDialogBuilder
+
                 .setCancelable(false)
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
@@ -403,7 +404,6 @@ public class PreguntaActivity extends AppCompatActivity {
 
         // Crea alertDialog
         AlertDialog alertDialog = alertDialogBuilder.create();
-
         // Muestra el alertDialog
         alertDialog.show();
     }

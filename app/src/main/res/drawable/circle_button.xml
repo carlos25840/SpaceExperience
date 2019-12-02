@@ -7,11 +7,6 @@
             <stroke
                 android:width="5dp"
                 android:color="@color/negro" />
-            <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
         </shape>
     </item>
     <item android:state_pressed="true">
@@ -21,11 +16,6 @@
             <stroke
                 android:width="2dip"
                 android:color="@color/azul" />
-            <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
         </shape>
     </item>
 </selector>

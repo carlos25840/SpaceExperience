@@ -31,7 +31,7 @@ public class HistoriaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
 
-        final ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+        final ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
 
         imageViewAstronauta.setImageResource(R.drawable.laika2);
 
@@ -60,7 +60,7 @@ public class HistoriaActivity extends AppCompatActivity {
                 }
                 else if(contador==2 && !nivel.equals("final"))
                 {
-                    ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+                    ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
                     imageViewAstronauta.startAnimation(animation);
 
@@ -75,7 +75,7 @@ public class HistoriaActivity extends AppCompatActivity {
                 }
                 else if(nivel.equals("final"))
                 {
-                    ImageView imageViewAstronauta = findViewById(R.id.imagenAstronauta);
+                    ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
                     imageViewAstronauta.startAnimation(animation);
 
