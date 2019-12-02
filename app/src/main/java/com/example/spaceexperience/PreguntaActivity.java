@@ -383,6 +383,7 @@ public class PreguntaActivity extends AppCompatActivity {
                                 int puntos = Integer.parseInt(textViewPuntos.getText().toString());
                                 /*Se crea un objeto de tipo Resultado y se le asignan los valores
                                  * guardados*/
+                                //nombre = nombre.substring(0,15);
                                 Resultado result = new Resultado(nombre, puntos, insignias);
                                 /*Se añade el objeto al ArrayList de resultados y se guarda en el fichero
                                  * json correspondiente*/
