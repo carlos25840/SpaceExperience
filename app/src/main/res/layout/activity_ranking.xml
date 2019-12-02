@@ -175,7 +175,7 @@
         <GridView
             android:id="@+id/GridRanking"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:footerDividersEnabled="false"
             android:numColumns="1"
             android:columnWidth="@dimen/columna"
