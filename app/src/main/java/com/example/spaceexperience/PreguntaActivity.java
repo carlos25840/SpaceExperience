@@ -2,11 +2,15 @@ package com.example.spaceexperience;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -369,7 +373,6 @@ public class PreguntaActivity extends AppCompatActivity {
 
         // set dialog message
         alertDialogBuilder
-
                 .setCancelable(false)
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
@@ -393,10 +396,21 @@ public class PreguntaActivity extends AppCompatActivity {
                                 intent.putExtra("puntos", puntos);
                                 startActivity(intent);
                             }
+
                         });
 
         // Crea alertDialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                Button btnPositive = alertDialog.getButton(Dialog.BUTTON_POSITIVE);
+                btnPositive.setTextSize(getResources().getDimension(R.dimen.textOk));
+
+                Typeface face2 = ResourcesCompat.getFont(PreguntaActivity.this, R.font.alien);
+                btnPositive.setTypeface(face2);
+            }
+        });
         // Muestra el alertDialog
         alertDialog.show();
     }

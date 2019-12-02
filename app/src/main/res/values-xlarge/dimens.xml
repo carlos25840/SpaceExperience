@@ -21,4 +21,6 @@
     <dimen name="radio">90dp</dimen>
     <dimen name="marginSiguiente">55dp</dimen>
     <dimen name="paddingHistoria">40dp</dimen>
+    <dimen name="textAlertDialog">35dp</dimen>
+    <dimen name="textOk">25dp</dimen>
 </resources>
