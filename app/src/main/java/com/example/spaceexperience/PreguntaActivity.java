@@ -52,7 +52,7 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 10;
-    public static final int TIEMPO = 15000;
+    //public static final int TIEMPO = 15000;
     public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
@@ -68,6 +68,7 @@ public class PreguntaActivity extends AppCompatActivity {
     private ArrayList<Resultado> resultados = new ArrayList<>();
     private File directory = new File(DIRECTORY_IMAGES);
     private ArrayList<File> files = new ArrayList<>(Arrays.asList(directory.listFiles()));
+    private int tiempo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,7 @@ public class PreguntaActivity extends AppCompatActivity {
         cargarPreguntas();
         final int size = preguntas.size();
 
-        timer = new CountDownTimer(TIEMPO, 1000) {
+        timer = new CountDownTimer(tiempo, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
@@ -214,15 +215,19 @@ public class PreguntaActivity extends AppCompatActivity {
         {
             case "infantil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getInfantil();
+                tiempo = 30000;
                 break;
             case "facil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getFacil();
+                tiempo = 15000;
                 break;
             case "normal":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getMedio();
+                tiempo = 15000;
                 break;
             case "dificil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getDificil();
+                tiempo=15000;
                 break;
         }
         return arrayListPreguntas;
@@ -241,7 +246,17 @@ public class PreguntaActivity extends AppCompatActivity {
         TextView textViewCounter = findViewById(R.id.counter);
         pintarBotones();
         if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
-            score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+            switch (nivel)
+            {
+                case "infantil":
+                    score += (Integer.parseInt(textViewCounter.getText().toString()));
+                    break;
+                case "facil":
+                case "normal":
+                case "dificil":
+                    score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
+                    break;
+            }
             textViewPuntos.setText(Integer.toString(score));
             timer.cancel();
             contador++;
