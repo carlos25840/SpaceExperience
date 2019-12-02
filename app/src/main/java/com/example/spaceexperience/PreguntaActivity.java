@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
@@ -170,37 +172,13 @@ public class PreguntaActivity extends AppCompatActivity {
     }
 
     public Idioma getIdioma (String ruta) throws FileNotFoundException {
-        Idioma idioma = new Idioma();
+        Idioma idioma;
         Gson gson = new Gson();
         FileReader fr = new FileReader(ruta);
         BufferedReader br = new BufferedReader(fr);
         Type type = new TypeToken<Idioma>() {}.getType();
         idioma =  gson.fromJson(br,type);
         return idioma;
-    }
-
-    public void getCatalan () throws FileNotFoundException {
-        Gson gson = new Gson();
-        FileReader fr = new FileReader(CATALAN);
-        BufferedReader br = new BufferedReader(fr);
-        Type typeCat = new TypeToken<Idioma>() {}.getType();
-        catalan =  gson.fromJson(br,typeCat);
-    }
-
-    public void getCastellano () throws FileNotFoundException {
-        Gson gson = new Gson();
-        FileReader fr = new FileReader(CASTELLANO);
-        BufferedReader br = new BufferedReader(fr);
-        Type typeCas = new TypeToken<Idioma>() {}.getType();
-        castellano =  gson.fromJson(br,typeCas);
-    }
-
-    public void getIngles () throws FileNotFoundException {
-        Gson gson = new Gson();
-        FileReader fr = new FileReader(INGLES);
-        BufferedReader br = new BufferedReader(fr);
-        Type typeIng = new TypeToken<Idioma>() {}.getType();
-        ingles =  gson.fromJson(br,typeIng);
     }
 
     public void getResults() throws FileNotFoundException {
@@ -383,20 +361,20 @@ public class PreguntaActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Coge el input del usuario y lo guarda en un string
                                 TextView textViewPuntos = findViewById(R.id.txtPuntos);
-                                String resultado = userInput.getText().toString();
+                                String nombre = userInput.getText().toString();
                                 //Guarda los puntos conseguidos en una varianble
                                 int puntos = Integer.parseInt(textViewPuntos.getText().toString());
                                 /*Se crea un objeto de tipo Resultado y se le asignan los valores
-                                * guardados*/
-                                Resultado result = new Resultado(resultado, puntos, insignias);
+                                 * guardados*/
+                                Resultado result = new Resultado(nombre, puntos, insignias);
                                 /*Se añade el objeto al ArrayList de resultados y se guarda en el fichero
-                                * json correspondiente*/
+                                 * json correspondiente*/
                                 resultados.add(result);
                                 File file = new File(RESULTADOS);
                                 save(file, resultados);
                                 Intent intent = new Intent(PreguntaActivity.this, HistoriaActivity.class);
                                 intent.putExtra("nivel", "final");
-                                intent.putExtra("nombre", resultado);
+                                intent.putExtra("nombre", nombre);
                                 intent.putExtra("puntos", puntos);
                                 startActivity(intent);
                             }
