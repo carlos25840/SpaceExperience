@@ -31,6 +31,8 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+
 import JSONs.Idioma;
 import JSONs.Pregunta;
 import JSONs.Resultado;
@@ -76,11 +78,14 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        File file = new File(RESULTADOS);
         try {
-            getCatalan();
-            getCastellano();
-            getIngles();
-            getResults();
+            catalan = getIdioma(CATALAN);
+            castellano = getIdioma(CASTELLANO);
+            ingles = getIdioma(INGLES);
+            if(file.exists()){
+                getResults();
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -164,6 +169,16 @@ public class PreguntaActivity extends AppCompatActivity {
     public void onBackPressed(){
     }
 
+    public Idioma getIdioma (String ruta) throws FileNotFoundException {
+        Idioma idioma = new Idioma();
+        Gson gson = new Gson();
+        FileReader fr = new FileReader(ruta);
+        BufferedReader br = new BufferedReader(fr);
+        Type type = new TypeToken<Idioma>() {}.getType();
+        idioma =  gson.fromJson(br,type);
+        return idioma;
+    }
+
     public void getCatalan () throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(CATALAN);
@@ -238,6 +253,8 @@ public class PreguntaActivity extends AppCompatActivity {
         int size = preguntasRestantes.size();
         int random = (int) Math.floor(Math.random()*size);
         Pregunta p = preguntasRestantes.get(random);
+        //Ordena la lista de respuestas de manera aleatoria
+        Collections.shuffle(p.getRespuestas());
         return p;
     }
     public void accionBoton(int respuesta, int size)

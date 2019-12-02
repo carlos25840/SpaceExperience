@@ -117,7 +117,7 @@ public class HistoriaActivity extends AppCompatActivity {
                         }
                     }, 0);
                     //Add some downtime
-                    SystemClock.sleep(60);
+                    SystemClock.sleep(80);
                 }
                 SystemClock.sleep(2000);
             }
