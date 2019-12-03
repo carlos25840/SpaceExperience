@@ -35,17 +35,17 @@ public class RankingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*Controla que la activity se ponga en modo pantalla completa*/
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ranking);
-
+        //Variables
         GridView gridViewRanking = findViewById(R.id.GridRanking);
         ImageButton imgBackButton = findViewById(R.id.BtnBackRanking);
         TextView txtPrimero = findViewById(R.id.TxtPrimero);
         TextView txtSegundo = findViewById(R.id.TxtSegundo);
         TextView txtTercero = findViewById(R.id.TxtTercero);
-
-
         ArrayList<Resultado> resultados = new ArrayList<>();
+        //Se cargan los resultados del JSON en el ArrayList resultados llamando al método getResults();
         try {
             resultados = getResults();
         } catch (FileNotFoundException e) {
@@ -53,8 +53,10 @@ public class RankingActivity extends AppCompatActivity {
         }
         //Ordena el array de mayor a menor
         Collections.sort(resultados);
+        //Se crea el adaptador personalizado y se asigna a la gridViewRanking
         RankingAdapter rankingAdapter = new RankingAdapter(getApplicationContext(),resultados);
         gridViewRanking.setAdapter(rankingAdapter);
+        //Listener del botón que nos inicia la activity MainActivity para poder salir del Ranking
         imgBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +77,8 @@ public class RankingActivity extends AppCompatActivity {
             }
         }
     }
+    /*Método que nos obtiene los datos del JSON y nos devuelve un ArrayList de tipo Resultado
+     * ya cargado con los datos*/
     public ArrayList<Resultado> getResults() throws FileNotFoundException {
         ArrayList<Resultado> resultados;
         Gson gson = new Gson();

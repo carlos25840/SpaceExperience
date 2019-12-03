@@ -104,6 +104,7 @@ public class PreguntaActivity extends AppCompatActivity {
         textViewPuntos.setText(Integer.toString(score));
         cargarPreguntas();
         final int size = preguntas.size();
+        final int sizeFile = files.size();
 
         timer = new CountDownTimer(tiempo, 1000) {
             @Override
@@ -146,28 +147,28 @@ public class PreguntaActivity extends AppCompatActivity {
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(0, size);
+                accionBoton(0, size, sizeFile);
             }
         });
 
         buttonRespuesta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(1, size);
+                accionBoton(1, size, sizeFile);
             }
         });
 
         buttonRespuesta3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(2, size);
+                accionBoton(2, size, sizeFile);
             }
         });
 
         buttonRespuesta4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBoton(3, size);
+                accionBoton(3, size, sizeFile);
             }
         });
     }
@@ -244,7 +245,7 @@ public class PreguntaActivity extends AppCompatActivity {
         Collections.shuffle(p.getRespuestas());
         return p;
     }
-    public void accionBoton(int respuesta, int size)
+    public void accionBoton(int respuesta, int size, int sizeFile)
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
@@ -272,7 +273,7 @@ public class PreguntaActivity extends AppCompatActivity {
             timer.cancel();
             contador++;
         }
-        if (contador < size && contador < 10 && contador < files.size()){
+        if (contador < size && contador < 10 && contador < sizeFile){
             preguntas.remove(pregunta);
             pregunta = preguntaAleatoria(preguntas);
             refrescarCampos(pregunta);
