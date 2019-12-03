@@ -59,8 +59,6 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
-    private Idioma idiomaAux = new Idioma();
-
 
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
     private CountDownTimer timer;
@@ -213,40 +211,35 @@ public class PreguntaActivity extends AppCompatActivity {
         resultados = gson.fromJson(br, typeRes);
     }
 
-    //Carga las preguntas segun el idioma
+    //Carga las preguntas segun el idioma y el nivel
     public void cargarPreguntas()
     {
+        Idioma idiomaAux = new Idioma();
         String idioma = this.getResources().getConfiguration().locale.getISO3Language();
-        if (idioma.equals("cat"))
-        {
-            try {
-                idiomaAux = getIdioma(CATALAN);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+        String ruta;
+
+        //Segun el idioma selecciona la ruta del json
+        switch (idioma){
+            case "cat":
+                ruta = CATALAN;
+                break;
+            case "spa":
+                ruta = CASTELLANO;
+                break;
+            case "eng":
+            default:
+                ruta = INGLES;
+                break;
         }
-        else if(idioma.equals("spa"))
-        {
-            try {
-                idiomaAux = getIdioma(CASTELLANO);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }else if(idioma.equals("eng"))
-        {
-            try {
-                idiomaAux = getIdioma(INGLES);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+
+        //Carga el json del idioma seleccionado
+        try {
+            idiomaAux = getIdioma(ruta);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        else{
-            try {
-                idiomaAux = getIdioma(INGLES);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+
+        //Llama al metodo cargarNivel del idioma seleccionado
         preguntas=cargarNivel(idiomaAux);
     }
 
