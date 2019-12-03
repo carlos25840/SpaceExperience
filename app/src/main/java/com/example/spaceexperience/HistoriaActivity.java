@@ -1,8 +1,10 @@
 package com.example.spaceexperience;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -114,6 +116,8 @@ public class HistoriaActivity extends AppCompatActivity {
         typeWriter.setText("");
         typeWriter.setCharacterDelay(100);
         typeWriter.animateText(texto, btnSiguiente);
+        Typeface face2 = ResourcesCompat.getFont(HistoriaActivity.this, R.font.alien);
+        typeWriter.setTypeface(face2);
     }
     /*Método que nos bloquea el botón atrás*/
     @Override

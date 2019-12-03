@@ -30,6 +30,7 @@ public class TypeWriter extends TextView {
         public void run() {
             setText(mText.subSequence(0, mIndex++));
 
+
             if (mIndex <= mText.length()) {
                 mHandler.postDelayed(characterAdder, mDelay);
             }

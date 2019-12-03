@@ -1,11 +1,15 @@
 package com.example.spaceexperience;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import androidx.core.content.res.ResourcesCompat;
+
 import java.util.ArrayList;
 import JSONs.Resultado;
 //Constructor personalizado que hereda de ArrayAdapter
@@ -30,6 +34,11 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         TextView txtInsignias = item.findViewById(R.id.TxtInsignias);
         TextView txtPos = item.findViewById(R.id.TxtPos);
 
+        Typeface face2 = ResourcesCompat.getFont(txtNombre.getContext(), R.font.alien);
+        txtNombre.setTypeface(face2);
+        txtPuntos.setTypeface(face2);
+        txtInsignias.setTypeface(face2);
+        txtPos.setTypeface(face2);
         //Para llenar las posiciones del ranking se incrementa la position en 1 para no empezar el ranking desde 0
         txtPos.setText(Integer.toString(position +1));
 
