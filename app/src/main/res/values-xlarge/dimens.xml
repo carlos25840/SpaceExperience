@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="flag">100dp</dimen>
-    <dimen name="logo">800dp</dimen>
+    <dimen name="logo">1000dp</dimen>
     <dimen name="textbotones">60sp</dimen>
     <dimen name="marginflag">10dp</dimen>
     <dimen name="buttonpadding">25dp</dimen>
-    <dimen name="buttonheight">110dp</dimen>
     <dimen name="back">100dp</dimen>
     <dimen name="paddingback">20dp</dimen>
     <dimen name="logoNivel">650dp</dimen>
@@ -23,7 +22,6 @@
     <dimen name="paddingHistoria">40dp</dimen>
     <dimen name="textAlertDialog">35dp</dimen>
     <dimen name="textOk">25dp</dimen>
-    <dimen name="logoAlto">700dp</dimen>
     <dimen name="borde">5dp</dimen>
     <dimen name="radioBtn">60dp</dimen>
 </resources>

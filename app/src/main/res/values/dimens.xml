@@ -5,7 +5,6 @@
     <dimen name="textbotones">60sp</dimen>
     <dimen name="marginflag">1dp</dimen>
     <dimen name="buttonpadding">20dp</dimen>
-    <dimen name="buttonheight">30dp</dimen>
     <dimen name="back">40dp</dimen>
     <dimen name="paddingback">5dp</dimen>
     <dimen name="logoNivel">200dp</dimen>
@@ -23,7 +22,6 @@
     <dimen name="paddingHistoria">40dp</dimen>
     <dimen name="textAlertDialog">40dp</dimen>
     <dimen name="textOk">40dp</dimen>
-    <dimen name="logoAlto">200dp</dimen>
     <dimen name="borde">5dp</dimen>
     <dimen name="radioBtn">60dp</dimen>
 </resources>

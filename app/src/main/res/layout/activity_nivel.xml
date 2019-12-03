@@ -15,6 +15,14 @@
         android:padding="@dimen/paddingback"
         android:layout_margin="@dimen/marginflag"/>
 
+    <ImageView
+        android:layout_width="@dimen/logo"
+        android:layout_height="0dp"
+        android:src="@drawable/logo_sin_fondo"
+        android:contentDescription="@string/app_name"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,11 +30,6 @@
         android:gravity="center"
         android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="@dimen/logo"
-            android:layout_height="@dimen/logoAlto"
-            android:src="@drawable/logo_sin_fondo"
-            android:contentDescription="@string/app_name"/>
         <Button
             android:id="@+id/btnAdulto"
             android:layout_width="wrap_content"
