@@ -59,7 +59,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
-    private Idioma idioma2 = new Idioma();
+    private Idioma idiomaAux = new Idioma();
+
 
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
     private CountDownTimer timer;
@@ -218,9 +219,8 @@ public class PreguntaActivity extends AppCompatActivity {
         String idioma = this.getResources().getConfiguration().locale.getISO3Language();
         if (idioma.equals("cat"))
         {
-            //Obtiene las preguntas y las guarda en cada idioma
             try {
-                idioma2 = getIdioma(CATALAN);
+                idiomaAux = getIdioma(CATALAN);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -228,27 +228,28 @@ public class PreguntaActivity extends AppCompatActivity {
         else if(idioma.equals("spa"))
         {
             try {
-                idioma2 = getIdioma(CASTELLANO);
+                idiomaAux = getIdioma(CASTELLANO);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }else if(idioma.equals("eng"))
         {
             try {
-                idioma2 = getIdioma(INGLES);
+                idiomaAux = getIdioma(INGLES);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
         else{
             try {
-                idioma2 = getIdioma(INGLES);
+                idiomaAux = getIdioma(INGLES);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        preguntas=cargarNivel(idioma2);
+        preguntas=cargarNivel(idiomaAux);
     }
+
     public ArrayList<Pregunta> cargarNivel(Idioma idioma)
     {
         ArrayList<Pregunta> arrayListPreguntas = new ArrayList<>();
