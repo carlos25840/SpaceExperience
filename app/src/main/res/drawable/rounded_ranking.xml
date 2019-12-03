@@ -9,7 +9,7 @@
 
             </gradient>
             <stroke
-                android:width="5dp"
+                android:width="@dimen/borde"
                 android:color="@color/negro" />
             <padding
                 android:bottom="2dp"

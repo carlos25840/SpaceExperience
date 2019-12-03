@@ -109,41 +109,11 @@ public class HistoriaActivity extends AppCompatActivity {
     /*Método que nos muestra el texto que le pasamos por parámetro*/
     public void mostrarTexto(final String texto)
     {
-        //Variables
+        final TypeWriter typeWriter = findViewById(R.id.txtHistoria);
         final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
-        final TextView txtHistoria = findViewById(R.id.txtHistoria);
-        final Handler handler = new Handler();
-        aux="";
-        //Clase runeable creada para ir mostrando el texto como si fuera una animación
-        Runnable runnable = new Runnable() {
-            public void run() {
-                SystemClock.sleep(900);
-                for (i = 0; i < texto.length(); i++) {
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            /*Mientras se ejecute se va cargando el texto en el String aux y
-                            * se va cargando el contenido en el TextView txtHistoria*/
-                            aux = aux + texto.charAt(i);
-                            txtHistoria.setText(aux);
-                            /*Cuando se acabe de leer el string se habilita el botón de siguiente y
-                            * se pone como visisble*/
-                            if (i==texto.length()-1)
-                            {
-                                btnSiguiente.setEnabled(true);
-                                btnSiguiente.setVisibility(View.VISIBLE);
-                            }
-                            Log.d("tag", "runn test");
-                        }
-                    }, 0);
-                    //Add some downtime
-                    SystemClock.sleep(80);
-                }
-                SystemClock.sleep(2000);
-            }
-        };
-        //Se ejecuta el hilo que contiene el Runnable creado anteriormente
-        new Thread(runnable).start();
+        typeWriter.setText("");
+        typeWriter.setCharacterDelay(50);
+        typeWriter.animateText(texto, btnSiguiente);
     }
     /*Método que nos bloquea el botón atrás*/
     @Override

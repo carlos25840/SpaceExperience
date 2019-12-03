@@ -1,0 +1,56 @@
+package com.example.spaceexperience;
+
+import android.content.Context;
+import android.os.Handler;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class TypeWriter extends TextView {
+
+    private CharSequence mText;
+    private int mIndex;
+    private long mDelay = 150; // in ms
+    private Button boton;
+
+    public TypeWriter(Context context) {
+        super(context);
+    }
+
+    public TypeWriter(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    private Handler mHandler = new Handler();
+
+    private Runnable characterAdder = new Runnable() {
+
+        @Override
+        public void run() {
+            setText(mText.subSequence(0, mIndex++));
+
+            if (mIndex <= mText.length()) {
+                mHandler.postDelayed(characterAdder, mDelay);
+            }
+            else
+            {
+                boton.setEnabled(true);
+                boton.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    public void animateText(CharSequence txt, Button boton) {
+        this.boton = boton;
+        mText = txt;
+        mIndex = 0;
+        setText("");
+        mHandler.removeCallbacks(characterAdder);
+        mHandler.postDelayed(characterAdder, mDelay);
+    }
+
+    public void setCharacterDelay(long m) {
+        mDelay = m;
+    }
+}
