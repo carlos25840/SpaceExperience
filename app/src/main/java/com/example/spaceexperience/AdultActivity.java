@@ -14,7 +14,7 @@ public class AdultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*Controla que la sctivity se ponga en modo pantalla completa*/
+        /*Controla que la activity se ponga en modo pantalla completa*/
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_adult);
         ImageButton btnBack = findViewById(R.id.BtnBack);

@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.GridView;
@@ -23,12 +20,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import JSONs.Resultado;
 
 public class RankingActivity extends AppCompatActivity {
+    //Constantes
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "JSONs";
