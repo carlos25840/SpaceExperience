@@ -59,9 +59,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
-    private Idioma catalan = new Idioma();
-    private Idioma castellano = new Idioma();
-    private Idioma ingles = new Idioma();
+    private Idioma idioma2 = new Idioma();
+
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
     private CountDownTimer timer;
     private Pregunta pregunta;
@@ -87,17 +86,14 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         File fileRanking = new File(RESULTADOS);
 
-        //Obtiene las preguntas y las guarda en cada idioma
-        try {
-            catalan = getIdioma(CATALAN);
-            castellano = getIdioma(CASTELLANO);
-            ingles = getIdioma(INGLES);
-            if(fileRanking.exists()){  //Si hay un JSON con resultados los carga para el ranking
+        if(fileRanking.exists()){  //Si hay un JSON con resultados los carga para el ranking
+            try {
                 getResults();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
+
         /*Se recupera el intent y se guarda el extra que le pasamos de la otra
         * activity en el atributo nivel*/
         final Intent intent = getIntent();
@@ -153,14 +149,18 @@ public class PreguntaActivity extends AppCompatActivity {
                 }
             }
         };
-        timer.start();
-
+        timer.start(); // empieza el contador para la 1 pregunta
+        //Carga una pregunta aleatoria
         pregunta = preguntaAleatoria(preguntas);
+        //Muestra la pregunta
         refrescarCampos(pregunta);
 
+        //Listener para el boton 1, 2, 3 y 4
         buttonRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Llama a la funcion accionBoton que comprueba la respuesta correcta,
+                // pasandole la respuesta(boton), la cantidad de pregunta sy de imagenes
                 accionBoton(0, size, sizeFile);
             }
         });
@@ -187,10 +187,12 @@ public class PreguntaActivity extends AppCompatActivity {
         });
     }
 
+    //Deshabilita el boton de volver de android
     @Override
     public void onBackPressed(){
     }
 
+    //Carga los JSON en el idioma
     public Idioma getIdioma (String ruta) throws FileNotFoundException {
         Idioma idioma;
         Gson gson = new Gson();
@@ -201,6 +203,7 @@ public class PreguntaActivity extends AppCompatActivity {
         return idioma;
     }
 
+    //Obtiene los resultados del JSON para el ranking
     public void getResults() throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader fr = new FileReader(RESULTADOS);
@@ -209,23 +212,42 @@ public class PreguntaActivity extends AppCompatActivity {
         resultados = gson.fromJson(br, typeRes);
     }
 
+    //Carga las preguntas segun el idioma
     public void cargarPreguntas()
     {
         String idioma = this.getResources().getConfiguration().locale.getISO3Language();
         if (idioma.equals("cat"))
         {
-            preguntas=cargarNivel(catalan);
+            //Obtiene las preguntas y las guarda en cada idioma
+            try {
+                idioma2 = getIdioma(CATALAN);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         else if(idioma.equals("spa"))
         {
-            preguntas=cargarNivel(castellano);
+            try {
+                idioma2 = getIdioma(CASTELLANO);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }else if(idioma.equals("eng"))
         {
-            preguntas=cargarNivel(ingles);
+            try {
+                idioma2 = getIdioma(INGLES);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         else{
-            preguntas=cargarNivel(ingles);
+            try {
+                idioma2 = getIdioma(INGLES);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
+        preguntas=cargarNivel(idioma2);
     }
     public ArrayList<Pregunta> cargarNivel(Idioma idioma)
     {
