@@ -112,7 +112,7 @@ public class HistoriaActivity extends AppCompatActivity {
         final TypeWriter typeWriter = findViewById(R.id.txtHistoria);
         final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
         typeWriter.setText("");
-        typeWriter.setCharacterDelay(50);
+        typeWriter.setCharacterDelay(100);
         typeWriter.animateText(texto, btnSiguiente);
     }
     /*Método que nos bloquea el botón atrás*/
