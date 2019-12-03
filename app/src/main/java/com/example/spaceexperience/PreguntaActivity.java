@@ -55,7 +55,8 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String INGLES = DIRECTORY_JSONS + DIR_SEPAR + "ingles.json";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 10;
-    //public static final int TIEMPO = 15000;
+    public static final int TIEMPO = 15000;
+    public static final int TIEMPO_INFANTIL = 30000;
     public static final int TIEMPO_ESPERA = 2000;
     /*--------------------Atributos-----------------------------*/
     private String nivel;
@@ -239,7 +240,7 @@ public class PreguntaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //Llama al metodo cargarNivel del idioma seleccionado
+        //Llama al metodo cargarNivel del idioma seleccionado y guarda las preguntas
         preguntas=cargarNivel(idiomaAux);
     }
 
@@ -250,19 +251,19 @@ public class PreguntaActivity extends AppCompatActivity {
         {
             case "infantil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getInfantil();
-                tiempo = 30000;
+                tiempo = TIEMPO_INFANTIL;
                 break;
             case "facil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getFacil();
-                tiempo = 15000;
+                tiempo = TIEMPO;
                 break;
             case "normal":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getMedio();
-                tiempo = 15000;
+                tiempo = TIEMPO;
                 break;
             case "dificil":
                 arrayListPreguntas= (ArrayList<Pregunta>) idioma.getDificil();
-                tiempo=15000;
+                tiempo=TIEMPO;
                 break;
         }
         return arrayListPreguntas;
@@ -303,7 +304,7 @@ public class PreguntaActivity extends AppCompatActivity {
             timer.cancel();
             contador++;
         }
-        if (contador < size && contador < 10 && contador < sizeFile){
+        if (contador < size && contador < PREGUNTAS && contador < sizeFile){
             preguntas.remove(pregunta);
             pregunta = preguntaAleatoria(preguntas);
             refrescarCampos(pregunta);
