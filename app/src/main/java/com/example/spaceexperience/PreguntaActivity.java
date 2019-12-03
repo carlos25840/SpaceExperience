@@ -244,9 +244,13 @@ public class PreguntaActivity extends AppCompatActivity {
         preguntas=cargarNivel(idiomaAux);
     }
 
+    //Funcion que devuelve un arrayList de preguntas del nivel e idioma seleccionado
+
     public ArrayList<Pregunta> cargarNivel(Idioma idioma)
     {
         ArrayList<Pregunta> arrayListPreguntas = new ArrayList<>();
+
+        //Segun el nivel llama al método getNivel de la clase Idioma
         switch (nivel)
         {
             case "infantil":
@@ -266,22 +270,39 @@ public class PreguntaActivity extends AppCompatActivity {
                 tiempo=TIEMPO;
                 break;
         }
+        //Devulve las preguntas de ese nivel e idioma
         return arrayListPreguntas;
     }
+
+    //Método que recibe un arrayList de preguntas y devuelve una de esas preguntas de forma aleatoria
     public Pregunta preguntaAleatoria(ArrayList<Pregunta> preguntasRestantes){
+        //Guarda la cantidad de preguntas restantes para hacer el random
         int size = preguntasRestantes.size();
+        //Hace un aleatorio
         int random = (int) Math.floor(Math.random()*size);
-        Pregunta p = preguntasRestantes.get(random);
+        //Obtiene la pregunta que está en la posición del nñumero aleatorio
+        Pregunta pregunta = preguntasRestantes.get(random);
         //Ordena la lista de respuestas de manera aleatoria
-        Collections.shuffle(p.getRespuestas());
-        return p;
+        Collections.shuffle(pregunta.getRespuestas());
+        //Retorna la pregunta aleatoria
+        return pregunta;
     }
+
+    //Funcion que recibe el numero de la respuesta(la ubicacion del boton), la cantidad de preguntas
+    // y de imágenes comprueba que sea correcta para sumar o restar puntos y muestra la correcta
+    // comprueba tambien que no se muestren mas de 10 preguntas, que se muestren solamente la cantidad que
+    // hay si hay menos de 10 y que no muestre mas de la cantidad de imagenes disponibles para que no de errores
     public void accionBoton(int respuesta, int size, int sizeFile)
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
+        //Llama a la funcion pintarBotones que muestra con colores la respuesta correcta
         pintarBotones();
+
+        //Si la respuesta es correcta
         if(pregunta.getRespuestas().get(respuesta).isCorrecta()){
+            //Según el nivel, si es infantil como tienen el doble de tiempo solamente los puntos serán el tiempo
+            // disponible, si es adulto tendrán el tiempo*2 para igualar las puntuaciones en funcion del tiempo
             switch (nivel)
             {
                 case "infantil":
@@ -293,22 +314,36 @@ public class PreguntaActivity extends AppCompatActivity {
                     score += 2*(Integer.parseInt(textViewCounter.getText().toString()));
                     break;
             }
+            //Muestra los puntos totales
             textViewPuntos.setText(Integer.toString(score));
+            //cancela el timer
             timer.cancel();
+            //suma uno a la cantidad de preguntas mostradas
             contador++;
+            //agrega una insignia(respuesta correcta)
             insignias++;
         }
+        //Si responde mal se le restan 5 puntos, se muestra la puntuacion, se cancela el timer y se añade 1 al
+        // contador de las preguntas usadas
         else{
             score -= 5;
             textViewPuntos.setText(Integer.toString(score));
             timer.cancel();
             contador++;
         }
+        //Si no se han mostrado 10 PREGUNTAS y  si no se han mostrado todas las disponibles y si no
+        // se han mostrado todas las imagenes disponibles
         if (contador < size && contador < PREGUNTAS && contador < sizeFile){
+            //Elimina la pregunta usada para que no se repita
             preguntas.remove(pregunta);
+            //Carga una nueva pregunta aleatoria
             pregunta = preguntaAleatoria(preguntas);
+            //Muestra la nueva pregunta y reinicia el timer
             refrescarCampos(pregunta);
-        } else {
+        }
+        //Si ya se han mostrado todas las preguntas (preguntas posibles para que no dé error),
+        // muestra un textdialog para pedir nombre
+        else {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
@@ -325,18 +360,23 @@ public class PreguntaActivity extends AppCompatActivity {
         Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+
+        //Crea un arraylist de botones para recorrerlo y pintarlos del color correcto
         ArrayList<Button> botones = new ArrayList<>();
         botones.add(buttonRespuesta1);
         botones.add(buttonRespuesta2);
         botones.add(buttonRespuesta3);
         botones.add(buttonRespuesta4);
 
+        //Recorre el arraylist de los botones
         for (int i = 0; i < botones.size(); i++){
             botones.get(i).setEnabled(false);
+            //El boton correcto lo pone verde
             if(pregunta.getRespuestas().get(i).isCorrecta())
             {
                 botones.get(i).setBackgroundResource(R.drawable.rounded_button_verde);
             }
+            //Los otros botones los pone en rojo
             else
             {
                 botones.get(i).setBackgroundResource(R.drawable.rounded_button_rojo);
