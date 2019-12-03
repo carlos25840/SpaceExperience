@@ -398,29 +398,41 @@ public class PreguntaActivity extends AppCompatActivity {
         final TextView textViewPregunta = findViewById(R.id.txtPregunta);
         final ImageView imageViewPregunta = findViewById(R.id.imagenAleatoria);
         Handler handler = new Handler();
-
+        //Obtiene una imagen aleatoria
         final int random = (int) Math.floor(Math.random()*files.size());
         final Bitmap bmImg = BitmapFactory.decodeFile(files.get(random).getAbsolutePath());
+
+        //en la primera pregunta no lo hace porque lo carga en el main
         if(contador!=0){
             handler.postDelayed(new Runnable() {
                 public void run() {
+                    //Comienza el timer
                     timer.start();
                     imageViewPregunta.setImageBitmap(bmImg);
+                    //Elimina la imagen usada para que no se repita
                     files.remove(random);
                     textViewPregunta.setText(pre.getPregunta());
+                    //Muestra la preguntas y las respuesta y activa los botones para que se pueda responder
                     for (int i = 0; i < botones.size(); i++){
                         botones.get(i).setEnabled(true);
                         botones.get(i).setBackgroundResource(R.drawable.rounded_button);
                         botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
                     }
                 }
+                //Espera 2 segundos para que puedan ver la respuesta correcta
             }, TIEMPO_ESPERA);
         }
+
+        //Si es la primera pregunta, no espera 2 segundos para mostrarla, ni tiene que activar los botones
         else{
+            //empieza el timer
             timer.start();
             imageViewPregunta.setImageBitmap(bmImg);
+            //Elimina la imagen para que no se repita
             files.remove(random);
             textViewPregunta.setText(pre.getPregunta());
+
+            //Recorre los botones y muestra las respuestas
             for (int i = 0; i < botones.size(); i++){
                 botones.get(i).setBackgroundResource(R.drawable.rounded_button);
                 botones.get(i).setText(pre.getRespuestas().get(i).getRespuesta());
