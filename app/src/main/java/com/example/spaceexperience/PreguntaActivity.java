@@ -85,12 +85,14 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
-        File file = new File(RESULTADOS);
+        File fileRanking = new File(RESULTADOS);
+
+        //Obtiene las preguntas y las guarda en cada idioma
         try {
             catalan = getIdioma(CATALAN);
             castellano = getIdioma(CASTELLANO);
             ingles = getIdioma(INGLES);
-            if(file.exists()){
+            if(fileRanking.exists()){  //Si hay un JSON con resultados los carga para el ranking
                 getResults();
             }
         } catch (FileNotFoundException e) {
@@ -100,42 +102,54 @@ public class PreguntaActivity extends AppCompatActivity {
         * activity en el atributo nivel*/
         final Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
-
+        //Muestra los puntos iniciales que será 0
         textViewPuntos.setText(Integer.toString(score));
+        //Carga la preguntas según el idioma seleccionado
         cargarPreguntas();
+        //Guarda en una variable la cantidad de preguntas que hay
         final int size = preguntas.size();
         final int sizeFile = files.size();
 
+        //Creamos un contador
         timer = new CountDownTimer(tiempo, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                //Mostramos los segundos restantes
                 textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
                 textViewCounter.setText(Long.toString(millisUntilFinished / 1000));
+
+                //Si solo faltan 5 segundos se muestran en rojo
                 if((millisUntilFinished / 1000) <= 5)
                 {
                     textViewCounter.setTextColor(getResources().getColor(R.color.rojo));
                 }
             }
-
+            //Al llegar a 0 el contador
             @Override
             public void onFinish() {
+                //Restamos 5 puntos
                 score -= 5;
+                //Mostramos los puntos totales
                 textViewPuntos.setText(Integer.toString(score));
+                //Cancelamos el contador
                 this.cancel();
+                //Sumamos uno al contador de preguntas
                 contador++;
+                //Llamamos a la funcion pintarBotones que nos muestra la respuesta correcta en verde
                 pintarBotones();
+
+                //Si no han pasado todas las preguntas
                 if (contador < size) {
+                    //Se elimina la pregunta mostrada para que no se repita
                     preguntas.remove(pregunta);
+                    //Se busca una nueva pregunta aleatoria
                     pregunta = preguntaAleatoria(preguntas);
+                    //Se muestra la nueva pregunta
                     refrescarCampos(pregunta);
                 }
+                //Si ya han pasado todas las preguntas muestra un diálogo
                 else{
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            showTextDialog();
-                        }
-                    }, TIEMPO_ESPERA);
+                    showTextDialog();
                 }
             }
         };
