@@ -22,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*Controla que la sctivity se ponga en modo pantalla completa*/
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         //Verificación de permisos
+        /* Si ejecutamos la versión Marshmallow (6.0) o posterior, tendremos que pedir
+            permisos en tiempo de ejecución*/
         if (android.os.Build.VERSION.SDK_INT >= 23)
         {
-            /* Si ejecutamos la versión Marshmallow (6.0) o posterior, tendremos que pedir
-            permisos en tiempo de ejecución*/
-
             // Comprobamos si el usuario dio permisos a la app en una ejecución anterior
             if (ContextCompat.checkSelfPermission(MainActivity.this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -44,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        //Atributos
+        //Variables
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
-
         final Button btnPlay = findViewById(R.id.BtnJugar);
         final Button btnRanking = findViewById(R.id.BtnRanking);
 

@@ -1,18 +1,12 @@
 package com.example.spaceexperience;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import JSONs.Resultado;
 
 public class RankingAdapter extends ArrayAdapter<Resultado> {
@@ -36,26 +30,7 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         int pos = position +1;
         txtPos.setText(Integer.toString(pos));
 
-       /* switch (pos) {
-            case 1:
-                txtPos.setTextColor(context.getResources().getColor(R.color.oro));
-                txtPos.setTypeface(Typeface.DEFAULT_BOLD);
-                break;
-            case 2:
-                txtPos.setTextColor(context.getResources().getColor(R.color.plata));
-                txtPos.setTypeface(Typeface.DEFAULT_BOLD);
-                break;
-            case 3:
-                txtPos.setTextColor(context.getResources().getColor(R.color.bronce));
-                txtPos.setTypeface(Typeface.DEFAULT_BOLD);
-                break;
-        }*/
-
         txtNombre.setText(resultados.get(position).getNombre());
-        if (resultados.get(position).getInsignias() == 10) {
-            txtInsignias.setTypeface(Typeface.DEFAULT_BOLD);
-            txtInsignias.setTextSize(60);
-        }
         txtInsignias.setText(Integer.toString(resultados.get(position).getInsignias()));
         txtPuntos.setText(Integer.toString(resultados.get(position).getPuntacion()));
         return (item);

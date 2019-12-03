@@ -23,7 +23,7 @@ public class AdultActivity extends AppCompatActivity {
         Button btnDificil = findViewById(R.id.btnDificil);
 
         /*Se pasa como extra el nivel seleccionado para saber que datos se tienen que cargar y se inicia la
-        * activity del juego en función de la dificultad escogida*/
+        * activity de la historia*/
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

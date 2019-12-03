@@ -271,7 +271,7 @@ public class PreguntaActivity extends AppCompatActivity {
             timer.cancel();
             contador++;
         }
-        if (contador < size){
+        if (contador < size && contador < 10 && contador < files.size()){
             preguntas.remove(pregunta);
             pregunta = preguntaAleatoria(preguntas);
             refrescarCampos(pregunta);

@@ -17,13 +17,13 @@ public class NivelActivity extends AppCompatActivity {
         /*Controla que la sctivity se ponga en modo pantalla completa*/
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_nivel);
-        //Atributos
+        //Variables
         ImageButton btnBack = findViewById(R.id.BtnBack);
         Button btnAdult = findViewById(R.id.btnAdulto);
         Button btnInfantil = findViewById(R.id.btnInfantil);
 
         /*Botones que nos llaman a una activity u otra al hacer click, si seleccionamos Infantil se
-        * inicia el juego, si seleccionamos adulto nos salta a la activity de seleccionar dificultad (AdultActivity)*/
+        * inicia la historia, si seleccionamos adulto nos salta a la activity de seleccionar dificultad (AdultActivity)*/
         btnInfantil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,11 +37,13 @@ public class NivelActivity extends AppCompatActivity {
         btnAdult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Nos inicia la activity de AdultActivity
                 Intent intent = new Intent(NivelActivity.this, AdultActivity.class);
                 startActivity(intent);
             }
         });
 
+        //Listener que al hacer click en el botón nos lleva a la activity anterior
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
