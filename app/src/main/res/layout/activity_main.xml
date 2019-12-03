@@ -12,10 +12,11 @@
         android:gravity="center">
         <ImageView
             android:layout_width="@dimen/logo"
-            android:layout_height="@dimen/logo"
+            android:layout_height="@dimen/logoAlto"
             android:src="@drawable/logo_sin_fondo"
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"/>
+
         <Button
             android:id="@+id/BtnJugar"
             android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="right|bottom">
+        android:gravity="end|bottom">
 
         <com.example.spaceexperience.ImageButtonRounded
             android:layout_width="@dimen/flag"

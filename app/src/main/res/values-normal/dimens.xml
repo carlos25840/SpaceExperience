@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="flag">30dp</dimen>
-    <dimen name="logo">250dp</dimen>
-    <dimen name="textbotones">15sp</dimen>
+    <dimen name="logo">230dp</dimen>
+    <dimen name="textbotones">10sp</dimen>
     <dimen name="marginflag">2dp</dimen>
-    <dimen name="buttonpadding">6dp</dimen>
-    <dimen name="buttonheight">30dp</dimen>
+    <dimen name="buttonpadding">8dp</dimen>
+    <dimen name="buttonheight">2dp</dimen>
     <dimen name="back">40dp</dimen>
-    <dimen name="paddingback">5dp</dimen>
-    <dimen name="logoNivel">200dp</dimen>
+    <dimen name="paddingback">10dp</dimen>
+    <dimen name="logoNivel">180dp</dimen>
     <dimen name="textPregunta">20sp</dimen>
     <dimen name="marginPregunta">5dp</dimen>
     <dimen name="buttonPregunta">300dp</dimen>
@@ -20,7 +20,10 @@
     <dimen name="paddingColumna">2dp</dimen>
     <dimen name="radio">30dp</dimen>
     <dimen name="marginSiguiente">5dp</dimen>
-    <dimen name="paddingHistoria">40dp</dimen>
-    <dimen name="textAlertDialog">40dp</dimen>
-    <dimen name="textOk">40dp</dimen>
+    <dimen name="paddingHistoria">10dp</dimen>
+    <dimen name="textAlertDialog">20dp</dimen>
+    <dimen name="textOk">20dp</dimen>
+    <dimen name="logoAlto">200dp</dimen>
+    <dimen name="borde">2dp</dimen>
+    <dimen name="radioBtn">40dp</dimen>
 </resources>

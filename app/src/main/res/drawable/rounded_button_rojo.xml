@@ -2,12 +2,12 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="false">
         <shape android:shape="rectangle">
-            <corners android:radius="60dp"
+            <corners android:radius="@dimen/radioBtn"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"/>
             <solid android:color="@color/rojo" />
             <stroke
-                android:width="5dp"
+                android:width="@dimen/borde"
                 android:color="@color/rojoOscuro" />
             <padding
                 android:bottom="@dimen/buttonpadding"
@@ -18,12 +18,12 @@
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="60dp"
+            <corners android:radius="@dimen/radioBtn"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"/>
             <solid android:color="@color/rojoOscuro" />
             <stroke
-                android:width="5dp"
+                android:width="@dimen/borde"
                 android:color="@color/rojo" />
             <padding
                 android:bottom="2dp"

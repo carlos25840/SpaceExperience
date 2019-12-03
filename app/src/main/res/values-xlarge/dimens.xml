@@ -23,4 +23,7 @@
     <dimen name="paddingHistoria">40dp</dimen>
     <dimen name="textAlertDialog">35dp</dimen>
     <dimen name="textOk">25dp</dimen>
+    <dimen name="logoAlto">700dp</dimen>
+    <dimen name="borde">5dp</dimen>
+    <dimen name="radioBtn">60dp</dimen>
 </resources>
