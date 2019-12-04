@@ -26,31 +26,14 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        //Verificación de permisos
-        /* Si ejecutamos la versión Marshmallow (6.0) o posterior, tendremos que pedir
-            permisos en tiempo de ejecución*/
-        if (android.os.Build.VERSION.SDK_INT >= 23)
-        {
-            // Comprobamos si el usuario dio permisos a la app en una ejecución anterior
-            if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED)
-            {
-
-                /*Si el usuario no nos dio permisos, los otorgamos y ejecutamos el código*/
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
-            }
-        }
-
         //Variables
         final ImageButtonRounded buttonEn = findViewById(R.id.BtnEN);
         final ImageButtonRounded buttonEs = findViewById(R.id.BtnES);
         final ImageButtonRounded buttonCat = findViewById(R.id.BtnCat);
         final Button btnPlay = findViewById(R.id.BtnJugar);
         final Button btnRanking = findViewById(R.id.BtnRanking);
-
+        //Método que comprueba los permisos y los pide si no los tiene
+        concesionPermisos();
         /*Evento del botón Play, si hacemos click en jugar nos salta a la
         siguiente activity que es la de nivel*/
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     /*Método que nos cambia el idioma del juego en función del seleccionado*/
@@ -104,6 +88,26 @@ public class MainActivity extends AppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         recreate();
+    }
+    public void concesionPermisos(){
+        //Verificación de permisos
+        /* Si ejecutamos la versión Marshmallow (6.0) o posterior, tendremos que pedir
+            permisos en tiempo de ejecución*/
+        if (android.os.Build.VERSION.SDK_INT >= 23)
+        {
+            // Comprobamos si el usuario dio permisos a la app en una ejecución anterior
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED)
+            {
+
+                /*Si el usuario no nos dio permisos, los otorgamos y ejecutamos el código*/
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
+
+            }
+        }
     }
 
     /*Método que nos bloquea el botón atrás para no poder salir del juego */

@@ -187,11 +187,6 @@ public class PreguntaActivity extends AppCompatActivity {
         });
     }
 
-    //Deshabilita el boton de volver de android
-    @Override
-    public void onBackPressed(){
-    }
-
     //Carga los JSON en el idioma
     public Idioma getIdioma (String ruta) throws FileNotFoundException {
         Idioma idioma;
@@ -507,6 +502,11 @@ public class PreguntaActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //Deshabilita el boton de volver de android
+    @Override
+    public void onBackPressed(){
     }
 }
 

@@ -20,8 +20,6 @@ import android.widget.TextView;
 
 public class HistoriaActivity extends AppCompatActivity {
     //Atributos
-    private String aux = "";
-    private int i;
     private int contador = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
