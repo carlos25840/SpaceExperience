@@ -113,12 +113,10 @@ public class HistoriaActivity extends AppCompatActivity {
     {
         final TypeWriter typeWriter = findViewById(R.id.txtHistoria);
         final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
-        typeWriter.setText("");
-        typeWriter.setCharacterDelay(100);
         typeWriter.animateText(texto, btnSiguiente);
         //Puesto porque en mi movil se mostraba con letras normales aun cuando está en el xml
-        Typeface face2 = ResourcesCompat.getFont(HistoriaActivity.this, R.font.alien);
-        typeWriter.setTypeface(face2);
+        Typeface face = ResourcesCompat.getFont(HistoriaActivity.this, R.font.alien);
+        typeWriter.setTypeface(face);
     }
     /*Método que nos bloquea el botón atrás*/
     @Override

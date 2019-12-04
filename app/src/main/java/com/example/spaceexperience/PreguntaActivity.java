@@ -492,8 +492,8 @@ public class PreguntaActivity extends AppCompatActivity {
                 Button btnPositive = alertDialog.getButton(Dialog.BUTTON_POSITIVE);
                 btnPositive.setTextSize(getResources().getDimension(R.dimen.textOk));
 
-                Typeface face2 = ResourcesCompat.getFont(PreguntaActivity.this, R.font.alien);
-                btnPositive.setTypeface(face2);
+                Typeface face = ResourcesCompat.getFont(PreguntaActivity.this, R.font.alien);
+                btnPositive.setTypeface(face);
             }
         });
         // Muestra el alertDialog

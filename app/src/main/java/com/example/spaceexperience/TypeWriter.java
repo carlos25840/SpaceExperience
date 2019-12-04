@@ -5,13 +5,14 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class TypeWriter extends TextView {
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class TypeWriter extends AppCompatTextView {
 
     private CharSequence mText;
     private int mIndex;
-    private long mDelay = 150; // in ms
+    private long mDelay = 50; // in ms
     private Button boton;
 
     public TypeWriter(Context context) {
@@ -30,10 +31,12 @@ public class TypeWriter extends TextView {
         public void run() {
             setText(mText.subSequence(0, mIndex++));
 
-
+            //Si no ha llegado al final de la cadena
             if (mIndex <= mText.length()) {
+                //vuelve a iniciar
                 mHandler.postDelayed(characterAdder, mDelay);
             }
+            //si ha mostrado toda la cadena activa el boton
             else
             {
                 boton.setEnabled(true);
