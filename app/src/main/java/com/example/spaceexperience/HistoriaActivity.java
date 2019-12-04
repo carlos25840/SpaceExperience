@@ -116,6 +116,7 @@ public class HistoriaActivity extends AppCompatActivity {
         typeWriter.setText("");
         typeWriter.setCharacterDelay(100);
         typeWriter.animateText(texto, btnSiguiente);
+        //Puesto porque en mi movil se mostraba con letras normales aun cuando está en el xml
         Typeface face2 = ResourcesCompat.getFont(HistoriaActivity.this, R.font.alien);
         typeWriter.setTypeface(face2);
     }

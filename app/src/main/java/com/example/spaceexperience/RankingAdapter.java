@@ -34,11 +34,13 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         TextView txtInsignias = item.findViewById(R.id.TxtInsignias);
         TextView txtPos = item.findViewById(R.id.TxtPos);
 
+        //Puesto porque en mi movil se mostraba con letras normales aun cuando está en el xml
         Typeface face2 = ResourcesCompat.getFont(txtNombre.getContext(), R.font.alien);
         txtNombre.setTypeface(face2);
         txtPuntos.setTypeface(face2);
         txtInsignias.setTypeface(face2);
         txtPos.setTypeface(face2);
+
         //Para llenar las posiciones del ranking se incrementa la position en 1 para no empezar el ranking desde 0
         txtPos.setText(Integer.toString(position +1));
 
