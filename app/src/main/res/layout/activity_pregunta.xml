@@ -11,7 +11,6 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_gravity="left"
             android:id="@+id/BtnHome"
             android:layout_width="@dimen/back"
             android:layout_height="@dimen/back"
@@ -36,7 +35,6 @@
                 android:textSize="@dimen/textbotones"/>
         </LinearLayout>
         <TextView
-            android:layout_gravity="right"
             android:layout_width="@dimen/back"
             android:layout_height="@dimen/back"
             android:padding="@dimen/paddingback"
@@ -156,7 +154,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alien"
-                android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
@@ -168,7 +165,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alien"
-                android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
@@ -188,7 +184,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alien"
-                android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
@@ -200,7 +195,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alien"
-                android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/textbotones"
