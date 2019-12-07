@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -84,6 +85,7 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
+        ImageButton imgButtonHome = findViewById(R.id.BtnHome);
         File fileRanking = new File(RESULTADOS);
 
         if(fileRanking.exists()){  //Si hay un JSON con resultados los carga para el ranking
@@ -183,6 +185,14 @@ public class PreguntaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 accionBoton(3, size, sizeFile);
+            }
+        });
+
+        imgButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreguntaActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
