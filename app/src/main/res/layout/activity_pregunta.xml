@@ -11,6 +11,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:contentDescription="Button Home"
             android:id="@+id/BtnHome"
             android:layout_width="@dimen/back"
             android:layout_height="@dimen/back"
