@@ -81,6 +81,7 @@ public class PreguntaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregunta);
         final TextView textViewCounter = findViewById(R.id.counter);
         final TextView textViewPuntos = findViewById(R.id.txtPuntos);
+        final TextView textViewRestantes = findViewById(R.id.preguntasRestantes);
         final Button buttonRespuesta1 = findViewById(R.id.btnRespuesta1);
         final Button buttonRespuesta2 = findViewById(R.id.btnRespuesta2);
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
@@ -102,6 +103,7 @@ public class PreguntaActivity extends AppCompatActivity {
         nivel = intent.getStringExtra("nivel");
         //Muestra los puntos iniciales que será 0
         textViewPuntos.setText(Integer.toString(score));
+        textViewRestantes.setText(getResources().getString(R.string.restantes)+ Integer.toString(PREGUNTAS - contador));
         //Carga la preguntas según el idioma seleccionado
         cargarPreguntas();
         //Guarda en una variable la cantidad de preguntas que hay
@@ -133,6 +135,7 @@ public class PreguntaActivity extends AppCompatActivity {
                 this.cancel();
                 //Sumamos uno al contador de preguntas
                 contador++;
+                textViewRestantes.setText(getResources().getString(R.string.restantes)+ Integer.toString(PREGUNTAS - contador));
                 //Llamamos a la funcion pintarBotones que nos muestra la respuesta correcta en verde
                 pintarBotones();
 
@@ -301,6 +304,7 @@ public class PreguntaActivity extends AppCompatActivity {
     {
         TextView textViewPuntos = findViewById(R.id.txtPuntos);
         TextView textViewCounter = findViewById(R.id.counter);
+        TextView textViewRestantes = findViewById(R.id.preguntasRestantes);
         //Llama a la funcion pintarBotones que muestra con colores la respuesta correcta
         pintarBotones();
 
@@ -325,6 +329,8 @@ public class PreguntaActivity extends AppCompatActivity {
             timer.cancel();
             //suma uno a la cantidad de preguntas mostradas
             contador++;
+
+            textViewRestantes.setText(getResources().getString(R.string.restantes)+ Integer.toString(PREGUNTAS - contador));
             //agrega una insignia(respuesta correcta)
             insignias++;
         }
@@ -335,6 +341,7 @@ public class PreguntaActivity extends AppCompatActivity {
             textViewPuntos.setText(Integer.toString(score));
             timer.cancel();
             contador++;
+            textViewRestantes.setText(getResources().getString(R.string.restantes)+ Integer.toString(PREGUNTAS - contador));
         }
         //Si no se han mostrado 10 PREGUNTAS y  si no se han mostrado todas las disponibles y si no
         // se han mostrado todas las imagenes disponibles
