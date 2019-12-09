@@ -49,7 +49,22 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         txtNombre.setText(resultados.get(position).getNombre());
         txtInsignias.setText(Integer.toString(resultados.get(position).getInsignias()));
         txtPuntos.setText(Integer.toString(resultados.get(position).getPuntacion()));
-        txtNivel.setText(resultados.get(position).getNivel());
+        String level = null;
+        switch (resultados.get(position).getNivel()){
+            case "infantil":
+                level = parent.getContext().getResources().getString(R.string.infantil);
+                break;
+            case "facil":
+                level = parent.getContext().getResources().getString(R.string.facil);
+                break;
+            case "normal":
+                level = parent.getContext().getResources().getString(R.string.normal);
+                break;
+            case "dificil":
+                level = parent.getContext().getResources().getString(R.string.dificil);
+                break;
+        }
+        txtNivel.setText(level);
         return item;
     }
 }
