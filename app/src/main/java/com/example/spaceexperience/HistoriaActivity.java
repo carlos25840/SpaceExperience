@@ -3,7 +3,9 @@ package com.example.spaceexperience;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.app.ApplicationErrorReport;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,7 +34,7 @@ public class HistoriaActivity extends AppCompatActivity {
         final String nivel;
         final ImageView imageViewLaika = findViewById(R.id.imagenPersonaje);
         //Recuperamos el intent que le pasamos con el extra de nivel
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
 
         imageViewLaika.setImageResource(R.drawable.laika2);
@@ -68,6 +70,7 @@ public class HistoriaActivity extends AppCompatActivity {
                 //La segunda vez nos hará la animación y nos llamará a la siguiente activity
                 else if(contador==2 && !nivel.equals("final"))
                 {
+                    btnSiguiente.setEnabled(false);
                     ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
                     //Se crea la animación y se ejecuta
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
@@ -88,26 +91,46 @@ public class HistoriaActivity extends AppCompatActivity {
                 * y se inicia el ranking*/
                 else if(contador==1 && nivel.equals("final"))
                 {
+                    btnSiguiente.setEnabled(false);
                     //Se espera hasta que acabe la animación
                     ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
                     imageViewAstronauta.startAnimation(animation);
-
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             btnSiguiente.setEnabled(false);
                             ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
-                            imageViewAstronauta.setImageResource(R.drawable.armstrong);
-                            Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomin);
+
+                            int insignias = intent.getIntExtra("insignias",0);
+                            String historia;
+                            if(insignias>9){
+                                imageViewAstronauta.setImageResource(R.drawable.armstrong);
+                                historia = getResources().getString(R.string.armstrong);
+                            } else if(insignias>6){
+                                imageViewAstronauta.setImageResource(R.drawable.gagarin);
+                                historia = getResources().getString(R.string.gagarin);
+                            } else if(insignias>3){
+                                imageViewAstronauta.setImageResource(R.drawable.tereshkova);
+                                historia = getResources().getString(R.string.tereshkova);
+                            } else if(insignias>0){
+                                imageViewAstronauta.setImageResource(R.drawable.aldrin);
+                                historia = getResources().getString(R.string.aldrin);
+
+                            } else{
+                                imageViewAstronauta.setImageResource(R.drawable.meteorito);
+                                historia = getResources().getString(R.string.piedra);
+                            }
+                            Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.fadein);
                             imageViewAstronauta.startAnimation(animation);
-                            mostrarTexto(getResources().getString(R.string.armstrong));
+                            mostrarTexto(historia);
                             contador++;
                         }
-                    }, 2000);
+                    }, 1000);
                 }
                 else if(contador==2 && nivel.equals("final"))
                 {
+                    btnSiguiente.setEnabled(false);
                     final ImageView imageViewLaika = findViewById(R.id.imagenPersonaje);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.fadeout);
                     imageViewLaika.startAnimation(animation);
@@ -118,7 +141,7 @@ public class HistoriaActivity extends AppCompatActivity {
                             Intent intent = new Intent(HistoriaActivity.this, RankingActivity.class);
                             startActivity(intent);
                         }
-                    }, 2000);
+                    }, 1000);
                 }
 
             }

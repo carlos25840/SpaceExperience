@@ -497,6 +497,8 @@ public class PreguntaActivity extends AppCompatActivity {
                                 intent.putExtra("nivel", "final");
                                 intent.putExtra("nombre", nombre);
                                 intent.putExtra("puntos", puntos);
+                                intent.putExtra("insignias", insignias);
+
                                 startActivity(intent);
                             }
 

@@ -25,10 +25,13 @@
         android:gravity="center">
 
         <ImageView
+            android:layout_margin="@dimen/marginPregunta"
             android:id="@+id/imagenPersonaje"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+
+            android:layout_weight="1"
+            />
 
         <Button
             android:id="@+id/BtnSiguiente"

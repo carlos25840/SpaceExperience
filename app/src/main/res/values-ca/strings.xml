@@ -20,8 +20,12 @@
     <string name="next">Següent</string>
     <string name="historia3">Enhorabona\u0020</string>
     <string name="historia4">\u0020has obtingut\u0020</string>
-    <string name="historia5">\u0020punts, vegem quin personatge correspon a la teva puntuació</string>
+    <string name="historia5">\u0020punts, vegem quin personatge correspon a les teves insígnies</string>
     <string name="restantes">Preguntes restants\n</string>
     <string name="nivel">Nivell</string>
-    <string name="armstrong">Tu puntuación corresponde a Neil Armstrong, el primer ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="armstrong">Les teves insígnies corresponen a Neil Armstrong, el primer ésser humà en trepitjar la lluna, vegem la teva posició en el rànquing. ¿Anem?</string>
+    <string name="gagarin">Les teves insígnies corresponen a Yuri Gagarin, el primer ésser humà a orbitar la terra, vegem la teva posició en el rànquing. ¿Anem?</string>
+    <string name="tereshkova">Les teves insígnies corresponen a Valentina Tereshkova, la primera dona en anar a l\'espai, vegem la teva posició en el rànquing. ¿Anem?</string>
+    <string name="aldrin">Les teves insígnies corresponen a Buzz Aldrin, el segon ésser humà en trepitjar la lluna, vegem la teva posició en el rànquing. ¿Anem?</string>
+    <string name="piedra">Les teves insígnies corresponen a un meteorit, el segon ésser humà en trepitjar la lluna, vegem la teva posició en el rànquing. ¿Anem?</string>
 </resources>

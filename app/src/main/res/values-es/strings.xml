@@ -20,8 +20,12 @@
     <string name="next">Siguiente</string>
     <string name="historia3">Enhorabuena\u0020</string>
     <string name="historia4">\u0020has obtenido\u0020</string>
-    <string name="historia5">\u0020puntos, veamos que personaje corresponde a tu puntuación</string>
+    <string name="historia5">\u0020puntos, veamos que personaje corresponde a tus insignias</string>
     <string name="restantes">Preguntas restantes\n</string>
     <string name="nivel">Nivel</string>
-    <string name="armstrong">Tu puntuación corresponde a Neil Armstrong, el primer ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="armstrong">Tus insignias corresponden a Neil Armstrong, el primer ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="gagarin">Tus insignias corresponden a Yuri Gagarin, el primer ser humano en orbitar la tierra, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="tereshkova">Tus insignias corresponden a Valentina Tereshkova, la primera mujer en ir al espacio, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="aldrin">Tus insignias corresponden a Buzz Aldrin, el segundo ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
+    <string name="piedra">Tus insignias corresponden a un meteorito, veamos tu posición en el ranking. ¿Vamos?</string>
 </resources>
