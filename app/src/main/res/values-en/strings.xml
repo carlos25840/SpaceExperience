@@ -22,4 +22,5 @@
     <string name="historia4">\u0020you have obtained\u0020</string>
     <string name="historia5">\u0020points, let\'s see your position in the ranking</string>
     <string name="restantes">Remaining questions\n</string>
+    <string name="nivel">Level</string>
 </resources>

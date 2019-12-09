@@ -4,17 +4,25 @@ public class Resultado implements Comparable {
     private String nombre;
     private int puntacion;
     private int insignias;
+    private String nivel;
 
     public Resultado() {
     }
 
-    public Resultado(String nombre, int puntacion, int insignias) {
+    public Resultado(String nombre, int puntacion, int insignias, String nivel) {
         this.nombre = nombre;
         this.puntacion = puntacion;
         this.insignias = insignias;
+        this.nivel = nivel;
     }
 
+    public String getNivel() {
+        return nivel;
+    }
 
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
 
     public int getInsignias() {
         return insignias;

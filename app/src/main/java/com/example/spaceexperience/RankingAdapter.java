@@ -33,6 +33,7 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         TextView txtPuntos = item.findViewById(R.id.TxtPoints);
         TextView txtInsignias = item.findViewById(R.id.TxtInsignias);
         TextView txtPos = item.findViewById(R.id.TxtPos);
+        TextView txtNivel = item.findViewById(R.id.TxtNivel);
 
         //Puesto porque en mi movil se mostraba con letras normales aun cuando está en el xml
         Typeface face2 = ResourcesCompat.getFont(txtNombre.getContext(), R.font.alien);
@@ -48,6 +49,7 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         txtNombre.setText(resultados.get(position).getNombre());
         txtInsignias.setText(Integer.toString(resultados.get(position).getInsignias()));
         txtPuntos.setText(Integer.toString(resultados.get(position).getPuntacion()));
+        txtNivel.setText(resultados.get(position).getNivel());
         return item;
     }
 }

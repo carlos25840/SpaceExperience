@@ -110,7 +110,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="6"
+        android:layout_weight="10"
         android:layout_margin="@dimen/marginRanking"
         android:background="@drawable/rounded_ranking"
         android:orientation="vertical">
@@ -168,6 +168,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/points"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textRanking"
+                android:textAlignment="center"
+                android:textColor="@color/blanco"
+                android:fontFamily="@font/alien"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nivel"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textSize="@dimen/textRanking"
