@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -87,6 +88,7 @@ public class PreguntaActivity extends AppCompatActivity {
         final Button buttonRespuesta3 = findViewById(R.id.btnRespuesta3);
         final Button buttonRespuesta4 = findViewById(R.id.btnRespuesta4);
         ImageButton imgButtonHome = findViewById(R.id.BtnHome);
+        final ProgressBar progressBar = findViewById(R.id.pg_bar);
         File fileRanking = new File(RESULTADOS);
 
         if(fileRanking.exists()){  //Si hay un JSON con resultados los carga para el ranking
@@ -117,7 +119,11 @@ public class PreguntaActivity extends AppCompatActivity {
                 //Mostramos los segundos restantes
                 textViewCounter.setTextColor(getResources().getColor(R.color.blanco));
                 textViewCounter.setText(Long.toString(millisUntilFinished / 1000));
-
+                if(nivel.equals("infantil")){
+                    progressBar.setProgress((int)(millisUntilFinished / 1000)*(100/30));
+                }else{
+                    progressBar.setProgress((int)(millisUntilFinished / 1000)*(100/15));
+                }
                 //Si solo faltan 5 segundos se muestran en rojo
                 if((millisUntilFinished / 1000) <= 5)
                 {
