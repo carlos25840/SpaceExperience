@@ -20,7 +20,8 @@
     <string name="next">Següent</string>
     <string name="historia3">Enhorabona\u0020</string>
     <string name="historia4">\u0020has obtingut\u0020</string>
-    <string name="historia5">\u0020punts, vegem la teva posició en el rànquing</string>
+    <string name="historia5">\u0020punts, vegem quin personatge correspon a la teva puntuació</string>
     <string name="restantes">Preguntes restants\n</string>
     <string name="nivel">Nivell</string>
+    <string name="armstrong">Tu puntuación corresponde a Neil Armstrong, el primer ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
 </resources>

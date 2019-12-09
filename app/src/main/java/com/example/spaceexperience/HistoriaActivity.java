@@ -30,12 +30,12 @@ public class HistoriaActivity extends AppCompatActivity {
         //Variable
         final Button btnSiguiente = findViewById(R.id.BtnSiguiente);
         final String nivel;
-        final ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
+        final ImageView imageViewLaika = findViewById(R.id.imagenPersonaje);
         //Recuperamos el intent que le pasamos con el extra de nivel
         Intent intent = getIntent();
         nivel = intent.getStringExtra("nivel");
 
-        imageViewAstronauta.setImageResource(R.drawable.laika2);
+        imageViewLaika.setImageResource(R.drawable.laika2);
 
         //Dependiendo de si es el final del juego o no, nos muestra una parte de la historia u otra
         if(!nivel.equals("final"))
@@ -86,17 +86,36 @@ public class HistoriaActivity extends AppCompatActivity {
                 }
                 /*Si el nivel es final, lo que significa que es al final del juego, se ejecuta la animación
                 * y se inicia el ranking*/
-                else if(nivel.equals("final"))
+                else if(contador==1 && nivel.equals("final"))
                 {
+                    //Se espera hasta que acabe la animación
                     ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
                     Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomout);
                     imageViewAstronauta.startAnimation(animation);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            btnSiguiente.setEnabled(false);
+                            ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
+                            imageViewAstronauta.setImageResource(R.drawable.armstrong);
+                            Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.zoomin);
+                            imageViewAstronauta.startAnimation(animation);
+                            mostrarTexto(getResources().getString(R.string.armstrong));
+                            contador++;
+                        }
+                    }, 2000);
+                }
+                else if(contador==2 && nivel.equals("final"))
+                {
+                    final ImageView imageViewLaika = findViewById(R.id.imagenPersonaje);
+                    Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.fadeout);
+                    imageViewLaika.startAnimation(animation);
                     //Se espera hasta que acabe la animación
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
-                        Intent intent = new Intent(HistoriaActivity.this, RankingActivity.class);
                         public void run() {
-                            //Iniciamos la activity RankingActivity
+                            Intent intent = new Intent(HistoriaActivity.this, RankingActivity.class);
                             startActivity(intent);
                         }
                     }, 2000);

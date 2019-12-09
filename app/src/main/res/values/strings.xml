@@ -23,4 +23,5 @@
     <string name="historia5">\u0020points, let\'s see your position in the ranking</string>
     <string name="restantes">Remaining questions\n</string>
     <string name="nivel">Level</string>
+    <string name="armstrong">Tu puntuación corresponde a Neil Armstrong, el primer ser humano en pisar la luna, veamos tu posición en el ranking. ¿Vamos?</string>
 </resources>
