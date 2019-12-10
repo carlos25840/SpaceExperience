@@ -24,4 +24,5 @@
     <dimen name="textOk">10dp</dimen>
     <dimen name="borde">2dp</dimen>
     <dimen name="radioBtn">40dp</dimen>
+    <dimen name="textMedallas">10sp</dimen>
 </resources>

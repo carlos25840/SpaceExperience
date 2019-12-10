@@ -43,7 +43,7 @@
                 android:id="@+id/TxtPrimero"
                 android:layout_marginTop="@dimen/paddingColumna"
                 android:textAlignment="center"
-                android:textSize="@dimen/textRankingTitul"
+                android:textSize="@dimen/textMedallas"
                 android:textColor="@color/oro"
                 android:textStyle="bold"
                 android:fontFamily="@font/alien"/>
@@ -70,7 +70,7 @@
                 android:id="@+id/TxtSegundo"
                 android:layout_marginTop="@dimen/paddingColumna"
                 android:textAlignment="center"
-                android:textSize="@dimen/textRankingTitul"
+                android:textSize="@dimen/textMedallas"
                 android:textColor="@color/plata"
                 android:textStyle="bold"
                 android:fontFamily="@font/alien"/>
@@ -97,7 +97,7 @@
                 android:id="@+id/TxtTercero"
                 android:layout_marginTop="@dimen/paddingColumna"
                 android:textAlignment="center"
-                android:textSize="@dimen/textRankingTitul"
+                android:textSize="@dimen/textMedallas"
                 android:textColor="@color/bronce"
                 android:textStyle="bold"
                 android:fontFamily="@font/alien"
