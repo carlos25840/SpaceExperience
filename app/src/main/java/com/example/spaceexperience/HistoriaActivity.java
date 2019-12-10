@@ -105,14 +105,14 @@ public class HistoriaActivity extends AppCompatActivity {
                             int insignias = intent.getIntExtra("insignias",0);
                             String historia;
                             if(insignias>9){
-                                imageViewAstronauta.setImageResource(R.drawable.armstrong);
-                                historia = getResources().getString(R.string.armstrong);
+                                imageViewAstronauta.setImageResource(R.drawable.tereshkova);
+                                historia = getResources().getString(R.string.tereshkova);
                             } else if(insignias>6){
                                 imageViewAstronauta.setImageResource(R.drawable.gagarin);
                                 historia = getResources().getString(R.string.gagarin);
                             } else if(insignias>3){
-                                imageViewAstronauta.setImageResource(R.drawable.tereshkova);
-                                historia = getResources().getString(R.string.tereshkova);
+                                imageViewAstronauta.setImageResource(R.drawable.armstrong);
+                                historia = getResources().getString(R.string.armstrong);
                             } else if(insignias>0){
                                 imageViewAstronauta.setImageResource(R.drawable.aldrin);
                                 historia = getResources().getString(R.string.aldrin);
