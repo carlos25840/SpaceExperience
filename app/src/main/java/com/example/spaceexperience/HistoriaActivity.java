@@ -99,11 +99,14 @@ public class HistoriaActivity extends AppCompatActivity {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         public void run() {
+                            // Declara la imageview donde irá la imagen del personaje
                             btnSiguiente.setEnabled(false);
                             ImageView imageViewAstronauta = findViewById(R.id.imagenPersonaje);
 
+                            // Recupera el numero de insignias del jugador y declara la string donde irá la historia
                             int insignias = intent.getIntExtra("insignias",0);
                             String historia;
+                            // Dependiendo del numero de insignias se le asigna un personaje, mostrando su imagen y rellenando la string de su historia
                             if(insignias>9){
                                 imageViewAstronauta.setImageResource(R.drawable.tereshkova);
                                 historia = getResources().getString(R.string.tereshkova);
@@ -121,6 +124,7 @@ public class HistoriaActivity extends AppCompatActivity {
                                 imageViewAstronauta.setImageResource(R.drawable.meteorito);
                                 historia = getResources().getString(R.string.piedra);
                             }
+                            // Muestra la historia del personaje
                             Animation animation = AnimationUtils.loadAnimation(HistoriaActivity.this, R.anim.fadein);
                             imageViewAstronauta.startAnimation(animation);
                             mostrarTexto(historia);
