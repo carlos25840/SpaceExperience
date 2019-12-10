@@ -6,7 +6,7 @@
     android:background="@drawable/sky">
 
     <com.example.spaceexperience.TypeWriter
-        android:layout_margin="@dimen/marginPregunta"
+        android:layout_margin="@dimen/marginHistoria"
         android:id="@+id/txtHistoria"
         android:background="@drawable/rounded_ranking"
         android:padding="@dimen/paddingHistoria"

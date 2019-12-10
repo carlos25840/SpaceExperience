@@ -25,4 +25,5 @@
     <dimen name="borde">2dp</dimen>
     <dimen name="radioBtn">40dp</dimen>
     <dimen name="textMedallas">10sp</dimen>
+    <dimen name="marginHistoria">40dp</dimen>
 </resources>

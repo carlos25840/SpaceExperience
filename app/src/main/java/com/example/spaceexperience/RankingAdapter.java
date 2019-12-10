@@ -46,7 +46,12 @@ public class RankingAdapter extends ArrayAdapter<Resultado> {
         txtPos.setText(Integer.toString(position +1));
 
         //Se van cargando los TextView del layout personalizado
-        txtNombre.setText(resultados.get(position).getNombre());
+        if (resultados.get(position).getNombre().equals("")) {
+            txtNombre.setText(parent.getContext().getResources().getString(R.string.anonimo));
+        }
+        else {
+            txtNombre.setText(resultados.get(position).getNombre());
+        }
         txtInsignias.setText(Integer.toString(resultados.get(position).getInsignias()));
         txtPuntos.setText(Integer.toString(resultados.get(position).getPuntacion()));
         String level = null;

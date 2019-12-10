@@ -24,5 +24,6 @@
     <dimen name="textOk">25dp</dimen>
     <dimen name="borde">5dp</dimen>
     <dimen name="radioBtn">60dp</dimen>
+    <dimen name="marginHistoria">100dp</dimen>
     <dimen name="textMedallas">60sp</dimen>
 </resources>

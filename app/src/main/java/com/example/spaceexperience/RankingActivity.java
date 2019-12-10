@@ -68,11 +68,26 @@ public class RankingActivity extends AppCompatActivity {
         /*Condicional que controla el tamaño del array para que solo lo llene acorde a la cantidad
         de resultados almacenados*/
         if(resultados.size()>=1){
-            txtPrimero.setText(resultados.get(0).getNombre());
+            if (resultados.get(0).getNombre().equals("")) {
+                txtPrimero.setText(R.string.anonimo);
+            }
+            else {
+                txtPrimero.setText(resultados.get(0).getNombre());
+            }
             if(resultados.size()>=2){
-                txtSegundo.setText(resultados.get(1).getNombre());
+                if (resultados.get(1).getNombre().equals("")) {
+                    txtSegundo.setText(R.string.anonimo);
+                }
+                else {
+                    txtSegundo.setText(resultados.get(1).getNombre());
+                }
                 if(resultados.size()>=3){
-                    txtTercero.setText(resultados.get(2).getNombre());
+                    if (resultados.get(1).getNombre().equals("")) {
+                        txtTercero.setText(R.string.anonimo);
+                    }
+                    else {
+                        txtTercero.setText(resultados.get(2).getNombre());
+                    }
                 }
             }
         }
