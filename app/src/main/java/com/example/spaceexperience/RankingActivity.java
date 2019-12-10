@@ -82,7 +82,7 @@ public class RankingActivity extends AppCompatActivity {
                     txtSegundo.setText(resultados.get(1).getNombre());
                 }
                 if(resultados.size()>=3){
-                    if (resultados.get(1).getNombre().equals("")) {
+                    if (resultados.get(2).getNombre().equals("")) {
                         txtTercero.setText(R.string.anonimo);
                     }
                     else {
