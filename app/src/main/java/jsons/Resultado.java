@@ -1,4 +1,4 @@
-package JSONs;
+package jsons;
 
 public class Resultado implements Comparable {
     private String nombre;

@@ -22,13 +22,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import JSONs.Resultado;
+import jsons.Resultado;
 
 public class RankingActivity extends AppCompatActivity {
     //Constantes
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
-            DIR_SEPAR + "JSONs";
+            DIR_SEPAR + "jsons";
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
 
 

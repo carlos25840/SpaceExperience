@@ -40,16 +40,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import JSONs.Idioma;
-import JSONs.Pregunta;
-import JSONs.Resultado;
+import jsons.Idioma;
+import jsons.Pregunta;
+import jsons.Resultado;
 
 
 public class PreguntaActivity extends AppCompatActivity {
     /*----------------Constantes--------------------*/
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
-            DIR_SEPAR + "JSONs";
+            DIR_SEPAR + "jsons";
     public static final String DIRECTORY_IMAGES = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "imagenes" + DIR_SEPAR;
     public static final String CATALAN = DIRECTORY_JSONS + DIR_SEPAR + "catalan.json";

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
-import JSONs.Resultado;
+import jsons.Resultado;
 //Constructor personalizado que hereda de ArrayAdapter
 public class RankingAdapter extends ArrayAdapter<Resultado> {
     private Context context;
