@@ -130,7 +130,7 @@ public class HistoriaActivity extends AppCompatActivity {
                             mostrarTexto(historia);
                             contador++;
                         }
-                    }, 1000);
+                    }, 2000);
                 }
                 else if(contador==2 && nivel.equals("final"))
                 {
@@ -145,7 +145,7 @@ public class HistoriaActivity extends AppCompatActivity {
                             Intent intent = new Intent(HistoriaActivity.this, RankingActivity.class);
                             startActivity(intent);
                         }
-                    }, 1000);
+                    }, 2000);
                 }
 
             }
