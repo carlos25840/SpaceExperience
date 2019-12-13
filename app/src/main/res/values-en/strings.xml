@@ -23,10 +23,10 @@
     <string name="historia5">\u0020points, let\'s see which character corresponds to your medals</string>
     <string name="restantes">Remaining questions\n</string>
     <string name="nivel">Level</string>
-    <string name="armstrong">Your medals correspond to Neil Armstrong, the first human being to step on the moon, let\'s see your position in the ranking. Come on?</string>
-    <string name="gagarin">Your medals correspond to Yuri Gagarin, the first human being to orbit the earth, let\'s see your position in the ranking. Come on?</string>
-    <string name="tereshkova">Your medals correspond to Valentina Tereshkova, the first woman to go to space, let\'s see your position in the ranking. Come on?</string>
-    <string name="aldrin">Your medals correspond to Buzz Aldrin, the second human being to step on the moon, let\'s see your position in the ranking. Come on?</string>
-    <string name="piedra">Your medals correspond to a meteorite, let\'s see your position in the ranking. Come on?</string>
+    <string name="armstrong">Your medals correspond to Neil Armstrong, the first human being to step on the moon, let\'s see your position in the ranking. Let\'s see!</string>
+    <string name="gagarin">Your medals correspond to Yuri Gagarin, the first human being to orbit the earth, let\'s see your position in the ranking. Let\'s see!</string>
+    <string name="tereshkova">Your medals correspond to Valentina Tereshkova, the first woman to go to space, let\'s see your position in the ranking. Let\'s see!</string>
+    <string name="aldrin">Your medals correspond to Buzz Aldrin, the second human being to step on the moon, let\'s see your position in the ranking. Let\'s see!</string>
+    <string name="piedra">Your medals correspond to a meteorite, let\'s see your position in the ranking. Let\'s see!</string>
     <string name="anonimo">Anonymous</string>
 </resources>
