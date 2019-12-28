@@ -476,7 +476,7 @@ public class PreguntaActivity extends AppCompatActivity {
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK",
+                .setPositiveButton(getResources().getString(R.string.aceptar),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Coge el input del usuario y lo guarda en un string
