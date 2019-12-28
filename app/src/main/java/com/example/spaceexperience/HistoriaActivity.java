@@ -49,9 +49,19 @@ public class HistoriaActivity extends AppCompatActivity {
         {
             //Nos coge el nombre y los puntos de la activity PreguntaActivity y muestra un mnesaje
             String nombre = intent.getStringExtra("nombre");
+            String historia;
             int puntos = intent.getIntExtra("puntos",0);
-            String historia = getResources().getString(R.string.historia3) + nombre +
-                    getResources().getString(R.string.historia4) + puntos + getResources().getString(R.string.historia5);
+            if(puntos > 0)
+            {
+                historia = getResources().getString(R.string.historia3) + nombre +
+                        getResources().getString(R.string.historia4) + puntos + getResources().getString(R.string.historia5);
+
+            }
+            else
+            {
+                historia = getResources().getString(R.string.historia3mal) + nombre +
+                        getResources().getString(R.string.historia4) + puntos + getResources().getString(R.string.historia5);
+            }
             //Una vez creado el string llama al método mostrarTexto pasándole el string
             mostrarTexto(historia);
         }
