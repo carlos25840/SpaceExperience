@@ -16,6 +16,6 @@ Examples:
 
 ### Showing 📋
 
-<iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=qbPDDjAZcmM">
-</iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/watch?v=qbPDDjAZcmM"></iframe>
+
+<video width="320" height="240" controls><source src="https://www.youtube.com/watch?v=qbPDDjAZcmM" type="video/mp4"></video>
