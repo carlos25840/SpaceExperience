@@ -14,3 +14,8 @@ Examples:
 
 /storage/emulated/0/imagenes/
 
+### Showing 📋
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=qbPDDjAZcmM">
+</iframe>
