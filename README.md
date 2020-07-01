@@ -17,5 +17,5 @@ Examples:
 ### Showing
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1mzOyUydp8dOlsEExBcLkAeAw_AnB058_/view?usp=sharing" width="350" title="SpaceExperience">
+  ![Optional Text](https://drive.google.com/file/d/1mzOyUydp8dOlsEExBcLkAeAw_AnB058_/view?usp=sharing)
 </p>
