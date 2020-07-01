@@ -16,6 +16,4 @@ Examples:
 
 ### Showing
 
-<p align="center">
-  ![Optional Text](https://drive.google.com/file/d/1mzOyUydp8dOlsEExBcLkAeAw_AnB058_/view?usp=sharing)
-</p>
+![stack Overflow](http://lmsotfy.com/so.png)
