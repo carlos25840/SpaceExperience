@@ -1,4 +1,4 @@
-<h1> SpaceExperience <h1/>
+<h1> SpaceExperience </h1>
 
 Native android trivia videogame about space with 4 different levels and 3 languages.
 
