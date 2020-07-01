@@ -10,5 +10,6 @@ You must copy the folders "imagenes" and "JSONs" to the root of the device stora
 Examples:
 
 /storage/emulated/0/JSONs/
+
 /storage/emulated/0/imagenes/
 
