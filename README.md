@@ -2,7 +2,7 @@
 
 Native android trivia videogame about space with 4 different levels and 3 languages.
 
-### Prerequisites 📋
+<h3> Prerequisites 📋</h3>
 
 You must copy the folders "imagenes" and "JSONs" to the root of the device storage.
 
@@ -14,6 +14,6 @@ Examples:
 
 /storage/emulated/0/imagenes/
 
-### Showing
+<h3> Showing </h3>
 
 <img src="https://i.ibb.co/684z9Tr/Space-Experience.jpg" alt="SpaceExperience" border="0" />
