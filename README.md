@@ -1,6 +1,6 @@
 # SpaceExperience
 
-Native android trivia videogame about space with 4 different levels and 3 language.
+Native android trivia videogame about space with 4 different levels and 3 languages.
 
 ### Prerequisites 📋
 
