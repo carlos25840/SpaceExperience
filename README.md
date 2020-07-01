@@ -14,6 +14,6 @@ Examples:
 
 /storage/emulated/0/imagenes/
 
-<h3> Showing </h3>
+<h3> Showing :framed_picture: </h3>
 
 <img src="https://i.ibb.co/684z9Tr/Space-Experience.jpg" alt="SpaceExperience" border="0" />
