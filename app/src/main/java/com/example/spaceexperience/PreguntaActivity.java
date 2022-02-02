@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Type;
@@ -51,8 +52,6 @@ public class PreguntaActivity extends AppCompatActivity {
     public static final String DIR_SEPAR = File.separator;
     public static final String DIRECTORY_JSONS = Environment.getExternalStorageDirectory() +
             DIR_SEPAR + "jsons";
-    public static final String DIRECTORY_IMAGES = Environment.getExternalStorageDirectory() +
-            DIR_SEPAR + "imagenes" + DIR_SEPAR;
     public static final String RESULTADOS = DIRECTORY_JSONS + DIR_SEPAR + "resultados.json";
     public static final int PREGUNTAS = 10;
     public static final int TIEMPO = 15000;
@@ -99,6 +98,12 @@ public class PreguntaActivity extends AppCompatActivity {
                 getResults();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            }
+        }
+        else {
+            File directory = new File(DIRECTORY_JSONS);
+            if (!directory.exists()){
+                directory.mkdir();
             }
         }
 
